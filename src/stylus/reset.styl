@@ -1,0 +1,35 @@
+*
+  @extend $borderBox
+  &:before,
+  &:after
+    @extend $borderBox
+body
+  marign: 0
+  @extend .full-height
+  font-family: 'Roboto', Microsoft YaHei, SimSun, sans-serif
+  font-size $baseSize
+  font-weight: 300
+
+a
+  background-color: transparent
+  text-decoration: none
+  &:active,
+  &:hover
+    outline: 0
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+input[type="number"]
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button
+    height: auto
+
+input
+  line-height normal
+
+input[type=checkbox]
+  margin 0

@@ -1,0 +1,24 @@
+{
+  "name": "owl-ui",
+  "version": "0.0.1",
+  "description": "owl ui framework",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Timmy Chang",
+  "license": "",
+  "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "gulp": "^3.9.1",
+    "gulp-cheerio": "^0.6.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-stylus": "^2.3.0",
+    "gulp-svgmin": "^1.2.2",
+    "gulp-svgstore": "^5.0.5",
+    "normalize.css": "^3.0.3",
+    "poststylus": "^0.2.3",
+    "rucksack-css": "^0.8.5"
+  }
+}

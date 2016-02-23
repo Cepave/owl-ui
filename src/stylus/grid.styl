@@ -1,0 +1,31 @@
+// grid
+
+// container
+.container
+   position: relative
+   @extend .full-size
+   max-width: 100%
+   margin-left: auto
+   margin-right: auto
+   &:after
+    clear: both
+
+start = 1
+columns = 12
+offsetColumns = columns - 1
+// column
+for column in (start..columns)
+  .col-{column}
+    width: (column/12*100%)
+    float: left
+    padding: 0 15px
+
+// offset
+for column in (start..offsetColumns)
+  .col-offset-{column}
+    margin-left: ((column -1)/12*100%)
+
+.main-content
+  position: relative
+  padding: 25px 35px 0
+  @extend .full-size

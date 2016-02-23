@@ -1,0 +1,41 @@
+// input
+@import "mixins"
+
+.input
+  padding: 10px
+  width: 130px
+  height: 34px
+  border: 1px solid $black-15
+  color: $gray
+  input-placeholder-color($grayLight)
+  &:focus
+    border: 1px solid $gray
+    outline: none
+  &.-success
+    border: 1px solid $gray
+  &.-error
+    border: 1px solid $red
+    color: $red
+
+// checkbox
+.checkbox
+  padding-top 15px
+  color $gray
+
+// combo bar
+.combo-bar-container
+  padding 10px 15px
+  min-height 34px
+  border 1px solid $black-15
+  background $white
+  font-size 12px
+  color $grayLight
+
+.combo-bar-input
+  display block
+  margin-top 23px
+  width 100%
+
+.combo-bar-check-list-clear
+  color $purple
+  float right

@@ -1,0 +1,44 @@
+// buttons
+
+.btn
+  display: inline-block
+  line-height: 1.4285
+  padding: 7px auto
+  cursor: pointer
+  text-align: center
+  font-weight: 400
+  border: 1px solid transparent
+  &:focus
+    outline: none
+  &.-primary
+    background: $grayDark
+    color: $white
+    border: 1px solid $grayDark
+    &.btn[disabled]
+      background: $black-15
+  &.-secondary
+    background: transparent
+    border: 1px solid $grayDark
+    color: $grayDarker
+  &.-inital
+    background: $purpleDark
+    border: 1px solid $purpleDark
+    color: $white
+    &:hover
+      background: $purple
+      border: 1px solid $purple
+    &.btn[disabled]
+      background: $grayDarker
+  &.-normal
+    background: $white
+    border: 1px solid $purpleDark
+    color: $purpleDark
+    &:hover
+      border: 1px solid $purpleLight
+      color: $purple
+    &.btn[disabled]
+      border: 1px solid $black-15
+      background: $white
+
+  &.-block
+    @extend .full-width
