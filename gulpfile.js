@@ -25,14 +25,16 @@ gulp.task('sprites', function () {
   gulp.src('./src/icon/**/*.svg')
     .pipe(svgmin())
     .pipe(cheerio({
-      run: ($)=>{
+      run: ($, file)=>{
         var $page = $('#Page-1')
         var $path = $page.find('path')
         var $svg = $('svg')
         var $fill = $('[fill]')
         $svg.append($path)
-        $page.remove()
-        $fill.removeAttr('fill')
+        if (file.relative.startsWith('icon-')) {
+          $page.remove()
+          $fill.removeAttr('fill')
+        }
       },
       parserOptions: { xmlMode: true }
     }))
@@ -44,6 +46,13 @@ gulp.task('sprites', function () {
         $('svg')
           .attr('style', 'display:none')
           .attr('id', 'owl-svg')
+        // remove symbol id prefix 'icon-'
+        $('symbol').each(function(index, element) {
+          var $symbolID = $(element).attr('id')
+          if($symbolID.startsWith('icon-')) {
+            $(element).attr('id', $symbolID.split('icon-').pop())
+          }
+        })
       },
       parserOptions: { xmlMode: true }
     }))
