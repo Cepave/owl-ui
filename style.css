@@ -23,6 +23,54 @@ body,
 .show {
   display: block !important;
 }
+.fill-grayWhite {
+  fill: #f9f9f9;
+}
+.fill-grayLighter {
+  fill: #e9e9e9;
+}
+.fill-grayLight {
+  fill: #bbb;
+}
+.fill-gray {
+  fill: #8d8d8d;
+}
+.fill-grayDark {
+  fill: #525252;
+}
+.fill-grayDarker {
+  fill: #4a4a4a;
+}
+.fill-white {
+  fill: #fff;
+}
+.fill-red {
+  fill: #e21b34;
+}
+.fill-orange {
+  fill: #ff8c1a;
+}
+.fill-yellow {
+  fill: #ffd91a;
+}
+.fill-blueLight {
+  fill: #0563c1;
+}
+.fill-blue {
+  fill: #1871d9;
+}
+.fill-blueDark {
+  fill: #308be5;
+}
+.fill-purpleLight {
+  fill: #adaae7;
+}
+.fill-purple {
+  fill: #907edd;
+}
+.fill-purpleDark {
+  fill: #383387;
+}
 body {
   marign: 0;
   font-family: 'Roboto', Microsoft YaHei, SimSun, sans-serif;
