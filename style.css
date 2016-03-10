@@ -77,12 +77,15 @@ body {
   font-size: 14px;
   font-weight: 300;
 }
-a {
+a,
+button {
   background-color: transparent;
   text-decoration: none;
 }
 a:active,
-a:hover {
+button:active,
+a:hover,
+button:hover {
   outline: 0;
 }
 input[type="number"]::-webkit-inner-spin-button,
