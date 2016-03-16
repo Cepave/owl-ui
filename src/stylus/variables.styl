@@ -1,34 +1,48 @@
 // color ticket
 // grayscale
-$BASE_GRAY = #8d8d8d
+$colorBasegray = #8d8d8d
 
-$grayWhite = #f9f9f9
-$grayLighter = #e9e9e9
-$grayLight = #bbb
-$gray = $BASE_GRAY
-$grayDark = #525252
-$grayDarker = #4a4a4a
+$colorGrayLightest = lightness($colorBasegray, 75%)
+$colorGrayLighter  = lightness($colorBasegray, 50%)
+$colorGrayLight    = lightness($colorBasegray, 25%)
+$colorGray         = $colorBasegray
+$colorGrayDark     = darken($colorBasegray, 25%)
+$colorGrayDarker   = darken($colorBasegray, 50%)
 
-$black-6 = rgba(0 0 0, .06)
+$black-6  = rgba(0 0 0, .06)
 $black-15 = rgba(0 0 0, .15)
 
+// color lib
+$white        = #fff
+$maranth      = #E6175C
+$christine    = #F27F0C
+$candlelight  = #FFD919
+$mediumPurple = hsl(260,61,62)
+$denim        = hsl(210, 81.8, 46.8) //#1677D9
+$turquoise    = #50E3C2
 
-$white = #fff
-$white-50 = rgba(255, 255, 255, .5)
-$red = #e21b34
-$orange = #ff8c1a
-$yellow = #ffd91a
-// blue
-$blueLight = #0563c1
-$blue = #1871d9
-$blueDark = #308be5
+// Primary Color
 // purple
-$purpleLight = #adaae7
-$purple = #907edd
-$purpleDark = #383387
+$colorPrimaryLight       = hsl(260,100,80)    //#b9f
+$colorPrimary            = $mediumPurple      //#8a63d9
+$colorPrimaryDark        = hsl(260,37.9,36.3) //#513980
+
+// secondary Color
+// Red
+$colorSecondaryRed       = $maranth
+$colorSecondaryOrange    = $christine
+// Yellow
+$colorSecondaryYellow    = $candlelight
+// blue
+$colorSecondaryBlue      = $denim //#1677D9
+$colorSecondaryBlueLight = hsl(210, 87.7, 59.4)
+$colorSecondaryBlueDark  = hsl(210, 90.5, 36.8)
+
 
 // background color gradient
-$bgGradient = linear-gradient(to right, #d4d4d4, #ebebeb)
+$bgStart    = #d4d4d4
+$bgEnd      = #ebebeb
+$bgGradient = linear-gradient(to right, $bgStart, $bgEnd)
 
 // Extending
 $borderBox
@@ -38,4 +52,4 @@ $borderBox
 $fileServerURL = '//157.122.99.72/statics'
 
 // font size
-$baseSize = 14px
+$baseSize  = 14px

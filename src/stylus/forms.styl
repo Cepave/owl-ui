@@ -6,21 +6,21 @@
   width: 130px
   height: 34px
   border: 1px solid $black-15
-  color: $gray
-  input-placeholder-color($grayLight)
+  color: $colorGray
+  input-placeholder-color($colorGrayLight)
   &:focus
-    border: 1px solid $gray
+    border: 1px solid $colorGray
     outline: none
   &.-success
-    border: 1px solid $gray
+    border: 1px solid $colorGray
   &.-error
-    border: 1px solid $red
-    color: $red
+    border: 1px solid $colorSecondaryRed
+    color: $colorSecondaryRed
 
 // checkbox
 .checkbox
   padding-top 15px
-  color $gray
+  color $colorGray
 
 // combo bar
 .combo-bar-container
@@ -29,7 +29,7 @@
   border 1px solid $black-15
   background $white
   font-size 12px
-  color $grayLight
+  color $colorGrayLight
 
 .combo-bar-input
   display block
@@ -37,5 +37,5 @@
   width 100%
 
 .combo-bar-check-list-clear
-  color $purple
+  color $colorPrimary
   float right
