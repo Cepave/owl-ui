@@ -1,5 +1,7 @@
 // buttons
-
+$inilneBtn
+  .btn + .btn
+    margin-left: 15px
 .btn
   display: inline-block
   line-height: 1.4285
@@ -42,3 +44,12 @@
 
   &.-block
     @extend .full-width
+
+  &-group
+    @extend $inilneBtn
+    &.pull-right
+      text-align: right
+    &.pull-left
+      text-align: left
+    &.pull-center
+      text-align: center
