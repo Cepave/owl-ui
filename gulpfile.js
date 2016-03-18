@@ -4,7 +4,9 @@ var gulp = require('gulp'),
     poststylus = require('poststylus'),
     svgstore = require('gulp-svgstore'),
     svgmin = require('gulp-svgmin'),
-    cheerio = require('gulp-cheerio');
+    cheerio = require('gulp-cheerio'),
+    postcss = require('gulp-postcss'),
+    base64 = require('postcss-base64');
 
 gulp.task('stylus', function () {
   gulp.src('./src/stylus/style.styl')
@@ -14,6 +16,11 @@ gulp.task('stylus', function () {
         poststylus(['autoprefixer', 'rucksack-css'])
       ]
     }))
+    .pipe(postcss([
+      base64({
+        extensions: ['.woff2']
+      })
+    ]))
     .pipe(gulp.dest('.'))
 });
 

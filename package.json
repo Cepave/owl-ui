@@ -1,6 +1,6 @@
 {
   "name": "owl-ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "owl ui framework",
   "main": "index.js",
   "scripts": {
@@ -14,10 +14,12 @@
     "gulp": "^3.9.1",
     "gulp-cheerio": "^0.6.2",
     "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.1.0",
     "gulp-stylus": "^2.3.0",
     "gulp-svgmin": "^1.2.2",
     "gulp-svgstore": "^5.0.5",
     "normalize.css": "^3.0.3",
+    "postcss-base64": "^0.4.1",
     "poststylus": "^0.2.3",
     "rucksack-css": "^0.8.5"
   }
