@@ -1,31 +1,82 @@
 // grid
+cf()
+  *zoom 1
+  &:before, &:after
+    content ''
+    display table
+      &:after
+        clear both
+
+$gutterwidth = 2%
+$container = 98%
+$totalContainer = 100%
 
 // container
 .container
-   position: relative
-   @extend .full-size
-   max-width: 100%
-   margin-left: auto
-   margin-right: auto
-   &:after
-    clear: both
+  margin 0 auto
+  padding 0 2%
+  max-width $container
+.row
+  box-sizing border-box
+  display flex
+  flex 0 1 auto
+  flex-direction row
+  flex-wrap wrap
+  &.reverse
+    flex-direction row-reverse
+.column
+  box-sizing border-box
+  display flex
+  flex 0 1 auto
+  flex-direction column
+  flex-wrap wrap
+  &.reverse
+    flex-direction column-reverse
 
-start = 1
-columns = 12
-offsetColumns = columns - 1
+.nowrap
+  flex-wrap nowrap
+$start = 1
+$columns = 12
+$offsetColumns = $columns - 1
+
+f_size(a,b,i)
+  $size = (a / b) * i
+//Mixins
+m_calculateSize($size)
+  flex-basis $size
+  max-width $size
+
+m_calculateMargin($size)
+  margin-left $size
+
 // column
-for column in (start..columns)
+for column in ($start..$columns)
   .col-{column}
-    width: (column/12*100%)
-    float: left
-    padding: 0 15px
+    flex 0 0 auto
+    padding 0 15px
+    // width: ($column/12*100%)
+    // float: left
+    // display inline-block
+    // padding 0 15px
+.col-0
+  flex-grow 1
+  flex-basis 0
+  max-width 100%
+
+for column in ($start..$columns)
+  .col-{column}
+    m_calculateSize(f_size($container,$columns,column))
 
 // offset
-for column in (start..offsetColumns)
+for column in ($start..$offsetColumns)
   .col-offset-{column}
-    margin-left: ((column -1)/12*100%)
+    m_calculateMargin(f_size($container,$columns,column))
+
+.center
+  justify-content center
+  text-align center
 
 .main-content
-  position: relative
-  padding: 25px 35px 0
+  position relative
+  padding 25px 35px 0
   @extend .full-size
