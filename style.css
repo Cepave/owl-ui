@@ -685,6 +685,13 @@ h3 {
           justify-content: center;
   text-align: center;
 }
+.end {
+  -webkit-box-pack: end;
+  -webkit-justify-content: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  text-align: end;
+}
 .main-content {
   position: relative;
   padding: 25px 35px 0;
