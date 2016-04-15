@@ -1,10 +1,11 @@
 // input
 @import "mixins"
 
+
 .input
+.textarea
   padding: 10px
   width: 130px
-  height: 34px
   border: 1px solid $colorGrayLighter
   color: $colorGrayDark
   input-placeholder-color($colorGrayLight)
@@ -12,12 +13,17 @@
     outline: none
     border-color: $colorPrimaryLight
     box-shadow: 0 0 0 2px rgba($colorPrimary, .2), 0 1px 2px rgba(0, 0, 0, .05) inset
+.textarea
+  width: 100%
+.input
+  height: 34px
   &.-success
     border: 1px solid $colorSecondaryGreen
     color: $colorSecondaryGreen
   &.-error
     border: 1px solid $colorSecondaryRed
     color: $colorSecondaryRed
+
 
 // checkbox
 .checkbox

@@ -225,19 +225,19 @@ body,
   fill: $colorGrayWhite;
 }
 .fill-grayLighter {
-  fill: #808080;
+  fill: #dfe4e6;
 }
 .fill-grayLight {
-  fill: #404040;
+  fill: #b8bdbf;
 }
 .fill-gray {
-  fill: #8d8d8d;
+  fill: #919799;
 }
 .fill-grayDark {
-  fill: #6a6a6a;
+  fill: #6c7173;
 }
 .fill-grayDarker {
-  fill: #474747;
+  fill: #3b3f40;
 }
 .fill-white {
   fill: #fff;
@@ -261,13 +261,13 @@ body,
   fill: #095eb3;
 }
 .fill-purpleLight {
-  fill: #ccb3ff;
+  fill: #cab6f2;
 }
 .fill-purple {
-  fill: #a17ee6;
+  fill: #8962d9;
 }
 .fill-purpleDark {
-  fill: #513980;
+  fill: #6b5499;
 }
 body {
   marign: 0;
@@ -327,38 +327,38 @@ h3 {
   outline: none;
 }
 .btn.-primary {
-  background: #6a6a6a;
+  background: #6c7173;
   color: #fff;
-  border: 1px solid #6a6a6a;
+  border: 1px solid #6c7173;
 }
 .btn.-primary.btn[disabled] {
   background: rgba(0,0,0,0.15);
 }
 .btn.-secondary {
   background: transparent;
-  border: 1px solid #6a6a6a;
-  color: #474747;
+  border: 1px solid #6c7173;
+  color: #3b3f40;
 }
 .btn.-inital {
-  background: #513980;
-  border: 1px solid #513980;
+  background: #6b5499;
+  border: 1px solid #6b5499;
   color: #fff;
 }
 .btn.-inital:hover {
-  background: #a17ee6;
-  border: 1px solid #a17ee6;
+  background: #8962d9;
+  border: 1px solid #8962d9;
 }
 .btn.-inital.btn[disabled] {
-  background: #474747;
+  background: #3b3f40;
 }
 .btn.-normal {
   background: #fff;
-  border: 1px solid #513980;
-  color: #513980;
+  border: 1px solid #6b5499;
+  color: #6b5499;
 }
 .btn.-normal:hover {
-  border: 1px solid #ccb3ff;
-  color: #a17ee6;
+  border: 1px solid #cab6f2;
+  color: #8962d9;
 }
 .btn.-normal.btn[disabled] {
   border: 1px solid rgba(0,0,0,0.15);
@@ -373,24 +373,36 @@ h3 {
 .btn-group.pull-center {
   text-align: center;
 }
-.input {
+.input,
+.textarea {
   padding: 10px;
   width: 130px;
-  height: 34px;
-  border: 1px solid rgba(0,0,0,0.15);
-  color: #6a6a6a;
+  border: 1px solid #dfe4e6;
+  color: #6c7173;
 }
 .input ::-webkit-input-placeholder,
+.textarea ::-webkit-input-placeholder,
 .input ::-moz-placeholder,
-.input :placeholder-shown {
-  color: #404040;
+.textarea ::-moz-placeholder,
+.input :placeholder-shown,
+.textarea :placeholder-shown {
+  color: #b8bdbf;
 }
-.input:focus {
-  border: 1px solid #8d8d8d;
+.input:focus,
+.textarea:focus {
   outline: none;
+  border-color: #cab6f2;
+  box-shadow: 0 0 0 2px rgba(137,98,217,0.2), 0 1px 2px rgba(0,0,0,0.05) inset;
+}
+.textarea {
+  width: 100%;
+}
+.input {
+  height: 34px;
 }
 .input.-success {
-  border: 1px solid #8d8d8d;
+  border: 1px solid #b9e617;
+  color: #b9e617;
 }
 .input.-error {
   border: 1px solid #e6175c;
@@ -398,7 +410,7 @@ h3 {
 }
 .checkbox {
   padding-top: 15px;
-  color: #8d8d8d;
+  color: #919799;
 }
 .combo-bar-container {
   padding: 10px 15px;
@@ -406,7 +418,7 @@ h3 {
   border: 1px solid rgba(0,0,0,0.15);
   background: #fff;
   font-size: 12px;
-  color: #404040;
+  color: #b8bdbf;
 }
 .combo-bar-input {
   display: block;
@@ -414,7 +426,7 @@ h3 {
   width: 100%;
 }
 .combo-bar-check-list-clear {
-  color: #a17ee6;
+  color: #8962d9;
   float: right;
 }
 .container {
@@ -697,19 +709,19 @@ h3 {
   padding: 25px 35px 0;
 }
 .icon-gray-ighter {
-  fill: #808080;
+  fill: #dfe4e6;
 }
 .icon-gray-light {
-  fill: #404040;
+  fill: #b8bdbf;
 }
 .icon-gray {
-  fill: #8d8d8d;
+  fill: #919799;
 }
 .icon-gray-dark {
-  fill: #6a6a6a;
+  fill: #6c7173;
 }
 .icon-graydarker {
-  fill: #474747;
+  fill: #3b3f40;
 }
 .icon-black-15 {
   fill: rgba(0,0,0,0.15);
@@ -736,11 +748,11 @@ h3 {
   fill: #095eb3;
 }
 .icon-purple-light {
-  fill: #ccb3ff;
+  fill: #cab6f2;
 }
 .icon-purple {
-  fill: #a17ee6;
+  fill: #8962d9;
 }
 .icon-purple-dark {
-  fill: #513980;
+  fill: #6b5499;
 }
