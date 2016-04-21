@@ -1,4 +1,25 @@
-// color ticket
+// color palette
+$palette = {
+  grayLightest : #F2F6F7,
+  grayWhite    : #F2F6F7,
+  grayLighter  : #DFE4E6,
+  grayLight    : #B8BDBF,
+  gray         : #919799,
+  grayDark     : #6C7173,
+  grayDarker   : #3B3F40,
+  white        : #FFFFFF,
+  red          : #E6175C,
+  orange       : #F27F0C,
+  yellow       : #FFD919,
+  blueLight    : hsl(210, 87.7, 59.4),
+  blue         : #1677D9,
+  blueDark     : hsl(210, 90.5, 36.8),
+  green        : #B9E617,
+  purpleLight  : #CAB6F2,
+  purple       : #8962D9,
+  purpleDark   : #6B5499
+}
+
 // grayscale
 $colorBasegray = #8d8d8d
 
@@ -13,33 +34,26 @@ $black-6  = rgba(0 0 0, .06)
 $black-15 = rgba(0 0 0, .15)
 
 // color lib
-$white        = #fff
-$maranth      = #E6175C
-$christine    = #F27F0C
-$candlelight  = #FFD919
-$mediumPurple = #8962D9
-$denim        = #1677D9
-$turquoise    = #50E3C2
-$inchWorm     = #B9E617
+$white        = $palette.white
 
 // Primary Color
 // purple
-$colorPrimaryLight       = #CAB6F2
-$colorPrimary            = $mediumPurple      //#8a63d9
-$colorPrimaryDark        = #6B5499
+$colorPrimaryLight       = $palette.purpleLight
+$colorPrimary            = $palette.purple
+$colorPrimaryDark        = $palette.purpleDark
 
 // secondary Color
 // Red
-$colorSecondaryRed       = $maranth
-$colorSecondaryOrange    = $christine
+$colorSecondaryRed       = $palette.red
+$colorSecondaryOrange    = $palette.orange
 // Yellow
-$colorSecondaryYellow    = $candlelight
+$colorSecondaryYellow    = $palette.yellow
 // blue
-$colorSecondaryBlue      = $denim //#1677D9
-$colorSecondaryBlueLight = hsl(210, 87.7, 59.4)
-$colorSecondaryBlueDark  = hsl(210, 90.5, 36.8)
+$colorSecondaryBlueLight = $palette.blueLight
+$colorSecondaryBlue      = $palette.blue
+$colorSecondaryBlueDark  = $palette.blueDark
 // green
-$colorSecondaryGreen     = $inchWorm
+$colorSecondaryGreen     = $palette.green
 
 
 // background color gradient
