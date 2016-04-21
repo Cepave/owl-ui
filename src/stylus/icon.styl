@@ -2,41 +2,12 @@
 // for SVG icon color
 
 // grayscale
-.icon-gray-ighter
-  fill $colorGrayLighter
-.icon-gray-light
-  fill $colorGrayLight
-.icon-gray
-  fill $colorGray
-.icon-gray-dark
-  fill $colorGrayDark
-.icon-graydarker
-  fill $colorGrayDarker
+
+for color, i in $iconPalette {
+  .icon-{color} {
+    fill: $iconPalette[color]
+  }
+}
 
 .icon-black-15
   fill $black-15
-
-.icon-red
-  fill $colorSecondaryRed
-.icon-white
-  fill $white
-.icon-orange
-  fill $colorSecondaryOrange
-.icon-yellow
-  fill $colorSecondaryYellow
-
-// blue
-.icon-blue-light
-  fill $colorSecondaryBlueLight
-.icon-blue
-  fill $colorSecondaryBlue
-.icon-blue-dark
-  fill $colorSecondaryBlueDark
-
-// purple
-.icon-purple-light
-  fill $colorPrimaryLight
-.icon-purple
-  fill $colorPrimary
-.icon-purple-dark
-  fill $colorPrimaryDark
