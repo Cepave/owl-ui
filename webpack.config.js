@@ -2,6 +2,10 @@ const isDev = process.env.NODE_ENV !== 'production'
 import webpack from 'webpack'
 import ExtractText from 'extract-text-webpack-plugin'
 
+//import Webpack_isomorphic_tools_plugin from 'webpack-isomorphic-tools/plugin'
+//
+//const webpack_isomorphic_tools_plugin = new Webpack_isomorphic_tools_plugin(require('./webpack.isomorphic.config')).development()
+
 const conf = {
   cssLocalIdentName: '[name]-[local]-[hash:base64:5]',
   publicPath: '//localhost:3001/',
@@ -32,8 +36,8 @@ module.exports = {
         }
       },
       {
-        test: /\.md$/,
-        loader: 'html!markdown-highlight',
+        test: /\.raw$/,
+        loader: 'raw',
       },
       {
         test: /\.styl$/,
@@ -60,19 +64,23 @@ module.exports = {
       'react-dom': 'react-dom/dist/react-dom.js',
     },
   },
-  plugins: isDev
+  plugins: [
+    new webpack.DefinePlugin({
+      __isNode: false
+    })
+  ].concat(isDev
     ?
       [
-        new ExtractText('owl-ui.css'),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
       ]
     :
       [
-
-      ],
+        new ExtractText('owl-ui.css'),
+      ]
+  ),
   watch: isDev ,
-  devtool: isDev ? 'inline' : '',
+  devtool: isDev ? 'eval' : '',
   externals: isDev ? {} : {
     react: {
       root: 'React',

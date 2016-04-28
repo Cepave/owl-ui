@@ -7,7 +7,7 @@ const devTool = ()=> {
 }
 
 const middlewares = compose(
-  applyMiddleware(thunk, devTool),
+  applyMiddleware(thunk),
   devTool(),
 )
 

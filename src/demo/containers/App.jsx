@@ -3,23 +3,42 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import Action from '../actions'
 import {Link, browserHistory} from 'react-router'
+import Nav from './Nav'
+
+import s from './App.styl'
 
 class App extends Component {
   static propTypes = {}
 
   static defaultProps = {}
 
+  componentDidMount() {
+    const {action, rootState} = this.props
+
+  }
+
   render() {
     const {action, rootState, children, ...props} = this.props
 
     return (
       <div>
-        hello 11
-        {children}
-        world 22
-        <div>
-          <Link to="/icon"> go to /icon</Link>
+        <header>
+          <h1>
+            <img className="owl-logo" src="http://157.122.99.72/statics/icon/favicon.png"/>WL UI
+          </h1>
+          <span className="monospace">&lt;Component /></span>
+        </header>
+
+        <div className="fbox-content">
+          <Nav app={rootState.app} />
+          <section>
+            {children}
+          </section>
         </div>
+
+        <footer>
+          We're hiring
+        </footer>
       </div>
     )
   }

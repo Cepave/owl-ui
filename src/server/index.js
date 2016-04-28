@@ -1,3 +1,4 @@
+require('~utils/global')
 import express from 'express'
 import c from 'chalk'
 import stylus from 'stylus'
@@ -13,6 +14,11 @@ cssRequireHook({
   generateScopedName: webConf.cssLocalIdentName
 })
 
+require('./require-hook')({
+  '.raw'({body}){
+    return body
+  },
+})
 
 const cwd = process.cwd()
 const server = express()

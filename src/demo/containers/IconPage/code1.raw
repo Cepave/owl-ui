@@ -1,0 +1,25 @@
+import React from 'react'
+import {findDOMNode} from 'react-dom'
+import s from './Code.styl'
+
+class Code extends React.Component {
+  static propTypes = {}
+
+  static defaultProps = {
+    src: '',
+    type: 'js',
+  }
+
+  render() {
+    console.log('render code')
+    const {type, src, ...props} = this.props
+    return (
+      <div {...props} className={s.code}>
+        <div className={s.copyBtn} ref="copyBtn" data-clipboard-text={src}>copy</div>
+        <pre ref="pre">
+          <code className={type} dangerouslySetInnerHTML={{__html: src}} />
+        </pre>
+      </div>
+    )
+  }
+}

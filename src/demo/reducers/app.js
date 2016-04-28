@@ -1,7 +1,15 @@
-
-module.exports = (state = {
+module.exports = (app = {
   msg: 'hello world'
 }, act)=> {
 
-  return state
+  const action = {
+    appRouteTo() {
+      app.url = act.path
+      
+      return app
+    }
+
+  }[act.type]
+
+  return action ? action() : app
 }
