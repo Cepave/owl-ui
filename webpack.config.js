@@ -57,13 +57,7 @@ module.exports = {
   stylus: {
 //    import: `${__dirname}/aa`,
   },
-
-  resolve: {
-    alias: {
-      'react': 'react/dist/react.js',
-      'react-dom': 'react-dom/dist/react-dom.js',
-    },
-  },
+  
   plugins: [
     new webpack.DefinePlugin({
       __isNode: false

@@ -1,6 +1,6 @@
 import React from 'react'
-import Code from '../../components/Code'
-import s from './IconPage.styl'
+import Code from '../../components/code'
+import s from './icon-page.styl'
 
 const code1 = require('./code1.raw')
 

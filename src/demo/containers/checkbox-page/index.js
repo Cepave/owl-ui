@@ -1,6 +1,6 @@
 import React from 'react'
-import s from './CheckBoxPage.styl'
-console.log(s, 'checkbox')
+import s from './checkbox-page.styl'
+
 class CheckBoxPage extends React.Component {
   static propTypes = {}
 

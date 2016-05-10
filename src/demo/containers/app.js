@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import Action from '../actions'
 import {Link, browserHistory} from 'react-router'
-import Nav from './Nav'
+import Nav from './nav'
 
 import s from './App.styl'
 

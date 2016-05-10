@@ -4,7 +4,7 @@ import {renderToString} from 'react-dom/server'
 import {Provider} from 'react-redux'
 import {match, RouterContext} from 'react-router'
 import createStore from '../demo/redux/create'
-import routes from '../demo/containers/routes.jsx'
+import routes from '../demo/containers/routes'
 
 module.exports = (req, res, next)=> {
   const initState = {

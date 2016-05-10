@@ -1,4 +1,4 @@
 
 
-exports.Checkbox = require('./Checkbox.jsx')
-exports.Icon = require('./Icon.jsx')
+exports.Checkbox = require('./tip')
+exports.Icon = require('./icon')
