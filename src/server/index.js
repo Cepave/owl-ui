@@ -14,10 +14,11 @@ cssRequireHook({
   generateScopedName: webConf.cssLocalIdentName
 })
 
-require('./require-hook')({
-  '.raw'({body}){
-    return body
-  },
+require('require-hooks')(({raw, ext})=> {
+  switch (ext) {
+    case '.raw':
+      return raw
+  }
 })
 
 const cwd = process.cwd()
