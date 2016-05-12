@@ -59,7 +59,7 @@ function Nav({app, ...props}) {
           </Link>
         </div>
         <div className={s.blockList}>
-          <Link to="/dropdown">
+          <Link to="/button">
             <span className={`monospace ${s.link}`}>&lt;Button /></span>
           </Link>
         </div>
