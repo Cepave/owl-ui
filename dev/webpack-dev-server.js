@@ -10,6 +10,7 @@ const packer = webpack(webpackConf)
 
 wbeServer
   .use(devMid(packer, {
+    noInfo: true,
     stats: {
       colors: true,
       staticPath: webpackConf.output.publicPath,

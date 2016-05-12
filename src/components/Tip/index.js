@@ -1,14 +1,22 @@
 import React, {PropTypes} from 'react'
 
-require('./tip.styl')
+const s = require('./tip.styl')
 
-Tip.propTypes = {}
-Tip.defaultProps = {}
+Tip.propTypes = {
+  text: PropTypes.string.isRequired,
+  post: PropTypes.string,
+}
 
-function Tip({...props}) {
+Tip.defaultProps = {
+  text: '',
+  pos: 'top'
+}
+
+
+function Tip({text, pos, ...props}) {
   return (
-    <div {...props}>
-
-    </div>
+    <div {...props} data-pos={pos} data-text={text} className={s.tip} />
   )
 }
+
+module.exports = Tip

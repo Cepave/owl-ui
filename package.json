@@ -83,6 +83,7 @@
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
+    "react-select": "^1.0.0-beta13",
     "redux": "^3.5.1",
     "redux-thunk": "^2.0.1",
     "require-hooks": "0.0.2",

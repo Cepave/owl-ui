@@ -8,7 +8,7 @@ Nav.defaultProps = {}
 
 function Nav({app, ...props}) {
   const page = (isNode ? app.url : location.pathname)
-  
+
   return (
     <nav {...props} data-page={page}>
       <div className={s.block}>
@@ -26,6 +26,16 @@ function Nav({app, ...props}) {
         <div className={s.blockList} data-page="/icon">
           <Link to="/icon">
             <span className={`monospace ${s.link}`}>&lt;Icon /></span>
+          </Link>
+        </div>
+        <div className={s.blockList} data-page="/tip">
+          <Link to="/tip">
+            <span className={`monospace ${s.link}`}>&lt;Tip /></span>
+          </Link>
+        </div>
+        <div className={s.blockList} data-page="/select">
+          <Link to="/select">
+            <span className={`monospace ${s.link}`}>&lt;Select /></span>
           </Link>
         </div>
         <div className={s.blockList} data-page="/checkbox">

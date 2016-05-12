@@ -6,7 +6,7 @@ import cssRequireHook from 'css-modules-require-hook'
 import webConf from '../../webpack.config'
 
 cssRequireHook({
-  extensions: ['.styl'],
+  extensions: ['.styl', '.css'],
   preprocessCss: function (css, filename) {
     return stylus(css)
       .render()

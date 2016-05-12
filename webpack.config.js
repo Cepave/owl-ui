@@ -3,7 +3,6 @@ import webpack from 'webpack'
 import ExtractText from 'extract-text-webpack-plugin'
 
 //import Webpack_isomorphic_tools_plugin from 'webpack-isomorphic-tools/plugin'
-//
 //const webpack_isomorphic_tools_plugin = new Webpack_isomorphic_tools_plugin(require('./webpack.isomorphic.config')).development()
 
 const conf = {
@@ -50,6 +49,10 @@ module.exports = {
           `css?sourceMap&modules&localIdentName=${conf.cssLocalIdentName}`,
           'stylus'
         ]
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css'
       }
     ]
   },
@@ -57,7 +60,7 @@ module.exports = {
   stylus: {
 //    import: `${__dirname}/aa`,
   },
-  
+
   plugins: [
     new webpack.DefinePlugin({
       __isNode: false

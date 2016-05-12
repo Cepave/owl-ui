@@ -1,4 +1,3 @@
-
-
-exports.Checkbox = require('./tip')
-exports.Icon = require('./icon')
+module.exports = {
+  Icon: require('./icon')
+}
