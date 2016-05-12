@@ -1,3 +1,23 @@
+## 檔名/模組化命名方式
+
+- 檔案與目錄名稱需全部採用`小寫`，可以降低 Mac 上 require `不分大小寫`問題的風險。
+
+- 模塊裡的單字區分需用連字符 `-` 區隔開來，目錄亦同。
+
+```js
+// bad
+toggleCss.js
+
+// good
+toggle-css.js
+```
+
+### 測試用例檔名
+- 歸放在各自組件內 `__test__` 目錄下
+- 可取名為 `module-name.spec.js`
+> 為什麼不是 `module-name-spec.js`？因為會讓人誤認為成有一個叫 `module-name-spec` 的 module 而不是一個 `module-name` 的 `spec`
+
+
 ## React Component
 
 - 保持與其他一致，用 `.js` 來命名
