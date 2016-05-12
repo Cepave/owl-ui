@@ -18,7 +18,7 @@
     ],
     "babel": "inherit",
     "files": [
-      "test/*.spec.js"
+      "./src/components/**/__test__/*.js"
     ]
   },
   "nyc": {

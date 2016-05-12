@@ -14,7 +14,10 @@ toggle-css.js
 
 ### 測試用例檔名
 - 歸放在各自組件內 `__test__` 目錄下
+
 - 可取名為 `module-name.spec.js`
+
+  ​
 > 為什麼不是 `module-name-spec.js`？因為會讓人誤認為成有一個叫 `module-name-spec` 的 module 而不是一個 `module-name` 的 `spec`
 
 
