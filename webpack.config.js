@@ -63,7 +63,8 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({
-      __isNode: false
+      __isNode: false,
+      __isDev: isDev,
     })
   ].concat(isDev
     ?

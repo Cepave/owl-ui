@@ -2,6 +2,5 @@ import isNode from './isNode'
 
 const ROOT = isNode ? global : window
 
-if (isNode) {
-  ROOT.__isNode = true
-}
+ROOT.__isNode = isNode
+ROOT.__isDev = process.env.NODE_ENV !== 'production'
