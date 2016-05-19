@@ -1,0 +1,94 @@
+// buttin style
+$btnColor = 'primary' 'secondary' 'blue' 'red' 'green' 'yellow' 'white'
+$btnTextColor = white
+
+.btn
+  display: inline-block
+  vertical-align: middle
+  font-size: rem($baseFontSize)
+  font-weight: 400
+  line-height: rem(20)
+  text-align: center
+  text-decoration: none
+  margin: 0
+  border: none
+  box-shadow: none
+  cursor: pointer
+  padding: $beta $delta
+  height: rem(36)
+  color: white
+  background-color: $colorPrimary
+  outline: 0
+  &:hover
+    color: white
+    background-color: $colorPrimaryDark
+
+btn-color()
+  color: $btnTextColor
+  background-color: $backgroundColor
+
+btn-bg($backgroundColor)
+  btn-color()
+  &:hover
+    btn-color()
+
+for $color in $btnColor
+  .btn-{$color}
+  .btn[data-color=\'{$color}\']
+    if ($color == 'blue')
+      btn-bg($colorSecondaryBlue)
+    if ($color == 'red')
+      btn-bg($colorSecondaryRed)
+    if ($color == 'green')
+      btn-bg($colorSecondaryGreen)
+    if ($color == 'yellow')
+      btn-bg($colorSecondaryYellow)
+    if ($color == 'primary')
+      btn-bg($colorPrimary)    
+  if ($color == 'white')
+    .btn-{$color}
+    .btn[data-color=\'{$color}\']
+      color: $colorPrimary
+      background-color: white
+      &:hover
+        $backgroundColor = $colorPrimary
+        btn-color($colorPrimary)
+
+input[type="submit"].btn
+  -webkit-appearance: none
+
+.btn.btn-small,
+.btn-small
+  font-size: rem($baseFontSize - 1)
+  padding: $alpha  $gamma
+
+.btn-outline
+  background: transparent
+  color: $colorPrimary
+  border: 1px solid $colorPrimary
+  padding: $beta $epsilon
+  &:hover
+    color: white
+    background: $colorPrimaryDark
+  &.btn-small
+    padding: $alpha  $gamma
+
+.btn[disabled],
+.btn-disabled
+  opacity: .4
+
+.btn[disabled],
+.btn-disabled
+  cursor: default
+  box-shadow: none
+
+.btn-white.btn-active,
+.btn-white.btn-disabled,
+.btn-white[disabled]
+  opacity: .4
+
+.btn
+  position: relative
+  overflow: hidden
+  cursor: pointer
+  text-align: center
