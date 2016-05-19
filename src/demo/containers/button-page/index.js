@@ -10,8 +10,18 @@ class ButtonPage extends React.Component {
   render() {
     return (
       <div>
-        <p>This A Button </p>
-        <Button text="Button Text."/>
+        <p>{'<Button />'}</p>
+        <div>
+          <Button>Button Text.</Button>
+        </div>
+        <div>
+          <Button data-color="blue">Blue Button</Button>
+          <Button data-color="red">Red Button</Button>
+          <Button data-color="green">Green Button</Button>
+          <Button data-color="yellow">Yellow Button</Button>
+          <Button data-color="white">White Button</Button>
+          <Button data-color="primary">White Button</Button>
+        </div>
       </div>
     )
   }

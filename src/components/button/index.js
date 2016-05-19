@@ -1,17 +1,28 @@
 import React, {Component, PropTypes} from 'react'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 
-Button.propTypes = {
-  className: React.PropTypes.string,
-  text: React.PropTypes.string
-}
+const style = require('./button.styl')
 
-Button.defaultProps = {
-  className: ''
-}
 
-function Button({className, text, ...props}) {
+class Button extends Component {
+  constructor(props) {
+    super(props)
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
+  }
 
-  return <button className={`btn ${className}`} {...props}>{text}</button>
+  static propTypes = {
+    className: React.PropTypes.string,
+    children: React.PropTypes.node
+  }
+
+  static defaultProps = {
+    className: ''
+  }
+
+  render() {
+    const {children, className, ...props} = this.props
+    return <button className={`${style.btn} ${className}`} {...props}>{children}</button>
+  }
 }
 
 module.exports = Button
