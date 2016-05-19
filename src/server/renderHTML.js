@@ -7,6 +7,12 @@ module.exports = ({state, html, ...opts})=> {
 <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.3.0/styles/vs.min.css" />
 <script> window.__STATE = ${JSON.stringify(state)} </script>
 <div id="app">${html}</div>
-<script src="//localhost:3001/owl-ui.js"></script>
+<script>
+;(function(script){
+  script.async = true
+  script.src = '//' + location.hostname + ':3001/owl-ui.js'  
+  document.body.appendChild(script)
+})(document.createElement('script'))
+</script>
 `
 }
