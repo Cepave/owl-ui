@@ -8,13 +8,16 @@
     "build.styl": "babel-node ./scripts/build.styl",
     "build.svg": "babel-node ./scripts/build.svg",
     "test": "nyc ava",
+    "test.watch": "nyc ava -w",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "postinstall": "babel-node ./scripts/postinstall"
   },
   "ava": {
     "require": [
       "babel-core/register",
-      "./test/setup/jsdom.js"
+      "./test/jsdom",
+      "./test/global",
+      "./test/require-hooks"
     ],
     "babel": "inherit",
     "files": [
@@ -87,9 +90,10 @@
     "react-select": "^1.0.0-beta13",
     "redux": "^3.5.1",
     "redux-thunk": "^2.1.0",
-    "require-hooks": "0.0.4",
+    "require-hooks": "0.0.6",
     "rucksack-css": "^0.8.5",
     "shelljs": "^0.7.0",
+    "sinon": "^1.17.4",
     "stop.js": "^0.2.1",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",

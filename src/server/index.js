@@ -4,6 +4,7 @@ import c from 'chalk'
 import stylus from 'stylus'
 import cssRequireHook from 'css-modules-require-hook'
 import webConf from '../../webpack.config'
+import fs, {readFileSync} from 'fs'
 
 cssRequireHook({
   extensions: ['.styl', '.css'],
@@ -17,10 +18,10 @@ cssRequireHook({
   generateScopedName: webConf.cssLocalIdentName
 })
 
-require('require-hooks')(({raw, ext})=> {
+require('require-hooks')(({rawPath, ext})=> {
   switch (ext) {
     case '.raw':
-      return raw
+      return readFileSync(rawPath).toString()
   }
 })
 
