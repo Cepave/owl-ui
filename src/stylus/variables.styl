@@ -1,7 +1,25 @@
-// color palette
+//
+// =Variables
+//
+// -----------------------------------------------------------------------------
+
+// 1-color palette
+// 1.1-palette
+// 1.2-icon alette
+// --grayscale
+// =color palette
+// =color palette
+// =color palette
+// =color palette
+
+
+
+// Color palette
+// -----------------------------------------------------------------------------
+
+// Palette
 $palette = {
   grayLightest : #F2F6F7,
-  grayWhite    : #F2F6F7,
   grayLighter  : #DFE4E6,
   grayLight    : #B8BDBF,
   gray         : #919799,
@@ -15,13 +33,13 @@ $palette = {
   blue         : #1677D9,
   blueDark     : hsl(210, 90.5, 36.8),
   green        : #B9E617,
-  purpleLight  : #CAB6F2,
-  purple       : #8962D9,
-  purpleDark   : #6B5499,
+  primaryLight : #CAB6F2,
+  primary      : #8962D9,
+  primaryDark  : #6B5499,
   turquoise    : #50E3C2
-  // todo
-    // purpe chage to primary
 }
+
+// Icon palette
 $iconPalette = {
   gray-lighter  : #DFE4E6,
   gray-light    : #B8BDBF,
@@ -35,81 +53,65 @@ $iconPalette = {
   blue-light    : hsl(210, 87.7, 59.4),
   blue          : #1677D9,
   blue-dark     : hsl(210, 90.5, 36.8),
-  purple-light  : #CAB6F2,
-  purple        : #8962D9,
-  purple-dark   : #6B5499
+  primary-light : #CAB6F2,
+  primary       : #8962D9,
+  primary-dark  : #6B5499
 }
-// grayscale
-$colorBasegray = #8d8d8d
 
+//
+// Old Color
+// -----------------------------------------------------------------------------
+
+//- Gray scale
+$colorBasegray = #8d8d8d
 $colorGrayLightest = #F2F6F7
 $colorGrayLighter  = #DFE4E6
 $colorGrayLight    = #B8BDBF
 $colorGray         = #919799
 $colorGrayDark     = #6C7173
 $colorGrayDarker   = #3B3F40
-
 $black-6  = rgba(0 0 0, .06)
 $black-15 = rgba(0 0 0, .15)
-
-// color lib
 $white        = $palette.white
-
-// Primary Color
-// purple
 $colorPrimaryLight       = $palette.purpleLight
 $colorPrimary            = $palette.purple
 $colorPrimaryDark        = $palette.purpleDark
-
-// secondary Color
-// Red
 $colorSecondaryRed       = $palette.red
 $colorSecondaryOrange    = $palette.orange
-// Yellow
 $colorSecondaryYellow    = $palette.yellow
-// blue
 $colorSecondaryBlueLight = $palette.blueLight
 $colorSecondaryBlue      = $palette.blue
 $colorSecondaryBlueDark  = $palette.blueDark
-// green
 $colorSecondaryGreen     = $palette.green
 
-$alpha   = 4px
-$beta    = 8px
-$gamma   = 12px
-$delta   = 16px
-$epsilon = 20px
-$zeta    = 24px
-$eta     = 28px
-$theta   = 32px
-$iota    = 36px
-$kappa   = 40px
 
-// background color gradient
-$bgStart    = #d4d4d4
-$bgEnd      = #ebebeb
-$bgGradient = linear-gradient(to right, $bgStart, $bgEnd)
-$bgGradient = #E6EBF0
+//
+// Metrics
+// -----------------------------------------------------------------------------
 
-$primaryIconBg = rgba(255,255,255,.80)
-// Extending
-$borderBox
-  box-sizing: border-box
+//- Sizing by increments
+$baseGrid = 4px
+$sizing = {
+  xs: $baseGrid * 1 // 4
+  sm: $baseGrid * 2 // 8
+  md: $baseGrid * 3 // 12
+  lg: $baseGrid * 4 // 16
+  xl: $baseGrid * 5 // 20
+}
 
-// file server URL
-//$fileServerURL = '//157.122.99.72/statics'
-$fileServerURL = 'src/'
+//
+// Fonts
+// -----------------------------------------------------------------------------
 
 //- Font
 $baseFontFamily = 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif
 $headingsFontFamily = $baseFontFamily
 $controlsFontFamily = $baseFontFamily
-$owlBg = #E6EBF0
 $owlColor = $colorGrayDarker
 $colorLinkHover = $colorPrimary
 $colorLink = $colorPrimaryDark
 
-//- Type
+// Type
 $baseFontSize = 14
 $baseSize  = 14px
 $smallFontSize = 10
@@ -119,15 +121,38 @@ $baseLineInEms = $baseLine / $baseFontSize
 $buttonsSmallFontSize = $baseFontSize - 3px // 11px
 
 // Heading
-$h1FontSize = $baseFontSize + 22px // 36px
-$h2FontSize = $baseFontSize + 16px // 30px
-$h3FontSize = $baseFontSize + 10px // 24px
-$h4FontSize = $baseFontSize + 4px // 18px
-$h5FontSize = $baseFontSize + 0px // 14px
-$h6FontSize = $baseFontSize - 2px // 12px
+$headingSize = {
+  h1: $baseFontSize + 22px // 36px
+  h2: $baseFontSize + 16px // 30px
+  h3: $baseFontSize + 10px // 24px
+  h4: $baseFontSize + 4px // 18px
+  h5: $baseFontSize + 0px // 14px
+  h6: $baseFontSize - 2px // 12px
+}
 
 // Util
 $em = $baseFontSize  // outputting ems, e.g. 14/@em
 
 // Forms
 $fieldsBottom = 14
+
+//
+// Config
+// -----------------------------------------------------------------------------
+
+$owlBg = #E6EBF0 //old
+// background color gradient
+$bgStart    = #d4d4d4
+$bgEnd      = #ebebeb
+$bgGradient = linear-gradient(to right, $bgStart, $bgEnd)
+$bgGradient = #E6EBF0
+
+$primaryIconBg = rgba(255,255,255,.80)
+// file server URL
+$fileServerURL = 'src/'
+// Extending
+$borderBox
+  box-sizing: border-box
+//Tip
+$tipBg = rgba($palette.grayDarker, .7)
+$tipRadius = $sizing.xs -1px
