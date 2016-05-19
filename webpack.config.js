@@ -58,7 +58,8 @@ module.exports = {
   },
 
   stylus: {
-//    import: `${__dirname}/aa`,
+    paths: [`${__dirname}/node_modules`],
+    import: `${__dirname}/src/stylus/variables.styl`,
   },
 
   plugins: [

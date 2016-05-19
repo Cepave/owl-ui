@@ -9,6 +9,9 @@ cssRequireHook({
   extensions: ['.styl', '.css'],
   preprocessCss: function (css, filename) {
     return stylus(css)
+      .set('filename', filename)
+      .set('paths', webConf.stylus.paths)
+      .import(webConf.stylus.import)
       .render()
   },
   generateScopedName: webConf.cssLocalIdentName
