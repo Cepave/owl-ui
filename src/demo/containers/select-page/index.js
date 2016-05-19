@@ -33,6 +33,7 @@ class SelectPage extends React.Component {
         <Select {...selectProps} />
 
         <h2><a href="#disabled">disabled</a></h2>
+        <Code type="html" src={require('./disabled.raw')}/>
         <Select {...selectProps} isDisabled={true} />
 
         <h2><a href="#props">Props</a></h2>
