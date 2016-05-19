@@ -11,8 +11,8 @@ class Button extends Component {
   }
 
   static propTypes = {
-    className: React.PropTypes.string,
-    children: React.PropTypes.node
+    className: PropTypes.string,
+    children: PropTypes.node
   }
 
   static defaultProps = {
