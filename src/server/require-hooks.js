@@ -4,7 +4,7 @@ import webConf from '../../webpack.config'
 
 require('css-modules-require-hook')({
   extensions: ['.styl', '.css'],
-  preprocessCss: function (css, filename) {
+  preprocessCss(css, filename) {
     return stylus(css)
       .set('filename', filename)
       .set('paths', webConf.stylus.paths)
@@ -14,8 +14,7 @@ require('css-modules-require-hook')({
   generateScopedName: webConf.cssLocalIdentName
 })
 
-
-require('require-hooks')(({rawPath, ext})=> {
+require('require-hooks')(({rawPath, ext}) => {
   switch (ext) {
     case '.raw':
       return readFileSync(rawPath).toString()

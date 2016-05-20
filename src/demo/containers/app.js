@@ -14,7 +14,6 @@ class App extends Component {
 
   componentDidMount() {
     const {action, rootState} = this.props
-
   }
 
   render() {

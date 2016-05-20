@@ -7,6 +7,7 @@
     "dev": "babel-node ./scripts/dev",
     "build.styl": "babel-node ./scripts/build.styl",
     "build.svg": "babel-node ./scripts/build.svg",
+    "xo": "xo",
     "test": "nyc ava && nyc report --reporter=html",
     "test.watch": "nyc ava -w",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
@@ -38,7 +39,6 @@
     "ava": "^0.14.0",
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
-    "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-react-constant-elements": "^6.8.0",
     "babel-plugin-transform-react-inline-elements": "^6.8.0",
@@ -58,13 +58,14 @@
     "css-loader": "^0.23.1",
     "css-modules-require-hook": "^4.0.0",
     "enzyme": "^2.3.0",
-    "eslint": "2.9.0",
+    "eslint-config-xo-react": "^0.7.0",
+    "eslint-plugin-ava": "^2.3.1",
+    "eslint-plugin-react": "^5.1.1",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "glob": "^7.0.3",
     "gulp": "^3.9.1",
     "gulp-cheerio": "^0.6.2",
-    "gulp-eslint": "^2.0.0",
     "gulp-if": "^2.0.1",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.1.1",
@@ -87,8 +88,7 @@
     "react-addons-test-utils": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
-    "react-router": "^2.4.0",
-    "react-select": "^1.0.0-beta13",
+    "react-router": "^2.4.1",
     "redux": "^3.5.1",
     "redux-thunk": "^2.1.0",
     "require-hooks": "0.0.6",
@@ -102,10 +102,52 @@
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0",
-    "why-did-you-update": "0.0.8"
+    "why-did-you-update": "0.0.8",
+    "xo": "^0.15.1"
   },
   "dependencies": {
     "lodash.isequal": "^4.2.0",
     "react-tag": "^2.2.5"
+  },
+  "xo": {
+    "ignores": [
+      "static/*", "test/*"
+    ],
+    "esnext": true,
+    "space": [
+      true,
+      2
+    ],
+    "semicolon": false,
+    "extends": "xo-react",
+    "rules": {
+      "ava/use-t": 0,
+      "ava/no-ignored-test-files": 0,
+      "default-case": 0,
+      "no-empty-pattern": 0,
+      "arrow-spacing": 0,
+      "spaced-comment": 0,
+      "comma-dangle": 0,
+      "no-undef": 0,
+      "operator-linebreak": 0,
+      "indent": 0,
+      "babel/arrow-parens": 0,
+      "react/jsx-space-before-closing": 0,
+      "react/jsx-closing-bracket-location": 0,
+      "react/jsx-boolean-value": 0,
+      "react/jsx-indent-props": 0,
+      "react/jsx-no-bind": 0,
+      "react/react-in-jsx-scope": 0,
+      "react/no-string-refs": 0,
+      "react/jsx-handler-names": 0,
+      "react/prop-types": 0,
+      "react/jsx-first-prop-new-line": 0,
+      "babel/object-curly-spacing": 0,
+      "no-unused-vars": 0,
+      "quote-props": 0,
+      "no-alert": 0,
+      "import-order/import-order": 0,
+      "no-multiple-empty-lines": 0
+    }
   }
 }

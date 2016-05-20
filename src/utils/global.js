@@ -1,4 +1,4 @@
-import isNode from './isNode'
+import isNode from './is-node'
 
 const ROOT = isNode ? global : window
 

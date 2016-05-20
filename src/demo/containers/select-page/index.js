@@ -12,7 +12,7 @@ const selectProps = {
 
   isDisabled: false,
 
-  onChange(e, {value}){
+  onChange(e, {value}) {
     alert(value)
   }
 }

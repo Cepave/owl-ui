@@ -19,7 +19,7 @@ module.exports = (cfg)=>{
 
     webpackMiddleware: {
       stats: {
-        color:true
+        color: true
       }
     },
 

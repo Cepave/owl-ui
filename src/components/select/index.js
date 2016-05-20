@@ -38,7 +38,9 @@ class Select extends React.Component {
       return pv
     }, {})
 
-    if (this._value === undefined) this._value = options[0].value
+    if (this._value === undefined) {
+      this._value = options[0].value
+    }
   }
 
   renderOptions() {
@@ -46,9 +48,12 @@ class Select extends React.Component {
     return options.map((option, idx) => {
       const {label, value} = option
       return (
-        <div key={value}
-             onClick={(e)=>::this.onChange(e, option)}
-             className={s.options}>{label}</div>
+        <div
+          key={value}
+          onClick={(e)=>::this.onChange(e, option)}
+          className={s.options}>
+          {label}
+        </div>
       )
     })
   }
@@ -61,7 +66,9 @@ class Select extends React.Component {
     const select = findDOMNode(this)
     const {isOpen} = this.state
 
-    if (isOpen) select.focus()
+    if (isOpen) {
+      select.focus()
+    }
   }
 
   onBlur = (e)=> {
@@ -87,7 +94,9 @@ class Select extends React.Component {
 
   toggleMenu = (e) => {
     e.stopPropagation()
-    if (this.props.isDisabled) return
+    if (this.props.isDisabled) {
+      return
+    }
     this.setState({
       isOpen: !this.state.isOpen
     })
@@ -108,9 +117,13 @@ class Select extends React.Component {
     const _title = title || _options[_value].label
 
     return (
-      <Div {...props} className={`${s.select}`} css={css}
-                      onBlur={this.onBlur}
-                      tabIndex="-1">
+      <Div
+        {...props}
+        className={`${s.select}`}
+        css={css}
+        onBlur={this.onBlur}
+        tabIndex="-1"
+      >
         <div className={s.title} onClick={this.toggleMenu}>
           <div> {_title}</div>
           <div className={s.titleRight}>

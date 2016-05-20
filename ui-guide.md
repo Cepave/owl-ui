@@ -76,6 +76,90 @@ function Component({...props}) {
   )
 }
 ```
+### API Props 接口設計原則
+
+####  props.children
+
+優先思考是否可用 `children` 達成，因為這是我們寫 HTML 最本能的用法
+
+```javascript
+// bad
+render() {
+  <div>
+    {this.props.text}
+  </div>
+}
+
+// good
+render() {
+  <div>
+    {this.props.children}
+  </div>
+}
+```
+
+
+
+#### [Boolean]
+
+採用 `is` 或 `has` 前綴
+
+```javascript
+// bad
+static defaultProps = {
+  disabled: true
+}
+
+// good
+static defaultProps = {
+  isDisabled: true
+}
+```
+
+####  [Array/Counts/Number] 
+
+盡量採用複數名詞
+
+```javascript
+// bad
+static defaultProps = {
+  count: 20,
+  entry: []
+}
+
+// good
+static defaultProps = {
+  counts: 20,
+  entries: []
+}
+```
+
+####  [Function] 
+
+通常為**做什麼事**， 接口上應該有`動詞`
+
+```javascript
+// bad
+static defaultProps = {
+  something(){}
+}
+
+// good
+static defaultProps = {
+  doSomething(){}
+}
+```
+
+在做一件事之前或之後，可用 `before` / `after`
+
+```javascript
+static defaultProps = {
+  afterClick(){}
+  beforeClick(){}
+}
+```
+
+
 
 
 ## ES2015 import/export 與 require 的抉擇
