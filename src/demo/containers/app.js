@@ -30,7 +30,7 @@ class App extends Component {
 
         <div className="fbox-content">
           <Nav app={rootState.app} />
-          <section>
+          <section className="doc-content">
             {children}
           </section>
         </div>

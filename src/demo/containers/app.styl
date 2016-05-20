@@ -1,5 +1,25 @@
+$fs12
+  font-size: (12/16)rem
+$fs13
+  font-size: (13/16)rem
+$fs14
+  font-size: (14/16)rem
+$fs15
+  font-size: (15/16)rem
+
+
 *, *:after, *:before
   box-sizing: border-box
+:global(.doc-content)
+  h1
+    font-size: 2em
+    border-bottom: 1px solid $palette.grayLightest
+  //h2, h3, h4, h5, h6
+  //  &:before
+  //    content: '\2B50\FE0F'
+  //    margin-right: 4px
+  //    font-size: .8em
+  //    vertical-align: middle
 body
   background-color: #ECECEC
   margin: 0
@@ -27,16 +47,6 @@ header
     margin-right: 20px
     position: relative
 
-
-$fs12
-  font-size: (12/16)rem
-$fs13
-  font-size: (13/16)rem
-$fs14
-  font-size: (14/16)rem
-$fs15
-  font-size: (15/16)rem
-
 nav
   border-right 1px solid #E9E9E9
   width: 180px
@@ -44,13 +54,6 @@ nav
 
 footer
   text-align: center
-
-:global(.code)
-  font-family: 'Source Code Pro', 'monospace'
-  font-weight 400
-  color: #c7254e
-  background-color: #f9f2f4
-  border-radius: 4px
 
 :global(.monospace)
   font-family: 'Source Code Pro', 'monospace'
