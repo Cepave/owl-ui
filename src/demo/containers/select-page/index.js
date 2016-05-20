@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react'
 import Select from '~com/select'
-import Code from '../../components/code'
+import {H1, H2, H3, H4, Code, Snippet,
+  Quote, List} from '../../components/markdown'
 
 const selectProps = {
   options: [
@@ -26,34 +27,18 @@ class SelectPage extends React.Component {
   render() {
     return (
       <div>
-        <h1>Select</h1>
+        <H1>Select</H1>
 
-        <h2><a href="#usage">Usage</a></h2>
-        <Code type="js" src={require('./usage.raw')}/>
+        <H2>Props</H2>
+        <Snippet type="js" src={require('./props.raw')}/>
+
+        <H2>Usage</H2>
+        <Snippet type="js" src={require('./usage.raw')}/>
         <Select {...selectProps} />
 
-        <h2><a href="#disabled">disabled</a></h2>
-        <Code type="html" src={require('./disabled.raw')}/>
+        <H2>Disabled</H2>
+        <Snippet type="html" src={require('./disabled.raw')}/>
         <Select {...selectProps} isDisabled={true} />
-
-        <h2><a href="#props">Props</a></h2>
-        <Code type="js" src={require('./props.raw')}/>
-        <table>
-          <thead>
-            <tr>
-              <th>name</th>
-              <th>type</th>
-              <th>description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>options</td>
-              <td>Array</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     )
   }

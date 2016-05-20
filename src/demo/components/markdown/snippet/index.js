@@ -1,6 +1,6 @@
 import React from 'react'
 import {findDOMNode} from 'react-dom'
-import s from './code.styl'
+import s from './snippet.styl'
 
 const typeMap = {
   js: 'javascript',
