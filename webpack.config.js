@@ -78,7 +78,7 @@ module.exports = {
         new ExtractText('owl-ui.css'),
       ]
   ),
-  watch: isDev ,
+  watch: isDev,
   devtool: isDev ? 'eval' : '',
   externals: isDev ? {} : {
     react: {

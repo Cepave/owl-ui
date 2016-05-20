@@ -1,5 +1,5 @@
 import React from 'react'
-import renderHTML from './renderHTML'
+import renderHTML from './render-html'
 import {renderToString} from 'react-dom/server'
 import {Provider} from 'react-redux'
 import {match, RouterContext} from 'react-router'
@@ -22,7 +22,7 @@ module.exports = (req, res, next)=> {
     } else if (renderProps) {
       const html = renderToString(
         <Provider store={store}>
-          <RouterContext  {...renderProps} />
+          <RouterContext {...renderProps} />
         </Provider>
       )
       res.status(200).send(renderHTML({

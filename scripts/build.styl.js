@@ -1,4 +1,4 @@
-import packStyl from './packStyl'
+import packStyl from './pack-styl'
 
 packStyl({
   watch: false,

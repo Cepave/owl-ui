@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './Nav.styl'
 import {Link} from 'react-router'
-import isNode from '~utils/isNode'
+import isNode from '~utils/is-node'
 
 Nav.propTypes = {}
 Nav.defaultProps = {}

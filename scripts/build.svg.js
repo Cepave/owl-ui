@@ -7,10 +7,10 @@ gu.src('./src/icon/**/*.svg')
   .pipe(svgmin())
   .pipe(cheerio({
     run: ($, file)=>{
-      var $page = $('#Page-1')
-      var $path = $page.find('path')
-      var $svg = $('svg')
-      var $fill = $('[fill]')
+      const $page = $('#Page-1')
+      const $path = $page.find('path')
+      const $svg = $('svg')
+      const $fill = $('[fill]')
       $svg.append($path)
       if (file.relative.startsWith('icon-')) {
         $page.remove()
@@ -28,9 +28,9 @@ gu.src('./src/icon/**/*.svg')
         .attr('style', 'display:none')
         .attr('id', 'owl-svg')
       // remove symbol id prefix 'icon-'
-      $('symbol').each(function(index, element) {
-        var $symbolID = $(element).attr('id')
-        if($symbolID.startsWith('icon-')) {
+      $('symbol').each((index, element) => {
+        const $symbolID = $(element).attr('id')
+        if ($symbolID.startsWith('icon-')) {
           $(element).attr('id', $symbolID.split('icon-').pop())
         }
       })

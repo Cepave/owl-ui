@@ -17,7 +17,7 @@ const ln = (from, to)=> {
   })
 }
 
-glob.sync(`${nodeModulesPath}/~*`).map(p => {
+glob.sync(`${nodeModulesPath}/~*`).forEach(p => {
   fs.unlink(p)
 })
 

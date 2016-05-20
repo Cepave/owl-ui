@@ -9,11 +9,9 @@ class Validation extends React.Component {
   componentDidMount() {
     const {children} = this.props
     const x = document.querySelectorAll('[data-valid]')
-    console.log(x)
-    debugger
+
     Children.forEach(children, (c, idx)=> {
       console.log(c.type)
-//      debugger
     })
   }
 
