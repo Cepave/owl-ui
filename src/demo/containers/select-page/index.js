@@ -1,22 +1,7 @@
 import React, {PropTypes} from 'react'
 import Select from '~com/select'
 import {H1, H2, H3, H4, Code, Snippet,
-  Quote, List} from '../../components/markdown'
-
-const selectProps = {
-  options: [
-    {label: '1 hour', value: '1h', selected: true},
-    {label: '3 hours', value: '3h', },
-    {label: '12 hours', value: '12h', },
-    {label: '1 day', value: '1d', },
-  ],
-
-  isDisabled: false,
-
-  onChange(e, {value}) {
-    alert(value)
-  }
-}
+  Quote, List, Table} from '../../components/markdown'
 
 
 class SelectPage extends React.Component {
@@ -24,7 +9,23 @@ class SelectPage extends React.Component {
 
   static defaultProps = {}
 
+  selectProps = {
+    options: [
+      {label: '1 hour', value: '1h', selected: true},
+      {label: '3 hours', value: '3h', },
+      {label: '12 hours', value: '12h', },
+      {label: '1 day', value: '1d', },
+    ],
+
+    isDisabled: false,
+
+    onChange(e, {value}) {
+      alert(value)
+    }
+  }
+
   render() {
+    const {selectProps} = this
     return (
       <div>
         <H1>Select</H1>
