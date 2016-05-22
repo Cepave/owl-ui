@@ -3,18 +3,29 @@ import s from './table.styl'
 
 Table.propTypes = {
   ths: PropTypes.array.isRequired,
-  tds: PropTypes.array.isRequired,
+  tds: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+  ]),
 }
 
 Table.defaultProps = {
   ths: [],
-  tds: [],
-  renderTd: null,
+  trs: [],
+  renderTr: null,
   renderTh: null
 }
 
 
-function Table({ths, tds, renderTd, renderTh, ...props}) {
+function Table({ths, trs, renderTr, renderTh, ...props}) {
+  if (!Array.isArray(trs)) {
+    trs = Object.keys(trs).map(name =>{
+      const tr = trs[name]
+      tr.name = name
+      return tr
+    })
+  }
+
   return (
     <table {...props} className={s.table}>
       <tbody>
@@ -23,25 +34,25 @@ function Table({ths, tds, renderTd, renderTh, ...props}) {
             if (renderTh) {
               return (
                 <th key={i}>
-                  { renderTh({th, idx: i}) }
+                  { renderTh({th, idx: i}) || th }
                 </th>
               )
             }
             return <th key={i}>{th}</th>
           })}
         </tr>
-        {tds.map((trs, i)=> {
+        {trs.map((tr, idx)=> {
           return (
-            <tr key={i}>
-              {trs.map((td, j) => {
-                if (renderTd) {
-                  return(
-                    <td key={`${i}-${j}`}>
-                      { renderTd({td, idx: j, th: ths[j]}) }
+            <tr key={idx}>
+              {tr.map((td, tdIdx) => {
+                if (renderTr) {
+                  return (
+                    <td key={`${idx}-${tdIdx}`}>
+                      { renderTr({td, idx, th: ths[tdIdx], name: tr.name}) || td }
                     </td>
                   )
                 }
-                return <td key={`${i}-${j}`}>{td}</td>
+                return <td key={`${idx}-${tdIdx}`}>{td}</td>
               })}
             </tr>
           )
