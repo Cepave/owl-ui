@@ -17,5 +17,6 @@ module.exports = {
   Code: require('./code'),
   Quote: require('./quote'),
   List: require('./list'),
-  Table: require('./table')
+  Table: require('./table'),
+  Browser: require('./browser'),
 }
