@@ -1,9 +1,12 @@
-const isDev = process.env.NODE_ENV !== 'production'
 import webpack from 'webpack'
 import ExtractText from 'extract-text-webpack-plugin'
 
-//import Webpack_isomorphic_tools_plugin from 'webpack-isomorphic-tools/plugin'
-//const webpack_isomorphic_tools_plugin = new Webpack_isomorphic_tools_plugin(require('./webpack.isomorphic.config')).development()
+const webpackEnv = process.env.WEBPACK
+
+const isDev = !webpackEnv
+const isDemo = webpackEnv === 'demo'
+const isProd = webpackEnv === 'production'
+console.log({isDev, isDemo, isProd})
 
 const conf = {
   cssLocalIdentName: '[name]-[local]-[hash:base64:5]',
@@ -14,7 +17,7 @@ module.exports = {
   ...conf,
   entry: {
     'owl-ui': isDev
-      ? ['./src/demo', `webpack-hot-middleware/client?path=${conf.publicPath}__webpack_hmr`]
+      ? ['./src/demo'].concat(isDemo ? [] : [`webpack-hot-middleware/client?path=${conf.publicPath}__webpack_hmr`])
       : ['./src/components'],
   },
   output: {
@@ -34,26 +37,34 @@ module.exports = {
           presets: isDev ? ['react-hmre'] : []
         }
       },
+
       {
         test: /\.raw$/,
         loader: 'raw',
       },
+
       {
         test: /\.styl$/,
-//        loader: ExtractText.extract('style', [
-//          `css?sourceMap&modules&localIdentName=${conf.cssLocalIdentName}`,
-//          'stylus'
-//        ])
-        loaders: [
-          'style',
-          `css?sourceMap&modules&localIdentName=${conf.cssLocalIdentName}`,
+        loader: isDev ?
+          'style!' +
+          `css?sourceMap&modules&localIdentName=${conf.cssLocalIdentName}!` +
+          'stylus' :
+        ExtractText.extract('style', [
+          `css?modules&localIdentName=[hash:base64:11]`,
           'stylus'
-        ]
+        ])
       },
+
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url?limit=100000'
+      },
+
       {
         test: /\.css$/,
         loader: 'style!css'
-      }
+      },
+
     ]
   },
 
@@ -80,7 +91,7 @@ module.exports = {
   ),
   watch: isDev,
   devtool: isDev ? 'eval' : '',
-  externals: isDev ? {} : {
+  externals: isProd ? {
     react: {
       root: 'React',
       commonjs: 'react',
@@ -92,6 +103,8 @@ module.exports = {
       commonjs: 'react-dom',
       commonjs2: 'react-dom',
       amd: 'react-dom',
-    }
-  }
+    },
+    'react-tag': true,
+    'lodash.isequal': true,
+  } : {}
 }

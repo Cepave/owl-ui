@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './Nav.styl'
+import s from './nav.styl'
 import {Link} from 'react-router'
 import isNode from '~utils/is-node'
 

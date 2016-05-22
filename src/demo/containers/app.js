@@ -5,7 +5,7 @@ import Action from '../actions'
 import {Link, browserHistory} from 'react-router'
 import Nav from './nav'
 
-import s from './App.styl'
+import s from './app.styl'
 
 class App extends Component {
   static propTypes = {}
