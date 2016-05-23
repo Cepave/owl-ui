@@ -6,12 +6,11 @@ import Button from '../index.js'
 let $ = {}
 
 test.beforeEach(test => {
-  $ = mount(<Button className="btn-class" text="buttonText" />)
+  $ = mount(<Button className="btn-class">buttonText</Button>)
 })
 
 test('allows us to set props' ,assert => {
   assert.is($.props().className, 'btn-class')
-  assert.is($.props().text, 'buttonText')
 })
 
 test('should render class btn-class' ,assert => {
