@@ -1,0 +1,9 @@
+Tip.propTypes = {
+  text: PropTypes.string.isRequired,
+  pos: PropTypes.string,
+}
+
+Tip.defaultProps = {
+  text: '',
+  pos: 'top'
+}
