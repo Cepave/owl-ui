@@ -4,14 +4,13 @@ const s = require('./tip.styl')
 
 Tip.propTypes = {
   text: PropTypes.string.isRequired,
-  post: PropTypes.string,
+  pos: PropTypes.string,
 }
 
 Tip.defaultProps = {
   text: '',
   pos: 'top'
 }
-
 
 function Tip({text, pos, ...props}) {
   return (
