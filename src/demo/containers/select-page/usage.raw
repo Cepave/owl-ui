@@ -1,0 +1,20 @@
+import {Select} from 'owl-ui'
+
+const selectProps = {
+  options: [
+    {label: '1 hour', value: '1h', selected: true},
+    {label: '3 hours', value: '3h', },
+    {label: '12 hours', value: '12h', },
+    {label: '1 day', value: '1d', },
+  ],
+
+  isDisabled: false,
+
+  onChange(e, {value}){
+    alert(value)
+  }
+}
+
+render() {
+  <Select {...selectProps} />
+}

@@ -13,15 +13,15 @@ $inilneBtn
   &:focus
     outline: none
   &.-primary
-    background: $colorGrayDark
-    color: $white
-    border: 1px solid $colorGrayDark
+    background: $palette.grayDark
+    color: $palette.white
+    border: 1px solid $palette.grayDark
     &.btn[disabled]
       background: $black-15
   &.-secondary
     background: transparent
-    border: 1px solid $colorGrayDark
-    color: $colorGrayDarker
+    border: 1px solid $palette.grayDark
+    color: $palette.grayDarker
   &.-inital
     background: $colorPrimaryDark
     border: 1px solid $colorPrimaryDark
@@ -30,9 +30,9 @@ $inilneBtn
       background: $colorPrimary
       border: 1px solid $colorPrimary
     &.btn[disabled]
-      background: $colorGrayDarker
+      background: $palette.grayDarker
   &.-normal
-    background: $white
+    background: $palette.white
     border: 1px solid $colorPrimaryDark
     color: $colorPrimaryDark
     &:hover
@@ -40,7 +40,7 @@ $inilneBtn
       color: $colorPrimary
     &.btn[disabled]
       border: 1px solid $black-15
-      background: $white
+      background: $palette.white
 
   &.-block
     @extend .full-width

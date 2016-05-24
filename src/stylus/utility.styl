@@ -17,38 +17,8 @@
 
 // SVG color fill
 
-.fill-grayWhite
-  fill: $colorGrayWhite
-.fill-grayLighter
-  fill: $colorGrayLighter
-.fill-grayLight
-  fill: $colorGrayLight
-.fill-gray
-  fill: $colorGray
-.fill-grayDark
-  fill: $colorGrayDark
-.fill-grayDarker
-  fill: $colorGrayDarker
-
-.fill-white
-  fill: $white
-.fill-red
-  fill: $colorSecondaryRed
-.fill-orange
-  fill: $colorSecondaryOrange
-.fill-yellow
-  fill: $colorSecondaryYellow
-// blue
-.fill-blueLight
-  fill: $colorSecondaryBlueLight
-.fill-blue
-  fill: $colorSecondaryBlue
-.fill-blueDark
-  fill: $colorSecondaryBlueDark
-// purple
-.fill-purpleLight
-  fill: $colorPrimaryLight
-.fill-purple
-  fill: $colorPrimary
-.fill-purpleDark
-  fill: $colorPrimaryDark
+for color, i in $palette {
+  .fill-{color} {
+    fill: $palette[color]
+  }
+}

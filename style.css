@@ -222,7 +222,7 @@ body,
   display: block !important;
 }
 .fill-grayWhite {
-  fill: $colorGrayWhite;
+  fill: #f2f6f7;
 }
 .fill-grayLighter {
   fill: #dfe4e6;

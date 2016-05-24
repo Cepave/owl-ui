@@ -1,0 +1,5 @@
+<Tip text="tip on left" pos="left">
+  <span>
+    Show Tool tip on left
+  </span>
+</Tip>

@@ -1,49 +1,47 @@
 // input
 @import "mixins"
 
-
 .input
 .textarea
   padding: 10px
   width: 130px
-  border: 1px solid $colorGrayLighter
-  color: $colorGrayDark
-  input-placeholder-color($colorGrayLight)
+  border: 1px solid $palette.grayLighter
+  color: $palette.grayDark
+  input-placeholder-color($palette.grayLight)
   &:focus
     outline: none
     border-color: $colorPrimaryLight
-    box-shadow: 0 0 0 2px rgba($colorPrimary, .2), 0 1px 2px rgba(0, 0, 0, .05) inset
+    box-shadow: 0 0 0 2px rgba($palette.primary, .2), 0 1px 2px rgba(0, 0, 0, .05) inset
 .textarea
   width: 100%
 .input
   height: 34px
   &.-success
-    border: 1px solid $colorSecondaryGreen
-    color: $colorSecondaryGreen
+    border: 1px solid $palette.green
+    color: $palette.green
   &.-error
-    border: 1px solid $colorSecondaryRed
-    color: $colorSecondaryRed
-
+    border: 1px solid $palette.red
+    color: $palette.red
 
 // checkbox
 .checkbox
-  padding-top 15px
-  color $colorGray
+  padding-top: 15px
+  color: $palette.gray
 
 // combo bar
 .combo-bar-container
-  padding 10px 15px
-  min-height 34px
-  border 1px solid $black-15
-  background $white
-  font-size 12px
-  color $colorGrayLight
+  padding: 10px 15px
+  min-height: 34px
+  border: 1px solid $black-15
+  background: $palette.white
+  font-size: 12px
+  color: $palette.grayLight
 
 .combo-bar-input
-  display block
-  margin-top 23px
-  width 100%
+  display: block
+  margin-top: 23px
+  width: 100%
 
 .combo-bar-check-list-clear
-  color $colorPrimary
-  float right
+  color: $colorPrimary
+  float: right

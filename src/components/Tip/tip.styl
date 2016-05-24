@@ -1,0 +1,62 @@
+.tip
+  position: relative
+  display: inline-block
+  &:after, &:before
+    position: absolute
+    transition: all 0.18s ease-out 0.18s
+    pointer-events: none
+    opacity: 0
+  &:after
+    content: attr(data-text)
+    background: $tipBg
+    border-radius: $tipRadius
+    padding: $sizing.xs $sizing.sm
+    white-space: nowrap
+    color: #eee
+  &:before
+    content: ''
+    width: 0
+    height: 0
+    border: $sizing.xs + 1 solid transparent
+    position: absolute
+  &:hover
+    &:after, &:before
+      opacity: 1
+
+  &[data-pos="top"]
+    &:after, &:before
+      bottom: 100%
+      left: 50%
+    &:after
+      transform: translate(-50%, -10px)
+    &:before
+      transform: translate(-50%, 0)
+      border-top-color: $tipBg
+  &[data-pos="right"]
+    &:after, &:before
+      left: 100%
+      top: 50%
+    &:before
+      transform: translate(0, -50%)
+      border-right-color: $tipBg
+    &:after
+      transform: translate(10px, -50%)
+  &[data-pos="bottom"]
+    &:after, &:before
+      left: 50%
+      top: 100%
+    &:before
+      border-bottom-color: $tipBg
+      transform: translate(-50%, 0)
+    &:after
+      transform: translate(-50%, 10px)
+      bottom: auto
+  &[data-pos="left"]
+    &:after, &:before
+      right: 100%
+      top: 50%
+    &:before
+      transform: translate(0, -50%)
+      border-left-color: $tipBg
+    &:after
+      transform: translate(-10px, -50%)

@@ -1,0 +1,73 @@
+$fs12
+  font-size: (12/16)rem
+$fs13
+  font-size: (13/16)rem
+$fs14
+  font-size: (14/16)rem
+$fs15
+  font-size: (15/16)rem
+
+
+*, *:after, *:before
+  box-sizing: border-box
+:global(.doc-content)
+  h1
+    font-size: 2em
+    border-bottom: 1px solid $palette.grayLightest
+  //h2, h3, h4, h5, h6
+  //  &:before
+  //    content: '\2B50\FE0F'
+  //    margin-right: 4px
+  //    font-size: .8em
+  //    vertical-align: middle
+body
+  background-color: #ECECEC
+  margin: 0
+  font: 16px/1.2 'Roboto', 'sans-serif'
+  font-weight 300
+  color #555
+a
+  text-decoration none
+  color #555
+  &:hover
+    color: #59497B
+
+header
+  height: 280px
+  padding 0 50px
+  display: flex
+  align-items center
+  justify-content center
+  background: linear-gradient(to right, #C7B3EE, #59497B)
+  color #fff
+  font-size 30px
+  position: relative
+  h1
+    font-size: 47px
+    margin-right: 20px
+    position: relative
+
+nav
+  border-right 1px solid #E9E9E9
+  width: 180px
+  @extend $fs13
+
+footer
+  text-align: center
+
+:global(.monospace)
+  font-family: 'Source Code Pro', 'monospace'
+  font-weight 200
+
+:global(.fbox-content)
+  display: flex
+  //align-items: stretch
+  //justify-content: space-around
+  background: #fff
+  margin 20px 40px
+  border-radius 5px
+  padding 20px
+  section
+    padding 0 20px
+    padding-right: 0
+    flex 1
