@@ -1,13 +1,9 @@
 import test from 'ava'
-import Tip from '../'
+import Tip from '../index'
 
 let $
 test.beforeEach(()=> {
   $ = shallow(<Tip text="tip" />)
-})
-
-test.afterEach(()=> {
-  $.unmount()
 })
 
 test('Tip default props', assert => {
