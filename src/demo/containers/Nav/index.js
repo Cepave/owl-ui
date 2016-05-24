@@ -23,6 +23,11 @@ function Nav({app, ...props}) {
 
       <div className={s.block}>
         <b>Components</b>
+        <div className={s.blockList} data-page="/tab">
+          <Link to="/tab">
+            <span className={`monospace ${s.link}`}>&lt;Tab /></span>
+          </Link>
+        </div>
         <div className={s.blockList} data-page="/icon">
           <Link to="/icon">
             <span className={`monospace ${s.link}`}>&lt;Icon /></span>

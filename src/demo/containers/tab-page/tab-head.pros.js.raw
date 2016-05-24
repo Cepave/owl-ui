@@ -1,0 +1,8 @@
+TabHead.propTypes = {
+  name: PropTypes.string.isRequired,
+}
+
+TabHead.defaultProps = {
+  isSelected: false,
+  name: ''
+}

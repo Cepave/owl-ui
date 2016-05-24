@@ -1,0 +1,13 @@
+.tab
+  [data-role="tab-head"]
+    display: flex
+    cursor pointer
+    > div
+      padding: 5px 16px
+      &[data-selected="1"]
+        border-bottom 2px solid #9471DB
+  [data-role="tab-content"]
+    [data-selected]
+      display: none
+    [data-selected="1"]
+      display: block
