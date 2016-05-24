@@ -1,7 +1,5 @@
 'use strict'
 import test from 'ava'
-import React from 'React'
-import {mount, render} from 'enzyme'
 import Button from '../index.js'
 let $ = {}
 
