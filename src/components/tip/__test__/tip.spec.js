@@ -1,5 +1,5 @@
 import test from 'ava'
-import Tip from '../index'
+import Tip from '../'
 
 let $
 test.beforeEach(()=> {
