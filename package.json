@@ -9,9 +9,9 @@
     "build.demo": "WEBPACK=demo babel-node ./scripts/build-demo",
     "build.svg": "babel-node ./scripts/build-svg",
     "xo": "xo",
-    "test": "nyc --reporter=html ava",
-    "test.report": "nyc report --reporter=html && browser-sync start --files 'coverage/*.html' --port 8088 --server coverage",
-    "test.watch": "nyc ava -w",
+    "test": "nyc ava",
+    "test.watch": "nyc ava -w & babel-node ./scripts/test-report",
+    "test.report": "nyc report --reporter=html && open coverage/index.html",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "postinstall": "babel-node ./scripts/postinstall"
   },
