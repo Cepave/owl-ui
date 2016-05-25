@@ -3,8 +3,8 @@ import renderHTML from './render-html'
 import {renderToString} from 'react-dom/server'
 import {Provider} from 'react-redux'
 import {match, RouterContext} from 'react-router'
-import createStore from '../demo/redux/create'
-import routes from '../demo/containers/routes'
+import createStore from '../client/redux/create'
+import routes from '../client/containers/routes'
 
 module.exports = (req, res, next)=> {
   const initState = {

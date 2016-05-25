@@ -22,5 +22,5 @@ glob.sync(`${nodeModulesPath}/~*`).forEach(p => {
 })
 
 ln(`${srcPath}/components`, `${nodeModulesPath}/~com`)
-ln(`${srcPath}/utils`, `${nodeModulesPath}/~utils`)
+ln(`${srcPath}/demo/utils`, `${nodeModulesPath}/~utils`)
 

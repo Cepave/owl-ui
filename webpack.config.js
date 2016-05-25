@@ -6,7 +6,7 @@ const webpackEnv = process.env.WEBPACK
 const isDev = !webpackEnv
 const isDemo = webpackEnv === 'demo'
 const isProd = webpackEnv === 'production'
-console.log({isDev, isDemo, isProd})
+//console.log({isDev, isDemo, isProd})
 
 const conf = {
   cssLocalIdentName: '[name]-[local]-[hash:base64:5]',
@@ -17,7 +17,7 @@ module.exports = {
   ...conf,
   entry: {
     'owl-ui': isDev
-      ? ['./src/demo'].concat(isDemo ? [] : [`webpack-hot-middleware/client?path=${conf.publicPath}__webpack_hmr`])
+      ? ['./src/demo/client'].concat(isDemo ? [] : [`webpack-hot-middleware/client?path=${conf.publicPath}__webpack_hmr`])
       : ['./src/components'],
   },
   output: {
