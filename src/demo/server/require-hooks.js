@@ -1,6 +1,6 @@
 import {readFileSync} from 'fs'
 import stylus from 'stylus'
-import webConf from '../../webpack.config'
+import webConf from '../../../webpack.config'
 
 require('css-modules-require-hook')({
   extensions: ['.styl', '.css'],

@@ -20,7 +20,7 @@
       "babel-core/register",
       "./test/jsdom",
       "./test/global",
-      "./src/server/require-hooks"
+      "./src/demo/server/require-hooks"
     ],
     "babel": "inherit",
     "files": [
@@ -30,9 +30,9 @@
   "nyc": {
     "exclude": [
       "webpack.config.js",
-      "src/server/require-hooks.js",
-      "test",
-      "src/components/**/__test__/*.js"
+      "src/demo/server/require-hooks.js",
+      "src/components/**/__test__/*.js",
+      "test"
     ]
   },
   "author": "Rocky Wu <rwu@cepave.com>",

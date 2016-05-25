@@ -1,6 +1,6 @@
 import piping from 'piping'
 
 piping({
-  main: './src/server',
+  main: './src/demo/server',
   hook: true
 })
