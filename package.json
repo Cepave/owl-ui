@@ -110,6 +110,7 @@
     "xo": "^0.15.1"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "lodash.isequal": "^4.2.0",
     "react-tag": "^2.2.5"
   },
