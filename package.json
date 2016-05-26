@@ -84,6 +84,7 @@
     "gulp-watch": "^4.3.5",
     "isparta-instrumenter-loader": "^1.0.0",
     "jsdom": "^9.1.0",
+    "kouto-swiss": "^0.12.0",
     "normalize.css": "^4.1.1",
     "nyc": "^6.4.4",
     "piping": "^0.3.2",
