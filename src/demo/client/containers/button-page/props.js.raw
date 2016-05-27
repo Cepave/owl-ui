@@ -1,0 +1,12 @@
+static propTypes = {
+  className: PropTypes.string,
+  color: PropTypes.string,
+  size: PropTypes.string,
+  children: PropTypes.node
+}
+
+static defaultProps = {
+  className: '',
+  color: 'primary',
+  size: 'default'
+}
