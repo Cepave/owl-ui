@@ -1,10 +1,10 @@
-import fs from 'fs'
-import glob from 'glob'
-import c from 'chalk'
-import path from 'path'
+const fs = require('fs')
+const glob = require('glob')
+const c = require('chalk')
+const path = require('path')
 
-const nodeModulesPath = path.join(__dirname, '/../node_modules')
-const srcPath = path.join(__dirname, '/../src')
+const nodeModulesPath = path.join(__dirname, '../node_modules')
+const srcPath = path.join(__dirname, '../src')
 
 const ln = (from, to)=> {
   const logto = c.cyan(path.relative(nodeModulesPath, to))

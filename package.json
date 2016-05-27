@@ -14,7 +14,7 @@
     "test.watch": "nyc ava -w & babel-node ./scripts/test-report",
     "test.report": "nyc report --reporter=html && open coverage/index.html",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "postinstall": "babel-node ./scripts/postinstall"
+    "postinstall": "node ./scripts/postinstall"
   },
   "ava": {
     "require": [
