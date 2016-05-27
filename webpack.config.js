@@ -90,7 +90,7 @@ module.exports = {
       ]
     :
       [
-        new ExtractText('owl-ui.min.css'),
+        new ExtractText('owl-ui.css'),
       ]
   ),
   watch: isDev,
