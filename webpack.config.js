@@ -1,6 +1,7 @@
 import webpack from 'webpack'
 import ExtractText from 'extract-text-webpack-plugin'
 import pkg from './package.json'
+import koutoSwiss from 'kouto-swiss'
 
 const webpackEnv = process.env.WEBPACK
 const NODE_ENV = process.env.NODE_ENV
@@ -71,8 +72,9 @@ module.exports = {
   },
 
   stylus: {
+    use: [koutoSwiss()],
     paths: [`${__dirname}/node_modules`],
-    import: `${__dirname}/src/stylus/variables.styl`,
+    import: `${__dirname}/src/stylus/variables.styl`
   },
 
   plugins: [
