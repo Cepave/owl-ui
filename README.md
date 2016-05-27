@@ -2,7 +2,7 @@
 
 # OWL UI Components
 
-`OWL UI` is React Component it works in Cepave's monitoring system.
+`OWL UI` is **React Component Design System**, it works in Cepave's monitoring system.
 
 
 ## Install
