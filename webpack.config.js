@@ -1,11 +1,13 @@
 import webpack from 'webpack'
 import ExtractText from 'extract-text-webpack-plugin'
+import pkg from './package.json'
 
 const webpackEnv = process.env.WEBPACK
+const NODE_ENV = process.env.NODE_ENV
 
-const isDev = !webpackEnv
 const isDemo = webpackEnv === 'demo'
-const isProd = webpackEnv === 'production'
+const isProd = NODE_ENV === 'production'
+const isDev = !webpackEnv && !isProd
 //console.log({isDev, isDemo, isProd})
 
 const conf = {
@@ -21,9 +23,9 @@ module.exports = {
       : ['./src/components'],
   },
   output: {
-    path: `${__dirname}/static`,
+    path: isProd ? `${__dirname}/dist` : `${__dirname}/static`,
     filename: '[name].js',
-    library: '',
+    library: 'OWLUI',
     libraryTarget: 'umd',
     publicPath: conf.publicPath
   },
@@ -86,12 +88,16 @@ module.exports = {
       ]
     :
       [
-        new ExtractText('owl-ui.css'),
+        new ExtractText('owl-ui.min.css'),
       ]
   ),
   watch: isDev,
   devtool: isDev ? 'eval' : '',
   externals: isProd ? {
+    ...Object.keys(pkg.dependencies).reduce((o, dep) => {
+      o[dep] = true
+      return o
+    }, {}),
     react: {
       root: 'React',
       commonjs: 'react',
@@ -103,8 +109,6 @@ module.exports = {
       commonjs: 'react-dom',
       commonjs2: 'react-dom',
       amd: 'react-dom',
-    },
-    'react-tag': true,
-    'lodash.isequal': true,
+    }
   } : {}
 }
