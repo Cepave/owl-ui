@@ -2,9 +2,10 @@
   "name": "owl-ui.v2",
   "version": "2.0.0",
   "description": "OWL UI Components",
-  "main": "build/components",
+  "main": "dist/owl-ui.min.js",
   "scripts": {
     "dev": "babel-node ./scripts/dev",
+    "build": "NODE_ENV=production babel-node scripts/build",
     "build.styl": "babel-node ./scripts/build-styl",
     "build.demo": "WEBPACK=demo babel-node ./scripts/build-demo",
     "build.svg": "babel-node ./scripts/build-svg",
@@ -70,6 +71,7 @@
     "glob": "^7.0.3",
     "gulp": "^3.9.1",
     "gulp-cheerio": "^0.6.2",
+    "gulp-clean-css": "^2.0.8",
     "gulp-if": "^2.0.1",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.1.1",
@@ -86,10 +88,7 @@
     "nyc": "^6.4.4",
     "piping": "^0.3.2",
     "raw-loader": "^0.5.1",
-    "react": "^15.1.0",
-    "react-addons-pure-render-mixin": "^15.1.0",
     "react-addons-test-utils": "^15.1.0",
-    "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "redux": "^3.5.1",
@@ -110,6 +109,9 @@
     "xo": "^0.15.1"
   },
   "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-addons-pure-render-mixin": "^15.1.0",
     "classnames": "^2.2.5",
     "lodash.isequal": "^4.2.0",
     "react-tag": "^2.2.5"

@@ -1,3 +1,6 @@
 module.exports = {
-  Icon: require('./icon')
+  Button: require('./button'),
+  Tab: require('./tab'),
+  Select: require('./select'),
+  Tip: require('./tip'),
 }

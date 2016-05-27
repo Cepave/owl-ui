@@ -1,2 +1,10 @@
-*
-!/dist
+.*
+webpack.config.js
+
+/src
+/test
+/static
+/docs
+/dev
+/coverage
+/assets
