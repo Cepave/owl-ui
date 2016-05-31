@@ -1,14 +1,12 @@
 static propTypes = {
-  options: PropTypes.array.isRequired,
-  onChange: PropTypes.func,
-  isDisabled: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.bool,
-  ]),
-}
+    onChange: PropTypes.func,
+    isDisabled: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.bool,
+    ]),
+  }
 
 static defaultProps = {
-  options: [],
   isDisabled: false,
   onChange() {}
 }

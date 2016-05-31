@@ -10,19 +10,19 @@ class SelectPage extends React.Component {
   static defaultProps = {}
 
   selectProps = {
-    options: [
-      {label: '1 hour', value: '1h', selected: true},
-      {label: '3 hours', value: '3h', },
-      {label: '12 hours', value: '12h', },
-      {label: '1 day', value: '1d', },
-    ],
-
     isDisabled: false,
 
     onChange(e, {value}) {
       alert(value)
     }
   }
+
+  options = [
+    <Select.Opt value="1h" isSelected>1 hour</Select.Opt>,
+    <Select.Opt value="3h">3 hours</Select.Opt>,
+    <Select.Opt value="12h">12 hours</Select.Opt>,
+    <Select.Opt value="1d">1 day</Select.Opt>,
+  ]
 
   render() {
     const {selectProps} = this
@@ -35,11 +35,16 @@ class SelectPage extends React.Component {
 
         <H2>Usage</H2>
         <Snippet type="js" src={require('./usage.raw')}/>
-        <Select {...selectProps} />
+        <Select {...selectProps}>
+          {this.options}
+        </Select>
+
 
         <H2>Disabled</H2>
         <Snippet type="html" src={require('./disabled.raw')}/>
-        <Select {...selectProps} isDisabled={true} />
+        <Select isDisabled>
+          {this.options}
+        </Select>
       </div>
     )
   }
