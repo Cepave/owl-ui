@@ -1,10 +1,12 @@
 import React, {PropTypes, cloneElement} from 'react'
 import s from './tab.styl'
-
+import css from 'classnames'
 class Tab extends React.Component {
   static propTypes = {}
 
-  static defaultProps = {}
+  static defaultProps = {
+
+  }
 
   state = {}
 
@@ -56,9 +58,10 @@ class Tab extends React.Component {
   }
 
   render() {
+    const {className, ...props} = this.props
     const {TabHead, TabContent} = this.setChildren()
     return (
-      <div className={s.tab}>
+      <div className={css(s.tab, className)} {...props}>
         <div data-role="tab-head">
           {TabHead}
         </div>
