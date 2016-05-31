@@ -8,10 +8,11 @@ const NODE_ENV = process.env.NODE_ENV
 
 const isDemo = webpackEnv === 'demo'
 const isProd = NODE_ENV === 'production'
-const isDev = !webpackEnv && !isProd
+const isDev = !webpackEnv && !isProd && !isDemo
 //console.log({isDev, isDemo, isProd})
 
 const conf = {
+  isDemo, isProd, isDev,
   cssLocalIdentName: '[name]-[local]-[hash:base64:5]',
   publicPath: '//localhost:3001/',
 }
@@ -19,12 +20,12 @@ const conf = {
 module.exports = {
   ...conf,
   entry: {
-    'owl-ui': isDev
+    'owl-ui': !isProd
       ? ['./src/demo/client'].concat(isDemo ? [] : [`webpack-hot-middleware/client?path=${conf.publicPath}__webpack_hmr`])
-      : ['./src/components'],
+      : './src/components'
   },
   output: {
-    path: isProd ? `${__dirname}/dist` : `${__dirname}/static`,
+    path: isProd ? `${__dirname}/dist` : isDemo ? `${__dirname}/demo` : `${__dirname}/static`,
     filename: '[name].js',
     library: 'OWLUI',
     libraryTarget: 'umd',
@@ -69,6 +70,14 @@ module.exports = {
       },
 
     ]
+  },
+  resolve: {
+    alias: isDemo ? {
+      'react-dom': 'react-dom/dist/react-dom.min.js',
+      'react-redux': 'react-redux/dist/react-redux.min.js',
+      'redux': 'redux/dist/redux.min.js',
+      'redux-thunk': 'redux-thunk/dist/redux-thunk.min.js',
+    } : {}
   },
 
   stylus: {

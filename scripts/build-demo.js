@@ -1,11 +1,21 @@
-require('babel-core/register')
+'use strict'
+
+import '~utils/global'
+import '../src/demo/server/require-hooks'
+
 import webpack from 'webpack'
-import webpackConf from '../webpack.config'
+import webConf from '../webpack.config'
+import fs from 'fs'
+import {mkdir, rm} from 'shelljs'
+import React from 'react'
+import {renderToString} from 'react-dom/server'
+import {Provider} from 'react-redux'
+import c from 'chalk'
+import routes from '../src/demo/client/containers/routes'
+import renerHTML from '../src/demo/server/render-html'
+import createStore from '../src/demo/client/redux/create'
 
-require('~utils/global')
-require('../src/server/require-hooks')
-
-const routes = require('../src/demo/containers/routes')
+const cwd = process.cwd()
 
 function crawlChildren(Router) {
   const res = {}
@@ -15,7 +25,8 @@ function crawlChildren(Router) {
     if (path) {
       if (parent) {
         const parentPath = parent.props.path || ''
-        res[`${parentPath}${path}`] = component
+        const pp = `/${parentPath}/${path}`.replace(/\/+/g, '/')
+        res[pp] = component
       } else {
         res[path] = component
       }
@@ -35,4 +46,47 @@ function crawlChildren(Router) {
   return res
 }
 
-console.log(crawlChildren(routes))
+const getRoutes = crawlChildren(routes)
+
+rm('-r', ['demo'])
+webpack(webConf, (er, stats)=> {
+  console.log(stats.toString({
+    colors: true
+  }))
+
+  Object.keys(getRoutes).forEach(p => {
+    const PageComponent  = (getRoutes[p])
+
+    const initState = {
+      app: {
+        url: p
+      }
+    }
+    let html
+    if (p === '/') {
+      const store = createStore(initState)
+      html = renderToString(
+        <Provider store={store}>
+          <PageComponent />
+        </Provider>
+      )
+    } else {
+      html = renderToString(<PageComponent />)
+    }
+
+    const pageHTML = renerHTML({
+      html,
+      state: initState
+    })
+
+    mkdir('-p', [`./demo${p}`])
+    const index = `./demo${p}/index.html`
+    fs.writeFile(index, pageHTML, (er)=> {
+      if (er) {
+        console.log(er)
+      }
+      console.log(`Writing file: ${c.yellow(index)}`)
+    })
+  })
+})
+
