@@ -4,11 +4,11 @@ import s from '../select.styl'
 
 let $
 const selectProps = {
-  options: [
-    {label: '1 hour', value: '1h', selected: true},
-    {label: '3 hours', value: '3h', },
-    {label: '12 hours', value: '12h', },
-    {label: '1 day', value: '1d', },
+  children: [
+    <Select.Opt value="1h" isSelected>1 hour</Select.Opt>,
+    <Select.Opt value="3h">3 hours</Select.Opt>,
+    <Select.Opt value="12h">12 hours</Select.Opt>,
+    <Select.Opt value="1d">1 day</Select.Opt>,
   ],
 
   isDisabled: false,
@@ -38,4 +38,9 @@ test('onChange the select', assert => {
 
   assert.is($.state().isOpen, false)
   assert.is($.find(`.${s.title}`).text().trim(), '12 hours')
+})
+
+test('should extend className', assert => {
+  $ = shallow(<Select {...selectProps} className="hello-select"/>)
+  assert.is($.hasClass('hello-select'), true)
 })
