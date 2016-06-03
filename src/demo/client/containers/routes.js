@@ -7,11 +7,13 @@ import CheckBoxPage from './checkbox-page'
 import TipPage from './tip-page'
 import SelectPage from './select-page'
 import TabPage from './tab-page'
+import TablePage from './table-page'
 
 module.exports = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <Route path="button" component={ButtonPage} />
+      <Route path="table" component={TablePage} />
       <Route path="tab" component={TabPage} />
       <Route path="icon" component={IconPage} />
       <Route path="select" component={SelectPage} />

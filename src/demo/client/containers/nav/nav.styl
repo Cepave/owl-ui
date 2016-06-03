@@ -1,18 +1,20 @@
-nav[data-page="/icon"] [data-page="/icon"] a,
-nav[data-page="/checkbox"] [data-page="/checkbox"] a,
-nav[data-page="/select"] [data-page="/select"] a,
-nav[data-page="/tab"] [data-page="/tab"] a,
-nav[data-page="/tip"] [data-page="/tip"] a
+nav[data-page="/icon"] a[href="/icon"],
+nav[data-page="/checkbox"] a[href="/checkbox"],
+nav[data-page="/select"] a[href="/select"],
+nav[data-page="/tab"] a[href="/tab"],
+nav[data-page="/table"] a[href="/table"],
+nav[data-page="/tip"] a[href="/tip"]
   border-right 3px solid #5B4B7D
   cursor default
   &:hover .link
     border-bottom-color transparent
-
+nav
+  font-size: 12px
 .block
-  margin-bottom: 20px
+  margin-bottom: 16px
 
 .blockList
-  height: 30px
+  height: 24px
   a
     display: flex
     padding-left: 10px

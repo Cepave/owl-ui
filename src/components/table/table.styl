@@ -1,0 +1,83 @@
+$_border = 1px solid #DEE4E6
+.tableBox
+  position: relative
+  border $_border
+
+  table
+    border-spacing 0
+    border-collapse collapse
+    width: 100%
+  th
+    font-weight 300
+    text-align: left
+    border-right $_border
+    white-space nowrap
+    &:last-child
+      border-right: none
+  th, td
+    padding: 8px
+    border-bottom $_border
+
+  tbody
+    tr
+      &:last-child
+        td
+          border-bottom: none
+      &:nth-child(even)
+        background-color #F2F6F7
+      &:hover
+        background-color #E6F0FA
+
+.thead
+  overflow hidden
+.tbody
+  overflow-y hidden
+
+.thHide
+  th
+    border-bottom: none
+    line-height 0
+    height: 0
+    color: transparent
+    padding-top 0
+    padding-bottom 0
+    opacity 0
+
+
+.sortable
+  cursor: pointer
+  position: relative
+  &:after, &:before
+    content: ''
+    position: absolute
+    display: block
+    top: 50%
+    transform translateY(-50%)
+    right: 8px
+    border: 5px solid transparent
+  &:before
+    border-top-color: $palette.grayLight
+    top: calc(50% + 16px)
+  &:after
+    border-bottom-color: $palette.grayLight
+    top: calc(50% - 16px)
+  &[data-sort="0"]
+    &:after
+      border-bottom-color: $palette.grayDarker
+      top: 50%
+      transform translateY(-8px)
+    &:before
+      display: none
+  &[data-sort="1"]
+    &:after
+      display: none
+    &:before
+      top: 50%
+      transform translateY(-4px)
+      border-top-color: $palette.grayDarker
+  &:hover
+    &:after
+      border-bottom-color: $palette.grayDarker
+    &:before
+      border-top-color: $palette.grayDarker
+
