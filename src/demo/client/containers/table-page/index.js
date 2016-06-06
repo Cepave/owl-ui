@@ -22,13 +22,25 @@ class TablePage extends React.Component {
         <H1>Table</H1>
 
         <H2>Props</H2>
+        <H2>Usage</H2>
+        <Snippet type="js" src={require('./usage.js.raw')} />
+
+        <H2>Teable.Head</H2>
+        <H3>Props</H3>
+        <Snippet type="js" src={require('./head.props.js.raw')} />
+        <p>
+          <Code>sort</Code> is enabled sortable,
+          set to <Code>'1'</Code> or <Code>'0'</Code> by default sorting.
+        </p>
+        <List><Code>0</Code>: sort by ascending</List>
+        <List><Code>1</Code>: sort by descending</List>
 
         <H2>Demo</H2>
-        <Table className={s.table} height={250}>
-          <Table.Head isSortable><b># ID</b></Table.Head>
-          <Table.Head isSortable>Name</Table.Head>
-          <Table.Head isSortable>Date</Table.Head>
-          <Table.Head isSortable>Checked</Table.Head>
+        <Table>
+          <Table.Head sort="1"><b># ID</b></Table.Head>
+          <Table.Head sort>Name</Table.Head>
+          <Table.Head sort>Date</Table.Head>
+          <Table.Head sort>Checked</Table.Head>
 
           <tr>
             <td>1</td>
