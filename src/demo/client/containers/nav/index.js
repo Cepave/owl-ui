@@ -23,34 +23,34 @@ function Nav({app, ...props}) {
 
       <div className={s.block}>
         <b>Components</b>
-        <div className={s.blockList} data-page="/tab">
+        <div className={s.blockList}>
           <Link to="/tab">
             <span className={`monospace ${s.link}`}>&lt;Tab /></span>
           </Link>
         </div>
-        <div className={s.blockList} data-page="/icon">
+        <div className={s.blockList}>
           <Link to="/icon">
             <span className={`monospace ${s.link}`}>&lt;Icon /></span>
           </Link>
         </div>
-        <div className={s.blockList} data-page="/tip">
+        <div className={s.blockList}>
           <Link to="/tip">
             <span className={`monospace ${s.link}`}>&lt;Tip /></span>
           </Link>
         </div>
-        <div className={s.blockList} data-page="/select">
+        <div className={s.blockList}>
           <Link to="/select">
             <span className={`monospace ${s.link}`}>&lt;Select /></span>
           </Link>
         </div>
-        <div className={s.blockList} data-page="/checkbox">
+        <div className={s.blockList}>
           <Link to="/checkbox">
             <span className={`monospace ${s.link}`}>&lt;Checkbox /></span>
           </Link>
         </div>
         <div className={s.blockList}>
-          <Link to="/checkbox">
-            <span className={`monospace ${s.link}`}>&lt;Tab /></span>
+          <Link to="/table">
+            <span className={`monospace ${s.link}`}>&lt;Table /></span>
           </Link>
         </div>
         <div className={s.blockList}>

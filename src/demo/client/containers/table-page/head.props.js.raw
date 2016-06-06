@@ -1,0 +1,10 @@
+TableHead.propTypes = {
+  sort: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ])
+}
+
+TableHead.defaultProps = {
+  sort: '-1',
+}

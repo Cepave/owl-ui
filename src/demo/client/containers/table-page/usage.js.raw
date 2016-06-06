@@ -1,0 +1,18 @@
+import {Table} from 'owl-ui'
+
+render() {
+  <Table>
+    <Table.Head sort="1"><b># ID</b></Table.Head>
+    <Table.Head sort>Name</Table.Head>
+    <Table.Head sort>Date</Table.Head>
+    <Table.Head sort>Checked</Table.Head>
+
+    // normal tr > td
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </Table>
+}
