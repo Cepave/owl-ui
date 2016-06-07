@@ -115,7 +115,6 @@
     "lodash.flatten": "^4.2.0",
     "lodash.isequal": "^4.2.0",
     "react": "^15.1.0",
-    "react-addons-pure-render-mixin": "^15.1.0",
     "react-addons-text-content": "0.0.4",
     "react-dom": "^15.1.0",
     "react-tag": "^2.2.5"
