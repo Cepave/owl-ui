@@ -25,5 +25,5 @@ node_modules
 coverage
 
 # Icon
-/src/icon/
+/icons
 /demo
