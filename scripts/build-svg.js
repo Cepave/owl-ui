@@ -2,19 +2,14 @@ import gu from 'gulp'
 import svgstore from 'gulp-svgstore'
 import svgmin from 'gulp-svgmin'
 import cheerio from 'gulp-cheerio'
+import ftp from 'gulp-ftp'
 
-gu.src('./src/icon/**/*.svg')
+gu.src('icons/*.svg')
   .pipe(svgmin())
   .pipe(cheerio({
     run: ($, file)=>{
-      const $page = $('#Page-1')
-      const $path = $page.find('path')
-      const $svg = $('svg')
-      const $fill = $('[fill]')
-      $svg.append($path)
       if (file.relative.startsWith('icon-')) {
-        $page.remove()
-        $fill.removeAttr('fill')
+        $('[fill]').removeAttr('fill')
       }
     },
     parserOptions: { xmlMode: true }
@@ -26,15 +21,23 @@ gu.src('./src/icon/**/*.svg')
     run: ($)=>{
       $('svg')
         .attr('style', 'display:none')
-        .attr('id', 'owl-svg')
+        .attr('id', 'owl-svg-icons')
+
       // remove symbol id prefix 'icon-'
-      $('symbol').each((index, element) => {
-        const $symbolID = $(element).attr('id')
-        if ($symbolID.startsWith('icon-')) {
-          $(element).attr('id', $symbolID.split('icon-').pop())
-        }
+      $('symbol').each((index, el) => {
+        const id = $(el).attr('id')
+        $(el).attr('id', id.replace(/^icon-/, ''))
       })
     },
     parserOptions: { xmlMode: true }
   }))
   .pipe(gu.dest('dist'))
+  .on('finish', ()=> {
+    gu.src('dist/icons.svg')
+      .pipe(ftp({
+        host: '157.122.99.72',
+        user: 'cepave_f2e',
+        pass: 'tC8cse94bKxe',
+        remotePath: '/statics'
+      }))
+  })
