@@ -3,4 +3,5 @@ module.exports = {
   Tab: require('./tab'),
   Select: require('./select'),
   Tip: require('./tip'),
+  Table: require('./table'),
 }
