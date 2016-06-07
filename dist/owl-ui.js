@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("react-addons-pure-render-mixin"), require("classnames"), require("react-dom"));
+		module.exports = factory(require("react"), require("react-addons-pure-render-mixin"), require("classnames"), require("react-dom"), require("lodash.flatten"), require("react-addons-text-content"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "react-addons-pure-render-mixin", "classnames", "react-dom"], factory);
+		define(["react", "react-addons-pure-render-mixin", "classnames", "react-dom", "lodash.flatten", "react-addons-text-content"], factory);
 	else if(typeof exports === 'object')
-		exports["OWLUI"] = factory(require("react"), require("react-addons-pure-render-mixin"), require("classnames"), require("react-dom"));
+		exports["OWLUI"] = factory(require("react"), require("react-addons-pure-render-mixin"), require("classnames"), require("react-dom"), require("lodash.flatten"), require("react-addons-text-content"));
 	else
-		root["OWLUI"] = factory(root["React"], root["react-addons-pure-render-mixin"], root["classnames"], root["ReactDOM"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_17__) {
+		root["OWLUI"] = factory(root["React"], root["react-addons-pure-render-mixin"], root["classnames"], root["ReactDOM"], root["lodash.flatten"], root["react-addons-text-content"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_17__, __WEBPACK_EXTERNAL_MODULE_28__, __WEBPACK_EXTERNAL_MODULE_29__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -60,7 +60,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  Button: __webpack_require__(1),
 	  Tab: __webpack_require__(8),
 	  Select: __webpack_require__(15),
-	  Tip: __webpack_require__(21)
+	  Tip: __webpack_require__(21),
+	  Table: __webpack_require__(24)
 	};
 
 /***/ },
@@ -733,6 +734,319 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"tip":"cFX55UwxlIV"};
+
+/***/ },
+/* 23 */,
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _table = __webpack_require__(25);
+
+	var _table2 = _interopRequireDefault(_table);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	_table2.default.Head = __webpack_require__(30);
+	//Table.Row = require('./row')
+	//Table.Col = require('./col')
+
+	module.exports = _table2.default;
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(17);
+
+	var _classnames = __webpack_require__(12);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _table = __webpack_require__(26);
+
+	var _table2 = _interopRequireDefault(_table);
+
+	var _lodash = __webpack_require__(28);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _reactAddonsTextContent = __webpack_require__(29);
+
+	var _reactAddonsTextContent2 = _interopRequireDefault(_reactAddonsTextContent);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Table = function (_React$Component) {
+	  _inherits(Table, _React$Component);
+
+	  function Table() {
+	    var _Object$getPrototypeO;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Table);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Table)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+	      theadHeight: 0,
+	      ths: [],
+	      trs: []
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(Table, [{
+	    key: 'handleSort',
+	    value: function handleSort(e, _ref) {
+	      var idx = _ref.idx;
+
+	      var props = _objectWithoutProperties(_ref, ['idx']);
+
+	      var _state = this.state;
+	      var ths = _state.ths;
+	      var trs = _state.trs;
+
+	      var defaultSort = ths[idx].children.props.sort;
+
+	      this.setState({
+	        ths: ths.map(function (th, i) {
+	          var children = th.children;
+
+	          var sort = children.props.sort;
+	          var isSortable = sort === true || /^(1|0)$/.test(sort);
+
+	          var newSort = i === idx ? sort === '1' ? '0' : '1' : isSortable;
+
+	          th.children = (0, _react.cloneElement)(children, _extends({}, children.props, {
+	            sort: newSort
+	          }));
+
+	          return th;
+	        }),
+
+	        trs: /^(1|0)$/.test(defaultSort) ? trs.reverse() : this.sort(idx)
+	      });
+	    }
+	  }, {
+	    key: 'sort',
+	    value: function sort(idx) {
+	      var _state2 = this.state;
+	      var trs = _state2.trs;
+	      var ths = _state2.ths;
+
+	      var sort = ths[idx].children.props.sort;
+
+	      return trs.sort(function (a, b) {
+	        a = a.tds[idx];
+	        b = b.tds[idx];
+	        var isNumber = !isNaN(b) && !isNaN(a);
+
+	        if (sort === '1') {
+	          if (isNumber) {
+	            return b - a;
+	          } else {
+	            return b.localeCompare(a);
+	          }
+	        } else {
+	          if (isNumber) {
+	            return a - b;
+	          } else {
+	            return a.localeCompare(b);
+	          }
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+
+	      var children = (0, _lodash2.default)(this.props.children);
+	      var startSortIdx = void 0;
+
+	      var data = children.reduce(function (data, c, idx) {
+	        if (c.type === 'tr') {
+	          data.trs.push({
+	            children: c,
+	            tds: c.props.children.map(function (cc) {
+	              return (0, _reactAddonsTextContent2.default)(cc);
+	            })
+	          });
+	        } else {
+	          (function () {
+	            // TableHead
+	            var sort = c.props.sort;
+
+	            var hasSort = /^(1|0)$/.test(sort);
+	            var isSortable = sort === true || hasSort;
+
+	            var props = _extends({}, c.props, {
+	              idx: idx,
+	              onClick: isSortable ? function (e) {
+	                return _this2.handleSort.call(_this2, e, props);
+	              } : undefined
+	            });
+	            data.ths.push({
+	              idx: idx,
+	              children: (0, _react.cloneElement)(c, props)
+	            });
+
+	            if (hasSort) {
+	              startSortIdx = idx;
+	            }
+	          })();
+	        }
+
+	        return data;
+	      }, { ths: [], trs: [] });
+
+	      this.state = _extends({}, this.state, data);
+
+	      if (startSortIdx !== undefined) {
+	        this.sort(startSortIdx);
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var className = _props.className;
+
+	      var props = _objectWithoutProperties(_props, ['className']);
+
+	      var _state3 = this.state;
+	      var trs = _state3.trs;
+	      var ths = _state3.ths;
+
+
+	      return _jsx('table', {
+	        className: (0, _classnames2.default)(_table2.default.table, className)
+	      }, void 0, _react2.default.createElement(
+	        'thead',
+	        { ref: 'thead' },
+	        _jsx('tr', {}, void 0, ths.map(function (th) {
+	          return th.children;
+	        }))
+	      ), _react2.default.createElement(
+	        'tbody',
+	        { ref: 'tbody' },
+	        trs.map(function (tr) {
+	          return tr.children;
+	        })
+	      ));
+	    }
+	  }]);
+
+	  return Table;
+	}(_react2.default.Component);
+
+	Table.propTypes = {
+	  height: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string])
+	};
+	Table.defaultProps = {
+	  height: 'auto'
+	};
+
+
+	module.exports = Table;
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"tableBox":"_3adlk9vGHjm","table":"_3h2fLEI1ZcU","thead":"_245PJdnTNs4","tbody":"_4r8HKg7nPG5","thHide":"_1f6KiLJ2UwR","sortable":"_3x8M3YiBwjY"};
+
+/***/ },
+/* 27 */,
+/* 28 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_28__;
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_29__;
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(12);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _table = __webpack_require__(26);
+
+	var _table2 = _interopRequireDefault(_table);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	TableHead.propTypes = {
+	  sort: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.bool])
+	};
+
+	TableHead.defaultProps = {
+	  sort: '-1'
+	};
+
+	TableHead.displayName = 'TableHead';
+
+	function TableHead(_ref) {
+	  var className = _ref.className;
+	  var children = _ref.children;
+	  var sort = _ref.sort;
+
+	  var props = _objectWithoutProperties(_ref, ['className', 'children', 'sort']);
+
+	  var css = _defineProperty({}, _table2.default.sortable, sort === true || /^(1|0)$/.test(sort));
+
+	  return _react2.default.createElement(
+	    'th',
+	    _extends({ className: (0, _classnames2.default)(className, css) }, props, { 'data-sort': sort }),
+	    children
+	  );
+	}
+
+	module.exports = TableHead;
 
 /***/ }
 /******/ ])
