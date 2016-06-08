@@ -48,7 +48,7 @@ function crawlChildren(Router) {
 
 const getRoutes = crawlChildren(routes)
 
-del.sync(['!demo/.git', 'demo/**'])
+del.sync(['!demo/.git', 'demo/*'])
 webpack(webConf, (er, stats)=> {
   console.log(stats.toString({
     colors: true

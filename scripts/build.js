@@ -8,7 +8,7 @@ import del from 'del'
 import pkg from '../package.json'
 import fs from 'fs'
 
-del.sync(['!build/.git', 'build/**'])
+del.sync(['!build/.git', 'build/*'])
 webpack(webpackConf, (er, stats)=> {
   console.log(stats.toString({
     colors: true
