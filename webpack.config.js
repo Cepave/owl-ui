@@ -46,6 +46,11 @@ module.exports = {
         test: /\.raw$/,
         loader: 'raw',
       },
+      
+      {
+        test: /\.json$/,
+        loader: 'json'
+      },
 
       {
         test: /\.styl$/,

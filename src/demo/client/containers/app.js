@@ -22,9 +22,7 @@ class App extends Component {
     return (
       <div>
         <header>
-          <h1>
-            <img className="owl-logo" src="http://157.122.99.72/statics/icon/favicon.png"/>WL UI
-          </h1>
+          <h1> OWL UI </h1>
           <span className="monospace">&lt;Component /></span>
         </header>
 
