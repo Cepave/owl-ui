@@ -13,7 +13,7 @@ Before you start, please read the [documents](https://github.com/Cepave/owl-ui/t
 ## Install
 
 ```sh
-$ npm i --save github:cepave/owl-ui#dev
+$ npm i --save github:cepave/owl-ui#v2
 ```
 
 
@@ -46,7 +46,7 @@ $ npm run dev
 
 Each component will have `__test__` directory by itself.
 
-### Run 
+### Run
 
 ```shell
 $ npm run test
