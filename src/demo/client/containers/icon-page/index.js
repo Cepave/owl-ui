@@ -38,6 +38,15 @@ class IconPage extends React.Component {
       <div>
         <H1>Icon</H1>
         <H2>Props</H2>
+        <Snippet type="js" src={require('./props.js.raw')} />
+
+        <H2>Usage</H2>
+        <Snippet type="js" src={require('./usage.js.raw')} />
+
+        <H2>Colorful</H2>
+        <p>The Icon component export as a standard svg tag, you can <Code>fill</Code> the color free</p>
+        <Snippet type="html" src={require('./fill.html.raw')} />
+        <Icon fill="#e08600" type="alarm" size={45} />
 
         <H2>Demo</H2>
         <div onFocus={this.handleFocus}>

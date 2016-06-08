@@ -1,0 +1,6 @@
+import { Icon } from 'owl-ui'
+
+<Icon type="add" size={20} />
+
+// same as [width] x [height]
+<Icon type="add" size="20x20" />
