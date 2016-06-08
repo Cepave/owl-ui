@@ -121,6 +121,7 @@ input[type="submit"]._3HT_XgJWH0W {
 }
 ._3E-4Tpyih6Q [data-role="tab-head"] > div[data-selected="1"] {
   border-bottom: 2px solid #9471db;
+  cursor: default;
 }
 ._3E-4Tpyih6Q [data-role="tab-content"] [data-selected] {
   display: none;

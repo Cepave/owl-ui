@@ -201,8 +201,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -223,7 +221,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Tab)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Tab)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {}, _this.clickTab = function (e) {
+	      e.stopPropagation();
+	      var _head = e.target;
+
+	      while (_head.dataset.role !== 'tab-head-head') {
+	        _head = _head.parentNode;
+	      }
+	      var name = _head.getAttribute('name');
+	      var selected = _this.state.selected;
+
+
+	      if (selected === name) {
+	        return;
+	      }
+
+	      _this.setState({
+	        selected: name
+	      });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(Tab, [{
@@ -243,37 +259,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return findChild && findChild.props.name || children[0].props.name;
 	    }
 	  }, {
-	    key: 'clickTab',
-	    value: function clickTab(e, _ref) {
-	      var name = _ref.name;
-
-	      e.stopPropagation();
-	      var selected = this.state.selected;
-
-	      if (selected === name) {
-	        return;
-	      }
-
-	      this.setState({
-	        selected: name
-	      });
-	    }
-	  }, {
-	    key: 'shouldComponentUpdate',
-	    value: function shouldComponentUpdate(_ref2, _ref3) {
-	      var selected = _ref3.selected;
-
-	      _objectDestructuringEmpty(_ref2);
-
-	      var state = this.state;
-
-	      return selected !== state.selected;
-	    }
-	  }, {
 	    key: 'setChildren',
 	    value: function setChildren() {
-	      var _this2 = this;
-
 	      var children = this.props.children;
 	      var selected = this.state.selected;
 
@@ -285,9 +272,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        pv[displayName].push((0, _react.cloneElement)(c, _extends({}, c.props, {
 	          key: name,
-	          onClick: displayName === 'TabHead' ? function (e) {
-	            return _this2.clickTab.call(_this2, e, c.props);
-	          } : undefined,
 	          isSelected: selected === name
 	        })));
 
@@ -311,7 +295,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'div',
 	        _extends({ className: (0, _classnames2.default)(_tab2.default.tab, className) }, props),
 	        _jsx('div', {
-	          'data-role': 'tab-head'
+	          'data-role': 'tab-head',
+	          onClick: this.clickTab
 	        }, void 0, TabHead),
 	        _jsx('div', {
 	          'data-role': 'tab-content'
@@ -374,7 +359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var props = _objectWithoutProperties(_ref, ['isSelected']);
 
 	  var selected = isSelected ? 1 : 0;
-	  return _react2.default.createElement('div', _extends({}, props, { 'data-selected': selected }));
+	  return _react2.default.createElement('div', _extends({}, props, { 'data-selected': selected, 'data-role': 'tab-head-head' }));
 	}
 
 	module.exports = TabHead;

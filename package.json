@@ -3,19 +3,6 @@
   "version": "2.0.0",
   "description": "OWL UI Components",
   "main": "dist/owl-ui.min.js",
-  "scripts": {
-    "dev": "babel-node ./scripts/dev",
-    "build": "NODE_ENV=production babel-node scripts/build",
-    "build.styl": "babel-node ./scripts/build-styl",
-    "build.demo": "WEBPACK=demo babel-node ./scripts/build-demo",
-    "build.svg": "babel-node ./scripts/build-svg",
-    "xo": "xo",
-    "test": "nyc ava",
-    "test.watch": "nyc ava -w & babel-node ./scripts/test-report",
-    "test.report": "nyc report --reporter=html && open coverage/index.html",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "postinstall": "node ./scripts/postinstall"
-  },
   "ava": {
     "require": [
       "babel-core/register",
@@ -61,6 +48,7 @@
     "coveralls": "^2.11.9",
     "css-loader": "^0.23.1",
     "css-modules-require-hook": "^4.0.1",
+    "del": "^2.2.0",
     "enzyme": "^2.3.0",
     "eslint-config-xo-react": "^0.7.0",
     "eslint-plugin-ava": "^2.4.0",
