@@ -3,13 +3,15 @@
 import '~utils/global'
 import '../src/demo/server/require-hooks'
 
+import gu from 'gulp'
 import webpack from 'webpack'
-import webConf from '../webpack.config'
+import webConf, {repoName} from '../webpack.config'
 import fs from 'fs'
 import {mkdir, rm} from 'shelljs'
 import React from 'react'
 import {renderToString} from 'react-dom/server'
 import {Provider} from 'react-redux'
+import {match, RouterContext} from 'react-router'
 import c from 'chalk'
 import routes from '../src/demo/client/containers/routes'
 import HTML from '../src/demo/server/html'
@@ -55,34 +57,41 @@ webpack(webConf, (er, stats)=> {
   }))
 
   Object.keys(getRoutes).forEach(p => {
-    const PageComponent  = (getRoutes[p])
-
     const initState = {
       app: {
+        ...require('../src/conf'),
         url: p
       }
     }
-
     const store = createStore(initState)
-    const html = renderToString(
-      <Provider store={store}>
-        <PageComponent />
-      </Provider>
-    )
-    const props = {
-      html, initState
-    }
-
-    const pageHTML = `<!DOCTYPE html>${renderToString(<HTML {...props} />)}`
-
     mkdir('-p', [`./demo${p}`])
-    const index = `./demo${p}/index.html`
-    fs.writeFile(index, pageHTML, (er)=> {
-      if (er) {
-        console.log(er)
+
+    match({ routes, location: p }, (error, redirectLocation, renderProps) => {
+      const props = {
+        html: renderToString(
+          <Provider store={store}>
+            <RouterContext {...renderProps} />
+          </Provider>
+        ),
+        initState,
       }
-      console.log(`Writing file: ${c.yellow(index)}`)
+      const pageHTML = `<!DOCTYPE html>${renderToString(<HTML {...props} />)}`
+      const index = `./demo${p}/index.html`
+      fs.writeFile(index, pageHTML, (er)=> {
+        if (er) {
+          console.log(er)
+        }
+        console.log(`Writing file: ${c.yellow(index)}`)
+      })
     })
   })
+
+  setTimeout(()=> {
+    gu.src(`demo/${repoName}/**`)
+      .pipe(gu.dest('demo'))
+      .on('finish', ()=> {
+        del(`demo/${repoName}`)
+      })
+  }, 1000)
 })
 
