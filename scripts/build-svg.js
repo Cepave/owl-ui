@@ -2,7 +2,8 @@ import gu from 'gulp'
 import svgstore from 'gulp-svgstore'
 import svgmin from 'gulp-svgmin'
 import cheerio from 'gulp-cheerio'
-import ftp from 'gulp-ftp'
+import rename from 'gulp-rename'
+import fs from 'fs'
 
 gu.src('icons/*.svg')
   .pipe(svgmin())
@@ -24,20 +25,18 @@ gu.src('icons/*.svg')
         .attr('id', 'owl-svg-icons')
 
       // remove symbol id prefix 'icon-'
+      const icons = []
       $('symbol').each((index, el) => {
         const id = $(el).attr('id')
-        $(el).attr('id', id.replace(/^icon-/, ''))
+        const newID = id.replace(/^icon-/, '')
+        $(el).attr('id', newID)
+
+        icons.push(newID)
       })
+
+      fs.writeFile('dist/owl-icons.json', JSON.stringify(icons))
     },
     parserOptions: { xmlMode: true }
   }))
+  .pipe(rename('owl-icons.svg'))
   .pipe(gu.dest('dist'))
-  .on('finish', ()=> {
-    gu.src('dist/icons.svg')
-      .pipe(ftp({
-        host: '157.122.99.72',
-        user: 'cepave_f2e',
-        pass: 'tC8cse94bKxe',
-        remotePath: '/statics'
-      }))
-  })
