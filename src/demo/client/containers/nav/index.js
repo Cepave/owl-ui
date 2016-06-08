@@ -7,7 +7,7 @@ Nav.propTypes = {}
 Nav.defaultProps = {}
 
 function Nav({app, ...props}) {
-  const page = (isNode ? app.url : location.pathname)
+  const page = (isNode ? app.url : location.pathname).replace(/\/$/, '')
 
   return (
     <nav {...props} data-page={page}>
@@ -17,7 +17,7 @@ function Nav({app, ...props}) {
           <a href="https://github.com/Cepave/owl-ui/blob/dev/docs/react-guide.md"> <span className={s.link}>development</span> </a>
         </div>
         <div className={s.blockList}>
-          <a to="https://github.com/Cepave/owl-ui/blob/dev/docs/ui-guide.md"> <span className={s.link}>testing</span></a>
+          <a href="https://github.com/Cepave/owl-ui/blob/dev/docs/ui-guide.md"> <span className={s.link}>testing</span></a>
         </div>
       </div>
 
