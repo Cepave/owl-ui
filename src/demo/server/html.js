@@ -35,10 +35,10 @@ function HTML({html, initState, ...props}) {
       <head>
         <title>OWL UI Component</title>
         <link rel="icon" href="//light.owl.fastweb.com.cn/statics/icon/favicon.png" />
+        {linkCSS()}
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,300,200" rel="stylesheet" />
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,100italic,100,300italic,500,500italic,300,400italic,700,900italic,900,700italic' rel='stylesheet' type='text/css' />
         <link rel="stylesheet" href="//codemirror.net/theme/neo.css" />
-        {linkCSS()}
         <script dangerouslySetInnerHTML={{__html: `
           window.__STATE = ${JSON.stringify(initState)}
         `}} />
