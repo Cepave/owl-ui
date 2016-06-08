@@ -4,7 +4,7 @@ import {H1, H2, H3, H4, Code, Snippet,
   Quote, List} from '../../components/markdown'
 
 import Icon from '~com/icon'
-import icons from '../../../../../dist/owl-icons.json'
+import icons from '../../../../../build/dist/owl-icons.json'
 
 class IconPage extends React.Component {
   static propTypes = {}

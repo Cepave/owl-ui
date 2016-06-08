@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import {isDev} from '../../../webpack.config'
 import fs from 'fs'
-const icons = fs.readFileSync(`${process.cwd()}/dist/owl-icons.svg`)
+const icons = fs.readFileSync(`${process.cwd()}/build/dist/owl-icons.svg`)
 
 HTML.propTypes = {}
 HTML.defaultProps = {
