@@ -1,20 +1,20 @@
-nav[data-page="/icon"] a[href="/icon"],
-nav[data-page="/checkbox"] a[href="/checkbox"],
-nav[data-page="/button"] a[href="/button"],
-nav[data-page="/select"] a[href="/select"],
-nav[data-page="/tab"] a[href="/tab"],
-nav[data-page="/table"] a[href="/table"],
-nav[data-page="/tip"] a[href="/tip"] {
+nav[data-page$="/icon"] a[href$="/icon"],
+nav[data-page$="/checkbox"] a[href$="/checkbox"],
+nav[data-page$="/button"] a[href$="/button"],
+nav[data-page$="/select"] a[href$="/select"],
+nav[data-page$="/tab"] a[href$="/tab"],
+nav[data-page$="/table"] a[href$="/table"],
+nav[data-page$="/tip"] a[href$="/tip"] {
   border-right: 3px solid #5b4b7d;
   cursor: default;
 }
-nav[data-page="/icon"] a[href="/icon"]:hover ._2rMCs-zoeYD,
-nav[data-page="/checkbox"] a[href="/checkbox"]:hover ._2rMCs-zoeYD,
-nav[data-page="/button"] a[href="/button"]:hover ._2rMCs-zoeYD,
-nav[data-page="/select"] a[href="/select"]:hover ._2rMCs-zoeYD,
-nav[data-page="/tab"] a[href="/tab"]:hover ._2rMCs-zoeYD,
-nav[data-page="/table"] a[href="/table"]:hover ._2rMCs-zoeYD,
-nav[data-page="/tip"] a[href="/tip"]:hover ._2rMCs-zoeYD {
+nav[data-page$="/icon"] a[href$="/icon"]:hover ._2rMCs-zoeYD,
+nav[data-page$="/checkbox"] a[href$="/checkbox"]:hover ._2rMCs-zoeYD,
+nav[data-page$="/button"] a[href$="/button"]:hover ._2rMCs-zoeYD,
+nav[data-page$="/select"] a[href$="/select"]:hover ._2rMCs-zoeYD,
+nav[data-page$="/tab"] a[href$="/tab"]:hover ._2rMCs-zoeYD,
+nav[data-page$="/table"] a[href$="/table"]:hover ._2rMCs-zoeYD,
+nav[data-page$="/tip"] a[href$="/tip"]:hover ._2rMCs-zoeYD {
   border-bottom-color: transparent;
 }
 nav {
