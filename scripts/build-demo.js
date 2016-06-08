@@ -12,7 +12,7 @@ import {renderToString} from 'react-dom/server'
 import {Provider} from 'react-redux'
 import c from 'chalk'
 import routes from '../src/demo/client/containers/routes'
-import renerHTML from '../src/demo/server/render-html'
+import HTML from '../src/demo/server/html'
 import createStore from '../src/demo/client/redux/create'
 
 const cwd = process.cwd()
@@ -62,22 +62,18 @@ webpack(webConf, (er, stats)=> {
         url: p
       }
     }
-    let html
-    if (p === '/') {
-      const store = createStore(initState)
-      html = renderToString(
-        <Provider store={store}>
-          <PageComponent />
-        </Provider>
-      )
-    } else {
-      html = renderToString(<PageComponent />)
+
+    const store = createStore(initState)
+    const html = renderToString(
+      <Provider store={store}>
+        <PageComponent />
+      </Provider>
+    )
+    const props = {
+      html, initState
     }
 
-    const pageHTML = renerHTML({
-      html,
-      state: initState
-    })
+    const pageHTML = `<!DOCTYPE html>${renderToString(<HTML {...props} />)}`
 
     mkdir('-p', [`./demo${p}`])
     const index = `./demo${p}/index.html`

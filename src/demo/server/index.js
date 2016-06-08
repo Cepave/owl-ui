@@ -9,7 +9,7 @@ const server = express()
 
 server
   .use('/static', express.static(`${cwd}/static`))
-  .use(require('./html'))
+  .use(require('./html-mid'))
   .listen(3000, ()=> {
     console.log(`🌎 Server is listening ${c.cyan(3000)}`)
   })
