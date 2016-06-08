@@ -14,7 +14,7 @@ import c from 'chalk'
 import routes from '../src/demo/client/containers/routes'
 import HTML from '../src/demo/server/html'
 import createStore from '../src/demo/client/redux/create'
-
+import del from 'del'
 const cwd = process.cwd()
 
 function crawlChildren(Router) {
@@ -48,7 +48,7 @@ function crawlChildren(Router) {
 
 const getRoutes = crawlChildren(routes)
 
-rm('-r', ['demo'])
+del.sync(['!demo/.git', 'demo/**'])
 webpack(webConf, (er, stats)=> {
   console.log(stats.toString({
     colors: true

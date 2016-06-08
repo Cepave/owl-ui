@@ -4,10 +4,11 @@ import webpackConf from '../webpack.config'
 import uglify from 'gulp-uglify'
 import clean from 'gulp-clean-css'
 import rename from 'gulp-rename'
-import {rm} from 'shelljs'
+import del from 'del'
+import pkg from '../package.json'
+import fs from 'fs'
 
-rm('-r', ['build'])
-
+del.sync(['!build/.git', 'build/**'])
 webpack(webpackConf, (er, stats)=> {
   console.log(stats.toString({
     colors: true
@@ -32,8 +33,9 @@ webpack(webpackConf, (er, stats)=> {
     }))
     .pipe(gudest())
 
-  gu.src(['package.json'])
-    .pipe(gu.dest('build'))
+  const {scripts, ...packageJSON} = pkg
+
+  fs.writeFile(`build/package.json`, JSON.stringify(packageJSON, null, 2))
 
   gu.src('src/stylus/**', {base: './src'})
     .pipe(gu.dest('build'))
