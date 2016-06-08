@@ -34,18 +34,18 @@ a
 
 header
   height: 280px
-  padding 0 50px
-  display: flex
-  align-items center
-  justify-content center
+  padding: 50px
   background-image: linear-gradient(to right, rgb(89, 10, 170), rgb(140, 205, 255))
   color #fff
   font-size 30px
   position: relative
   h1
+    margin: 0
+    padding: 0
     font-size: 47px
     margin-right: 20px
     position: relative
+    flex-direction column
 
 nav
   border-right 1px solid #E9E9E9
@@ -54,6 +54,7 @@ nav
 
 footer
   text-align: center
+  padding-bottom: 20px
 
 :global(.monospace)
   font-family: 'Source Code Pro', 'monospace'
@@ -71,3 +72,20 @@ footer
     padding 0 20px
     padding-right: 0
     flex 1
+.hrow
+  align-items center
+  justify-content center
+  display: flex
+  flex-direction row
+  margin-bottom: 20px
+.ghostBtn
+  font-size: 14px
+  display: inline-block
+  padding 8px 12px
+  border 1px solid #fff
+  color: #fff
+  border-radius: 3px
+
+.badges
+  img
+    margin 0 4px

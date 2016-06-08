@@ -46,7 +46,7 @@ module.exports = {
         test: /\.raw$/,
         loader: 'raw',
       },
-      
+
       {
         test: /\.json$/,
         loader: 'json'
@@ -78,6 +78,7 @@ module.exports = {
   },
   resolve: {
     alias: isDemo ? {
+      'react': 'react/dist/react.min.js',
       'react-dom': 'react-dom/dist/react-dom.min.js',
       'react-redux': 'react-redux/dist/react-redux.min.js',
       'redux': 'redux/dist/redux.min.js',
