@@ -15,18 +15,19 @@ const conf = {
   isDemo, isProd, isDev,
   cssLocalIdentName: '[name]-[local]-[hash:base64:5]',
   publicPath: '//localhost:3001/',
+  ...require('./src/conf'),
 }
 
 module.exports = {
   ...conf,
   entry: {
-    'owl-ui': !isProd
+    [conf.repoName]: !isProd
       ? ['./src/demo/client'].concat(isDemo ? [] : [`webpack-hot-middleware/client?path=${conf.publicPath}__webpack_hmr`])
       : './src/components'
   },
   output: {
-    path: isProd ? `${__dirname}/build/dist` : isDemo ? `${__dirname}/demo` : `${__dirname}/static`,
-    filename: '[name].js',
+    path: isProd ? `${__dirname}/build/dist` : isDemo ? `${__dirname}/demo/${conf.repoName}` : `${__dirname}/static`,
+    filename: isDemo ? 'demo.js' : '[name].js',
     library: 'OWLUI',
     libraryTarget: 'umd',
     publicPath: conf.publicPath
@@ -105,7 +106,7 @@ module.exports = {
       ]
     :
       [
-        new ExtractText('owl-ui.css'),
+        new ExtractText( isDemo ? 'demo.css' : 'owl-ui.css'),
       ]
   ),
   watch: isDev,
