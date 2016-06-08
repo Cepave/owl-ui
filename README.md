@@ -6,10 +6,6 @@
 
 
 
-## Develop Guide
-
-Before you start, please read the [documents](https://github.com/Cepave/owl-ui/tree/dev/docs).
-
 ## Install
 
 ```sh
@@ -41,6 +37,11 @@ $ npm run dev
 ```
 
 
+### Guide
+
+Before you start, please read the [documents](https://github.com/Cepave/owl-ui/tree/dev/docs).
+
+
 
 ## Test
 
@@ -50,6 +51,32 @@ Each component will have `__test__` directory by itself.
 
 ```shell
 $ npm run test
+```
+
+
+
+## Build
+
+It will output `build` folder and matchs to `v2` branch.
+
+```sh
+$ npm run build
+```
+
+### Demo
+
+It will output `demo` folder and matchs to `gh-pages` branch.
+
+```sh
+$ npm run build.demo
+```
+
+#### Icons svg
+
+Downloads from `157.122.99.72/icons.v2` first, then run it:
+
+```sh
+$ npm run build.svg
 ```
 
 
