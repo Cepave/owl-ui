@@ -34,9 +34,9 @@ gu.src('icons/*.svg')
         icons.push(newID)
       })
 
-      fs.writeFile('dist/owl-icons.json', JSON.stringify(icons))
+      fs.writeFile('build/dist/owl-icons.json', JSON.stringify(icons))
     },
     parserOptions: { xmlMode: true }
   }))
   .pipe(rename('owl-icons.svg'))
-  .pipe(gu.dest('dist'))
+  .pipe(gu.dest('build/dist'))

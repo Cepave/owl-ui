@@ -25,7 +25,7 @@ module.exports = {
       : './src/components'
   },
   output: {
-    path: isProd ? `${__dirname}/dist` : isDemo ? `${__dirname}/demo` : `${__dirname}/static`,
+    path: isProd ? `${__dirname}/build/dist` : isDemo ? `${__dirname}/demo` : `${__dirname}/static`,
     filename: '[name].js',
     library: 'OWLUI',
     libraryTarget: 'umd',
