@@ -14,10 +14,10 @@ function Nav({app, ...props}) {
       <div className={s.block}>
         <b>Guide</b>
         <div className={s.blockList}>
-          <Link to="/checkbox"> <span className={s.link}>組件開發</span> </Link>
+          <a href="https://github.com/Cepave/owl-ui/blob/dev/docs/react-guide.md"> <span className={s.link}>development</span> </a>
         </div>
         <div className={s.blockList}>
-          <Link to="/icon"> <span className={s.link}>組件測試</span></Link>
+          <a to="https://github.com/Cepave/owl-ui/blob/dev/docs/ui-guide.md"> <span className={s.link}>testing</span></a>
         </div>
       </div>
 
@@ -44,33 +44,13 @@ function Nav({app, ...props}) {
           </Link>
         </div>
         <div className={s.blockList}>
-          <Link to="/checkbox">
-            <span className={`monospace ${s.link}`}>&lt;Checkbox /></span>
-          </Link>
-        </div>
-        <div className={s.blockList}>
           <Link to="/table">
             <span className={`monospace ${s.link}`}>&lt;Table /></span>
           </Link>
         </div>
         <div className={s.blockList}>
-          <Link to="/dropdown">
-            <span className={`monospace ${s.link}`}>&lt;Dropdown /></span>
-          </Link>
-        </div>
-        <div className={s.blockList}>
-          <Link to="/dropdown">
-            <span className={`monospace ${s.link}`}>&lt;Input /></span>
-          </Link>
-        </div>
-        <div className={s.blockList}>
           <Link to="/button">
             <span className={`monospace ${s.link}`}>&lt;Button /></span>
-          </Link>
-        </div>
-        <div className={s.blockList}>
-          <Link to="/dropdown">
-            <span className={`monospace ${s.link}`}>&lt;Radio /></span>
           </Link>
         </div>
       </div>
