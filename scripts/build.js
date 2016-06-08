@@ -6,29 +6,35 @@ import clean from 'gulp-clean-css'
 import rename from 'gulp-rename'
 import {rm} from 'shelljs'
 
-rm('-r', ['dist'])
+rm('-r', ['build'])
 
 webpack(webpackConf, (er, stats)=> {
   console.log(stats.toString({
     colors: true
   }))
 
-  const dist = ()=> {
-    return gu.dest('dist')
+  const dist = 'build/dist'
+  const gudest   = ()=> {
+    return gu.dest(dist)
   }
 
-  gu.src('dist/*.js')
+  gu.src(`${dist}/*.js`)
     .pipe(uglify())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(dist())
+    .pipe(gudest())
 
-  gu.src('dist/*.css')
+  gu.src(`${dist}/*.css`)
     .pipe(clean())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(dist())
-})
+    .pipe(gudest())
 
+  gu.src(['package.json'])
+    .pipe(gu.dest('build'))
+
+  gu.src('src/stylus/**', {base: './src'})
+    .pipe(gu.dest('build'))
+})
