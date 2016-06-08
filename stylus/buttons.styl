@@ -1,0 +1,55 @@
+// buttons
+$inilneBtn
+  .btn + .btn
+    margin-left: 15px
+.btn
+  display: inline-block
+  line-height: 1.4285
+  padding: 7px auto
+  cursor: pointer
+  text-align: center
+  font-weight: 400
+  border: 1px solid transparent
+  &:focus
+    outline: none
+  &.-primary
+    background: $palette.grayDark
+    color: $palette.white
+    border: 1px solid $palette.grayDark
+    &.btn[disabled]
+      background: $black-15
+  &.-secondary
+    background: transparent
+    border: 1px solid $palette.grayDark
+    color: $palette.grayDarker
+  &.-inital
+    background: $colorPrimaryDark
+    border: 1px solid $colorPrimaryDark
+    color: $white
+    &:hover
+      background: $colorPrimary
+      border: 1px solid $colorPrimary
+    &.btn[disabled]
+      background: $palette.grayDarker
+  &.-normal
+    background: $palette.white
+    border: 1px solid $colorPrimaryDark
+    color: $colorPrimaryDark
+    &:hover
+      border: 1px solid $colorPrimaryLight
+      color: $colorPrimary
+    &.btn[disabled]
+      border: 1px solid $black-15
+      background: $palette.white
+
+  &.-block
+    @extend .full-width
+
+  &-group
+    @extend $inilneBtn
+    &.pull-right
+      text-align: right
+    &.pull-left
+      text-align: left
+    &.pull-center
+      text-align: center
