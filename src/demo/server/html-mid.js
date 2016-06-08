@@ -9,7 +9,8 @@ import HTML from './html'
 module.exports = (req, res, next)=> {
   const initState = {
     app: {
-      url: req.url
+      ...require('../../conf'),
+      url: req.url,
     }
   }
   const store = createStore(initState)
@@ -34,7 +35,7 @@ module.exports = (req, res, next)=> {
         `<!DOCTYPE html>${renderToString(<HTML {...props} />)}`
       )
     } else {
-      res.status(404).send('Not found')
+      res.status(404).send(`Cannot found: ${req.url}`)
     }
   })
 }
