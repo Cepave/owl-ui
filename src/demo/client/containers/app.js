@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import Action from '../actions'
-import {Link, browserHistory} from 'react-router'
 import Nav from './nav'
 import cx from 'classnames'
 import s from './app.styl'
@@ -18,7 +17,8 @@ class App extends Component {
 
   render() {
     const {action, rootState, children, ...props} = this.props
-
+    
+    const content = children ? children : require('./change-log') 
     return (
       <div>
         <header>
@@ -48,7 +48,7 @@ class App extends Component {
         <div className="fbox-content">
           <Nav app={rootState.app} />
           <section className="doc-content">
-            {children}
+            {content}
           </section>
         </div>
 
