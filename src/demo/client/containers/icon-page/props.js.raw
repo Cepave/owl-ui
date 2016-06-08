@@ -1,0 +1,9 @@
+Icon.propTypes = {
+  type: string,
+  size: oneOfType(string, number),
+}
+
+Icon.defaultProps = {
+  type: 'add',
+  size: 16
+}

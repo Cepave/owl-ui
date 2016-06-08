@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react'
 import {isDev} from '../../../webpack.config'
+import fs from 'fs'
+const icons = fs.readFileSync(`${process.cwd()}/dist/owl-icons.svg`)
 
 HTML.propTypes = {}
 HTML.defaultProps = {
@@ -43,6 +45,7 @@ function HTML({html, initState, ...props}) {
       </head>
 
       <body>
+        <div dangerouslySetInnerHTML={{__html: icons}} />
         <div id="app" dangerouslySetInnerHTML={{__html: html}} />
         {scriptSrc()}
       </body>

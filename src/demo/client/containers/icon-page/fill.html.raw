@@ -1,0 +1,3 @@
+import { Icon } from 'owl-ui'
+
+<Icon fill="#e08600" type="alarm" size={45} />
