@@ -9,6 +9,7 @@
     "build.styl": "babel-node ./scripts/build-styl",
     "build.demo": "WEBPACK=demo babel-node ./scripts/build-demo",
     "build.svg": "babel-node ./scripts/build-svg",
+    "demo.server": "babel-node ./dev/demo-server",
     "xo": "xo",
     "test": "nyc ava",
     "test.watch": "nyc ava -w & babel-node ./scripts/test-report",

@@ -32,15 +32,21 @@ import {Tab, Select, Tip} from 'owl-ui.v2'
 
 ## Development
 
-```sh
-$ npm run dev
-```
-
 
 ### Guide
 
 Before you start, please read the [documents](https://github.com/Cepave/owl-ui/tree/dev/docs).
 
+
+
+### Dev Server
+
+Starts the dev server: `localhost:3000/owl-ui`
+
+
+```sh
+$ npm run dev
+```
 
 
 ## Test

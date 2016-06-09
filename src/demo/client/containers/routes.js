@@ -8,10 +8,11 @@ import TipPage from './tip-page'
 import SelectPage from './select-page'
 import TabPage from './tab-page'
 import TablePage from './table-page'
+import conf from '../../../conf'
 
 module.exports = (
   <Router history={browserHistory}>
-    <Route path="/" component={App}>
+    <Route path={`/${conf.repoName}`} component={App}>
       <Route path="button" component={ButtonPage} />
       <Route path="table" component={TablePage} />
       <Route path="tab" component={TabPage} />
