@@ -21,9 +21,16 @@ class Tab extends React.Component {
     return findChild && findChild.props.name || children[0].props.name
   }
 
-  clickTab(e, {name}){
+  clickTab = (e) => {
     e.stopPropagation()
+    let _head = e.target
+
+    while (_head.dataset.role !== 'tab-head-head') {
+      _head = _head.parentNode
+    }
+    const name = _head.getAttribute('name')
     const {selected} = this.state
+
     if (selected === name) {
       return
     }
@@ -31,11 +38,6 @@ class Tab extends React.Component {
     this.setState({
       selected: name
     })
-  }
-
-  shouldComponentUpdate({}, {selected}) {
-    const {state} = this
-    return selected !== state.selected
   }
 
   setChildren() {
@@ -49,7 +51,6 @@ class Tab extends React.Component {
       pv[displayName].push(cloneElement(c, {
         ...c.props,
         key: name,
-        onClick: displayName === 'TabHead' ? e => ::this.clickTab(e, c.props) : undefined,
         isSelected: selected === name
       }))
 
@@ -62,7 +63,7 @@ class Tab extends React.Component {
     const {TabHead, TabContent} = this.setChildren()
     return (
       <div className={css(s.tab, className)} {...props}>
-        <div data-role="tab-head">
+        <div data-role="tab-head" onClick={this.clickTab}>
           {TabHead}
         </div>
         <div data-role="tab-content">
