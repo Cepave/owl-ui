@@ -16,8 +16,10 @@ class Table extends React.Component {
     height: 'auto'
   }
 
+  isSorting = false
   state = {
     theadHeight: 0,
+    isSorting: false,
     ths: [],
     trs: [],
   }
@@ -26,6 +28,7 @@ class Table extends React.Component {
     const {ths, trs} = this.state
     const defaultSort = ths[idx].children.props.sort
 
+    this.isSorting = true
     this.setState({
       ths: ths.map((th, i)=> {
         const {children} = th
@@ -71,7 +74,7 @@ class Table extends React.Component {
     })
   }
 
-  componentWillMount() {
+  getRows() {
     const children = flatten(this.props.children)
     let startSortIdx
 
@@ -112,19 +115,28 @@ class Table extends React.Component {
     if (startSortIdx !== undefined) {
       this.sort(startSortIdx)
     }
+
+    return data
   }
 
   render() {
-    const {className, ...props} = this.props
-    const {trs, ths} = this.state
+    const { className, ...props } = this.props
 
+    if (!this.isSorting) {
+      this.getRows()
+    }
+
+    const { trs, ths } = this.state
     return (
       <table className={cx(s.table, className)}>
         <thead ref="thead"><tr>{ths.map(th => th.children)}</tr></thead>
         <tbody ref="tbody">{trs.map(tr => tr.children)}</tbody>
       </table>
     )
+  }
 
+  componentDidUpdate() {
+    this.isSorting = false
   }
 }
 
