@@ -225,9 +225,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      e.stopPropagation();
 	      var _head = e.target;
 
-	      while (_head.dataset.role !== 'tab-head-head') {
-	        _head = _head.parentNode;
+	      if (_head.dataset) {
+	        while (_head.dataset.role !== 'tab-head-head') {
+	          _head = _head.parentNode;
+	        }
 	      }
+
 	      var name = _head.getAttribute('name');
 	      var selected = _this.state.selected;
 
@@ -784,8 +787,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Table)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Table)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.isSorting = false, _this.state = {
 	      theadHeight: 0,
+	      isSorting: false,
 	      ths: [],
 	      trs: []
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -804,6 +808,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var defaultSort = ths[idx].children.props.sort;
 
+	      this.isSorting = true;
 	      this.setState({
 	        ths: ths.map(function (th, i) {
 	          var children = th.children;
@@ -853,8 +858,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
+	    key: 'getRows',
+	    value: function getRows() {
 	      var _this2 = this;
 
 	      var children = (0, _lodash2.default)(this.props.children);
@@ -901,6 +906,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (startSortIdx !== undefined) {
 	        this.sort(startSortIdx);
 	      }
+
+	      return data;
 	    }
 	  }, {
 	    key: 'render',
@@ -910,10 +917,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var props = _objectWithoutProperties(_props, ['className']);
 
+	      if (!this.isSorting) {
+	        this.getRows();
+	      }
+
 	      var _state3 = this.state;
 	      var trs = _state3.trs;
 	      var ths = _state3.ths;
-
 
 	      return _jsx('table', {
 	        className: (0, _classnames2.default)(_table2.default.table, className)
@@ -930,6 +940,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	          return tr.children;
 	        })
 	      ));
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      this.isSorting = false;
 	    }
 	  }]);
 
