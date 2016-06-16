@@ -1,14 +1,16 @@
-$pd = 10px
+$pd = 12px
 $height = 34px
 
 .select
+  display: inline-block
   background-color: $palette.white
-  border 1px solid rgba(0,0,0,.2)
+  border: 1px solid $palette.grayLight
   cursor pointer
   &:focus
     outline: none
     .optionBox:after
-      box-shadow: inset 0 0 2px $palette.purpleLight
+      border: 1px solid $palette.primaryLight
+      box-shadow: inset 0 0 2px rgba($palette.primaryLight, .2), 0 1px 2px rgba(0,0,0, .05)
 .disabled
   opacity .5
   cursor no-drop
@@ -17,7 +19,7 @@ $height = 34px
 .selectOpen
   position: relative
   .arrow
-    transform rotate(-225deg)
+    transform: rotate(-225deg)
     margin-top 0
 .optionBox
   position: absolute
@@ -27,6 +29,7 @@ $height = 34px
   left: -1px
   right: -1px
   z-index: 999
+
   &:after
     content ''
     position: absolute
@@ -40,21 +43,32 @@ $height = 34px
   position: relative
   color: #a0a0a0
   padding 6px $pd
-  &:hover
-    color: #000
+  &:hover:before
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    width: 4px
+    height: 100%
+    background: $palette.primaryLight
+  &:active
+    background: $palette.primaryLight
+    color: $palette.grayLightest
 
 .title
   height: $height
   position: relative
   display: flex
-  padding-left $pd
+  padding-left: $pd
+  padding-right: $pd
   align-items center
   justify-content space-between
 .titleRight
-  padding-right: $pd
+  margin-left: 20px
+  float: right
 .arrow
   $size = 12px
-  $bcolor = 2px solid #000
+  $bcolor = 2px solid $palette.grayLight
   transition all .2s
   width: $size
   height: $size
