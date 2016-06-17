@@ -25,12 +25,15 @@ class Tab extends React.Component {
     e.stopPropagation()
     let _head = e.target
 
+    if (_head === e.currentTarget) {
+      return
+    }
+
     if (_head.dataset) {
       while (_head.dataset.role !== 'tab-head-head') {
         _head = _head.parentNode
       }
     }
-    
     const name = _head.getAttribute('name')
     const {selected} = this.state
 
