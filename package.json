@@ -161,5 +161,18 @@
       "import-order/import-order": 0,
       "no-multiple-empty-lines": 0
     }
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cepave/owl-ui.git"
+  },
+  "keywords": ["ui", "component", "components", "owl", "cepave", "monitor"],
+  "bugs": {
+    "url": "https://github.com/Cepave/owl-ui/issues"
+  },
+  "homepage": "https://github.com/Cepave/owl-ui#readme"
 }
