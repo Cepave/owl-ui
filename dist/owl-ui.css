@@ -114,9 +114,9 @@ input[type="submit"]._3HT_XgJWH0W {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  cursor: pointer;
 }
 ._3E-4Tpyih6Q [data-role="tab-head"] > div {
+  cursor: pointer;
   padding: 5px 16px;
 }
 ._3E-4Tpyih6Q [data-role="tab-head"] > div[data-selected="1"] {

@@ -225,12 +225,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      e.stopPropagation();
 	      var _head = e.target;
 
+	      if (_head === e.currentTarget) {
+	        return;
+	      }
+
 	      if (_head.dataset) {
 	        while (_head.dataset.role !== 'tab-head-head') {
 	          _head = _head.parentNode;
 	        }
 	      }
-
 	      var name = _head.getAttribute('name');
 	      var selected = _this.state.selected;
 
