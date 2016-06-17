@@ -7,6 +7,7 @@ import rename from 'gulp-rename'
 import del from 'del'
 import pkg from '../package.json'
 import fs from 'fs'
+import pick from 'lodash.pick'
 
 del.sync([
   '!build/.git',
@@ -37,7 +38,10 @@ webpack(webpackConf, (er, stats)=> {
     }))
     .pipe(gudest())
 
-  const {scripts, ...packageJSON} = pkg
+  const packageJSON = pick(pkg, ['name', 'dependencies',
+    'license', 'author', 'version', 'main', 'description',
+    'repository', 'keywords', 'bugs', 'homepage'
+  ])
 
   fs.writeFile(`build/package.json`, JSON.stringify(packageJSON, null, 2))
 
