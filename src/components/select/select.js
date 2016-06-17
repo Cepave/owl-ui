@@ -29,7 +29,7 @@ class Select extends React.Component {
 
   componentWillMount() {
     const selectedChild = this.findSelected()
-    this._value = selectedChild.props.value
+    this.value = selectedChild.props.value
     this._title = selectedChild.props.children
   }
 
@@ -69,8 +69,8 @@ class Select extends React.Component {
     e.stopPropagation()
     const {value, children} = child.props
 
-    if (value !== this._value) {
-      this._value = value
+    if (value !== this.value) {
+      this.value = value
       this.props.onChange(e, {value})
     }
 
