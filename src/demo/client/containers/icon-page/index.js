@@ -4,7 +4,6 @@ import {H1, H2, H3, H4, Code, Snippet,
   Quote, List} from '../../components/markdown'
 
 import Icon from '~com/icon'
-import icons from '../../../../../build/dist/owl-icons.json'
 
 class IconPage extends React.Component {
   static propTypes = {}
@@ -50,7 +49,7 @@ class IconPage extends React.Component {
 
         <H2>Demo</H2>
         <div onFocus={this.handleFocus}>
-          {icons.map((id, i)=> {
+          {__icons.map((id, i)=> {
             return (
               <div className={s.iconBox} tabIndex={i+1}>
                 <Icon type={id} size={25} />

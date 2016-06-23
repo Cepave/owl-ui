@@ -2,6 +2,7 @@ import webpack from 'webpack'
 import ExtractText from 'extract-text-webpack-plugin'
 import pkg from './package.json'
 import koutoSwiss from 'kouto-swiss'
+import glob from 'glob'
 
 const webpackEnv = process.env.WEBPACK
 const NODE_ENV = process.env.NODE_ENV
@@ -9,7 +10,6 @@ const NODE_ENV = process.env.NODE_ENV
 const isDemo = webpackEnv === 'demo'
 const isProd = NODE_ENV === 'production'
 const isDev = !webpackEnv && !isProd && !isDemo
-//console.log({isDev, isDemo, isProd})
 
 const conf = {
   isDemo, isProd, isDev,
@@ -18,8 +18,14 @@ const conf = {
   ...require('./src/conf'),
 }
 
+const __icons = glob.sync('assets/icons/*.svg').map(icon => {
+  return icon.replace(/^assets\/icons\//, '')
+    .replace(/(^icon-)|(\.svg$)/g, '')
+})
+
 module.exports = {
   ...conf,
+  __icons,
   entry: {
     [conf.repoName]: !isProd
       ? ['./src/demo/client'].concat(isDemo ? [] : [`webpack-hot-middleware/client?path=${conf.publicPath}__webpack_hmr`])
@@ -95,6 +101,7 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({
+      __icons: JSON.stringify(__icons),
       __isNode: false,
       __isDev: isDev,
     })
