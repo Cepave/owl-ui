@@ -1,6 +1,7 @@
 import React from 'react'
 import {findDOMNode} from 'react-dom'
 import s from './snippet.styl'
+import Icon from '~com/icon'
 
 const typeMap = {
   js: 'javascript',
@@ -45,7 +46,9 @@ class Code extends React.Component {
 
     return (
       <div {...props} className={s.code}>
-        <div className={s.copyBtn} ref="copyBtn" data-clipboard-text={src}>copy</div>
+        <div className={s.copyBtn} ref="copyBtn" data-clipboard-text={src}>
+          <Icon type={'clipboard'} size={20}/> Copy
+        </div>
         <pre ref="output" className="cm-s-neo"/>
       </div>
     )

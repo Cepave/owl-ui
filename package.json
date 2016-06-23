@@ -113,7 +113,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "delegate": "^3.0.1",
+    "delegate-to": "^0.1.1",
     "kouto-swiss": "^0.12.0",
     "lodash.flatten": "^4.2.0",
     "lodash.isequal": "^4.2.0",

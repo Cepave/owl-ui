@@ -10,6 +10,12 @@ $fs15
 
 *, *:after, *:before
   box-sizing: border-box
+
+a
+  text-decoration: none
+  color: $palette.primaryDark
+  &:hover
+    text-decoration: underline
 :global(.doc-content)
   h1
     font-size: 2em
@@ -26,11 +32,6 @@ body
   font: 16px/1.2 'Roboto', 'sans-serif'
   font-weight 300
   color #555
-a
-  text-decoration none
-  color #555
-  &:hover
-    color: #59497B
 
 header
   height: 280px
