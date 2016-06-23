@@ -2,13 +2,13 @@
   "name": "owl-ui.v2",
   "dependencies": {
     "classnames": "^2.2.5",
+    "delegate-to": "^0.1.1",
     "kouto-swiss": "^0.12.0",
     "lodash.flatten": "^4.2.0",
     "lodash.isequal": "^4.2.0",
     "react": "^15.1.0",
     "react-addons-text-content": "0.0.4",
-    "react-dom": "^15.1.0",
-    "react-tag": "^2.2.5"
+    "react-dom": "^15.1.0"
   },
   "license": "MIT",
   "author": "Rocky Wu <rwu@cepave.com>",

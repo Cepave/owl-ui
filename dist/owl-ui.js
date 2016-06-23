@@ -446,8 +446,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-	function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
-
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -470,38 +468,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Select)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-	      isOpen: false,
-	      title: ''
-	    }, _this.onBlur = function (e) {
-	      _this.setState({
-	        isOpen: false
-	      });
-	    }, _this.onChange = function (e, child) {
-	      e.stopPropagation();
-	      var _child$props = child.props;
-	      var value = _child$props.value;
-	      var children = _child$props.children;
-
-
-	      if (value !== _this._value) {
-	        _this._value = value;
-	        _this.props.onChange(e, { value: value });
-	      }
-
-	      _this.setState({
-	        isOpen: false,
-	        title: children
-	      });
-	    }, _this.toggleMenu = function (e) {
-	      e.stopPropagation();
-	      if (_this.props.isDisabled) {
-	        return;
-	      }
-	      _this.setState({
-	        isOpen: !_this.state.isOpen
-	      });
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Select)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _initialiseProps.call(_this), _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(Select, [{
@@ -512,13 +479,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return children.find(function (c) {
 	        return c.props.isSelected;
 	      }) || children[0];
-	    }
-	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      var selectedChild = this.findSelected();
-	      this._value = selectedChild.props.value;
-	      this._title = selectedChild.props.children;
 	    }
 	  }, {
 	    key: 'renderOptions',
@@ -543,33 +503,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  }, {
-	    key: 'shouldComponentUpdate',
-	    value: function shouldComponentUpdate(_ref, _ref2) {
-	      _objectDestructuringEmpty(_ref2);
-
-	      _objectDestructuringEmpty(_ref);
-
-	      return true;
-	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      var select = (0, _reactDom.findDOMNode)(this);
-	      var isOpen = this.state.isOpen;
-
-
-	      if (isOpen) {
-	        select.focus();
-	      }
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _selectCSS;
 
-	      var _state = this.state;
-	      var isOpen = _state.isOpen;
-	      var title = _state.title;
+	      var isOpen = this.state.isOpen;
 	      var _props = this.props;
 	      var isDisabled = _props.isDisabled;
 	      var className = _props.className;
@@ -577,6 +515,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var props = _objectWithoutProperties(_props, ['isDisabled', 'className']);
 
 	      var selectCSS = (_selectCSS = {}, _defineProperty(_selectCSS, _select2.default.selectOpen, isOpen), _defineProperty(_selectCSS, _select2.default.disabled, isDisabled), _selectCSS);
+
+	      if (!this._isSetState) {
+	        var selectedChild = this.findSelected();
+	        this.state.title = selectedChild.props.children;
+	        this.value = selectedChild.props.value;
+	      }
+	      var title = this.state.title;
+
 
 	      return _react2.default.createElement(
 	        'div',
@@ -588,16 +534,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _jsx('div', {
 	          className: _select2.default.title,
 	          onClick: this.toggleMenu
-	        }, void 0, _jsx('div', {}, void 0, title || this._title), _jsx('div', {
+	        }, void 0, _jsx('div', {
+	          className: _select2.default.titleText
+	        }, void 0, title), _jsx('div', {
 	          className: _select2.default.titleRight
 	        }, void 0, _jsx('div', {
 	          className: _select2.default.arrow
 	        }))),
 	        _jsx('div', {
-	          className: _select2.default.optionBox,
-	          hidden: !isOpen
+	          className: _select2.default.optionBox
 	        }, void 0, this.renderOptions())
 	      );
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      var select = (0, _reactDom.findDOMNode)(this);
+	      var isOpen = this.state.isOpen;
+
+
+	      if (isOpen) {
+	        select.focus();
+	      }
+
+	      this._isSetState = false;
 	    }
 	  }]);
 
@@ -613,6 +573,59 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onChange: function onChange() {}
 	};
 
+	var _initialiseProps = function _initialiseProps() {
+	  var _this3 = this;
+
+	  this.state = {
+	    isOpen: false,
+	    title: ''
+	  };
+
+	  this._setState = function () {
+	    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	      args[_key2] = arguments[_key2];
+	    }
+
+	    _this3._isSetState = true;
+
+	    return _this3.setState.apply(_this3, args);
+	  };
+
+	  this.onBlur = function (e) {
+	    _this3._setState({
+	      isOpen: false
+	    });
+	  };
+
+	  this.onChange = function (e, child) {
+	    e.stopPropagation();
+	    var _child$props = child.props;
+	    var value = _child$props.value;
+	    var children = _child$props.children;
+
+
+	    if (value !== _this3.value) {
+	      _this3.value = value;
+	      _this3.props.onChange(e, { value: value });
+	    }
+
+	    _this3._setState({
+	      isOpen: false,
+	      title: children
+	    });
+	  };
+
+	  this.toggleMenu = function (e) {
+	    e.stopPropagation();
+	    if (_this3.props.isDisabled) {
+	      return;
+	    }
+
+	    _this3._setState({
+	      isOpen: !_this3.state.isOpen
+	    });
+	  };
+	};
 
 	module.exports = Select;
 
@@ -627,7 +640,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"select":"fZkoDCJ13mr","optionBox":"_1dsRhRa5ocQ","disabled":"_3xov1CYwM0m","selectOpen":"_3QYjPkKe1mp","arrow":"BQBNZIpNklG","options":"_1lEmzcBlGDH","title":"_1pVRAcXpEkz","titleRight":"_1T7MA-GQrrw"};
+	module.exports = {"select":"fZkoDCJ13mr","disabled":"_3xov1CYwM0m","selectOpen":"_3QYjPkKe1mp","arrow":"BQBNZIpNklG","optionBox":"_1dsRhRa5ocQ","options":"_1lEmzcBlGDH","titleText":"_1vsmnNVqUCR","title":"_1pVRAcXpEkz","titleRight":"_1T7MA-GQrrw"};
 
 /***/ },
 /* 18 */,
