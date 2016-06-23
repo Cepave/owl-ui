@@ -23,8 +23,7 @@ function Icon({type, size, ...props}) {
     props.width = +w
     props.height = +h
   } else {
-    props.width = +size
-    props.height = props.width
+    props.width = props.height = +size
   }
 
   return (

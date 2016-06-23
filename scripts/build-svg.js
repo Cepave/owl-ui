@@ -3,9 +3,8 @@ import svgstore from 'gulp-svgstore'
 import svgmin from 'gulp-svgmin'
 import cheerio from 'gulp-cheerio'
 import rename from 'gulp-rename'
-import fs from 'fs'
 
-gu.src('icons/*.svg')
+gu.src('assets/icons/*.svg')
   .pipe(svgmin())
   .pipe(cheerio({
     run: ($, file)=>{
@@ -33,8 +32,6 @@ gu.src('icons/*.svg')
 
         icons.push(newID)
       })
-
-      fs.writeFile('build/dist/owl-icons.json', JSON.stringify(icons))
     },
     parserOptions: { xmlMode: true }
   }))
