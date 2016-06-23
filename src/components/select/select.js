@@ -1,7 +1,7 @@
 import React, {PropTypes, cloneElement} from 'react'
 import {findDOMNode} from 'react-dom'
 import s from './select.styl'
-import css from 'classnames'
+import cx from 'classnames'
 
 class Select extends React.Component {
   static propTypes = {
@@ -22,15 +22,47 @@ class Select extends React.Component {
     title: '',
   }
 
+  _setState = (...args) => {
+    this._isSetState = true
+
+    return this.setState.apply(this, args)
+  }
+
+  onBlur = (e)=> {
+    this._setState({
+      isOpen: false
+    })
+  }
+
+  onChange = (e, child)=> {
+    e.stopPropagation()
+    const {value, children} = child.props
+
+    if (value !== this.value) {
+      this.value = value
+      this.props.onChange(e, {value})
+    }
+
+    this._setState({
+      isOpen: false,
+      title: children
+    })
+  }
+
+  toggleMenu = (e) => {
+    e.stopPropagation()
+    if (this.props.isDisabled) {
+      return
+    }
+
+    this._setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+
   findSelected() {
     const {children} = this.props
     return children.find(c => c.props.isSelected) || children[0]
-  }
-
-  componentWillMount() {
-    const selectedChild = this.findSelected()
-    this._value = selectedChild.props.value
-    this._title = selectedChild.props.children
   }
 
   renderOptions() {
@@ -46,8 +78,42 @@ class Select extends React.Component {
     })
   }
 
-  shouldComponentUpdate({}, {}) {
-    return true
+  render() {
+    const {
+      state: {isOpen},
+      props: {isDisabled, className, ...props},
+    } = this
+
+    const selectCSS = {
+      [s.selectOpen]: isOpen,
+      [s.disabled]: isDisabled
+    }
+
+    if (!this._isSetState) {
+      const selectedChild = this.findSelected()
+      this.state.title = selectedChild.props.children
+      this.value = selectedChild.props.value
+    }
+    let { title, } = this.state
+
+    return (
+      <div
+        className={cx(s.select, className, selectCSS)}
+        onBlur={this.onBlur}
+        tabIndex="-1"
+        {...props}
+      >
+        <div className={s.title} onClick={this.toggleMenu}>
+          <div className={s.titleText}>{title}</div>
+          <div className={s.titleRight}>
+            <div className={s.arrow}></div>
+          </div>
+        </div>
+        <div className={s.optionBox}>
+          {this.renderOptions()}
+        </div>
+      </div>
+    )
   }
 
   componentDidUpdate() {
@@ -57,69 +123,10 @@ class Select extends React.Component {
     if (isOpen) {
       select.focus()
     }
+
+    this._isSetState = false
   }
 
-  onBlur = (e)=> {
-    this.setState({
-      isOpen: false
-    })
-  }
-
-  onChange = (e, child)=> {
-    e.stopPropagation()
-    const {value, children} = child.props
-
-    if (value !== this._value) {
-      this._value = value
-      this.props.onChange(e, {value})
-    }
-
-    this.setState({
-      isOpen: false,
-      title: children
-    })
-  }
-
-  toggleMenu = (e) => {
-    e.stopPropagation()
-    if (this.props.isDisabled) {
-      return
-    }
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
-  }
-
-  render() {
-    const {
-      state: {isOpen, title},
-      props: {isDisabled, className, ...props},
-    } = this
-
-    const selectCSS = {
-      [s.selectOpen]: isOpen,
-      [s.disabled]: isDisabled
-    }
-
-    return (
-      <div
-        className={css(s.select, className, selectCSS)}
-        onBlur={this.onBlur}
-        tabIndex="-1"
-        {...props}
-      >
-        <div className={s.title} onClick={this.toggleMenu}>
-          <div>{title || this._title}</div>
-          <div className={s.titleRight}>
-            <div className={s.arrow}></div>
-          </div>
-        </div>
-        <div className={s.optionBox} hidden={!isOpen}>
-          {this.renderOptions()}
-        </div>
-      </div>
-    )
-  }
 }
 
 module.exports = Select
