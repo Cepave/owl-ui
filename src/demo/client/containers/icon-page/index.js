@@ -4,33 +4,23 @@ import {H1, H2, H3, H4, Code, Snippet,
   Quote, List} from '../../components/markdown'
 
 import Icon from '~com/icon'
+import delegate from 'delegate-to'
 
 class IconPage extends React.Component {
   static propTypes = {}
 
   static defaultProps = {}
 
-  handleFocus(e) {
-    let _target = e.target
-    while (!_target.classList.contains(s.iconBox)) {
-      _target = _target.parentNode
-    }
+  handleHover(e) {
+    const {delegateTarget} = e
+
     const sel = window.getSelection()
     const range = document.createRange()
 
-    range.selectNode(_target.querySelector(`.${s.iconID}`))
+    range.selectNode(delegateTarget.querySelector(`.${s.iconID}`))
     sel.removeAllRanges()
     sel.addRange(range)
   }
-
-  componentDidMount() {
-    setTimeout(()=> {
-      this.setState({
-        ddd: false
-      })
-    }, 5000)
-  }
-
 
   render() {
     return (
@@ -48,7 +38,7 @@ class IconPage extends React.Component {
         <Icon fill="#e08600" type="alarm" size={45} />
 
         <H2>Demo</H2>
-        <div onFocus={this.handleFocus}>
+        <div onMouseOver={delegate(`.${s.iconBox}`, this.handleHover)}>
           {__icons.map((id, i)=> {
             return (
               <div className={s.iconBox} tabIndex={i+1}>
