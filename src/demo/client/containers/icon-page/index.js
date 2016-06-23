@@ -11,7 +11,7 @@ class IconPage extends React.Component {
 
   static defaultProps = {}
 
-  handleHover(e) {
+  handleFocus(e) {
     const {delegateTarget} = e
 
     const sel = window.getSelection()
@@ -20,6 +20,11 @@ class IconPage extends React.Component {
     range.selectNode(delegateTarget.querySelector(`.${s.iconID}`))
     sel.removeAllRanges()
     sel.addRange(range)
+  }
+
+  handleHover(e) {
+    const {delegateTarget} = e
+    delegateTarget.focus()
   }
 
   render() {
@@ -38,7 +43,8 @@ class IconPage extends React.Component {
         <Icon fill="#e08600" type="alarm" size={45} />
 
         <H2>Demo</H2>
-        <div onMouseOver={delegate(`.${s.iconBox}`, this.handleHover)}>
+        <div onFocus={delegate(`.${s.iconBox}`, this.handleFocus)}
+             onMouseOver={delegate(`.${s.iconBox}`, this.handleHover)}>
           {__icons.map((id, i)=> {
             return (
               <div className={s.iconBox} tabIndex={i+1}>
