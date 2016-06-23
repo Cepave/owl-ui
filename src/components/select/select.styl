@@ -2,33 +2,40 @@ $pd = 12px
 $height = 34px
 
 .select
+  position: relative
   display: inline-block
   background-color: $palette.white
   border: 1px solid $palette.grayLight
   cursor pointer
+  width: 200px
   &:focus
     outline: none
-    .optionBox:after
-      border: 1px solid $palette.primaryLight
-      box-shadow: inset 0 0 2px rgba($palette.primaryLight, .2), 0 1px 2px rgba(0,0,0, .05)
+  //  .optionBox:after
+  //    border: 1px solid $palette.primaryLight
+  //    box-shadow: inset 0 0 2px rgba($palette.primaryLight, .2), 0 1px 2px rgba(0,0,0, .05)
 .disabled
   opacity .5
   cursor no-drop
   background-color: $palette.grayLighter
 
 .selectOpen
-  position: relative
   .arrow
     transform: rotate(-225deg)
     margin-top 0
+  .optionBox
+    display: block
 .optionBox
+  min-width: 200px
   position: absolute
+  display: none
   background-color: $palette.white
   border 1px solid rgba(0,0,0,.2)
-  border-top none
   left: -1px
-  right: -1px
+  //border-top none
+  //right: -1px
   z-index: 999
+  //opacity: 0
+  //pointer-events: none
 
   &:after
     content ''
@@ -43,6 +50,7 @@ $height = 34px
   position: relative
   color: #a0a0a0
   padding 6px $pd
+  white-space: nowrap
   &:hover:before
     content: ''
     position: absolute
@@ -54,8 +62,12 @@ $height = 34px
   &:active
     background: $palette.primaryLight
     color: $palette.grayLightest
-
+.titleText
+  text-overflow: ellipsis
+  width: 100%
+  overflow: hidden
 .title
+  white-space: nowrap
   height: $height
   position: relative
   display: flex
@@ -63,6 +75,7 @@ $height = 34px
   padding-right: $pd
   align-items center
   justify-content space-between
+
 .titleRight
   margin-left: 20px
   float: right
