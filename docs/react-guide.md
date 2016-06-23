@@ -160,3 +160,85 @@ render() {
 }
 ```
 
+## Component Lifecycle
+
+推薦**由上至下**的組件的生命週期，會讓程式碼更為明確易讀
+
+```javascript
+// bad
+componentWillUpdate() {
+  
+}
+
+componentDidUpdate() {
+  
+}
+
+render() {
+  
+}
+
+
+// good
+componentWillUpdate() {
+  
+}
+
+render() {
+  
+}
+
+componentDidUpdate() {
+  
+}
+```
+
+
+
+一個推薦的 Snippet 模板
+
+```javascript
+import React, {PropTypes} from 'react'
+const {array, number, string, func, object, bool, node, element, oneOf, oneOfType} = PropTypes
+
+class ComponentName extends React.Component {
+  static propTypes = {}
+
+  static defaultProps = {}
+
+  componentWillMount() {
+
+  }
+
+  componentWillReceiveProps() {
+
+  }
+
+  shouldComponentUpdate() {
+    return true
+  }
+
+  componentWillUpdate() {
+
+  }
+
+  render() {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
+
+  componentDidUpdate() {
+
+  }
+
+  componentDidMount() {
+
+  }
+}
+
+module.exports = ComponentName
+```
+
