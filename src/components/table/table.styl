@@ -1,4 +1,10 @@
-$_border = 1px solid #DEE4E6
+$_border = 1px solid $palette.grayLighter
+$_tdPadding = $sizing.sm
+$_arrowWidth = 5px
+$_arrowPositionX = $_tdPadding
+$_arrowPositionY = $_tdPadding
+$_arrowOffsetY = $_tdPadding
+
 .tableBox
   position: relative
   border $_border
@@ -15,7 +21,8 @@ $_border = 1px solid #DEE4E6
     &:last-child
       border-right: none
   th, td
-    padding: 8px
+    padding: $_tdPadding
+    padding-right: ($sizing.sm * 2) + $_arrowWidth
     border-bottom $_border
 
   tbody
@@ -24,9 +31,9 @@ $_border = 1px solid #DEE4E6
         td
           border-bottom: none
       &:nth-child(even)
-        background-color #F2F6F7
+        background-color: $palette.grayLightest
       &:hover
-        background-color #E6F0FA
+        background-color: rgba($palette.blue, .1)
 
 .thead
   overflow hidden
@@ -43,7 +50,6 @@ $_border = 1px solid #DEE4E6
     padding-bottom 0
     opacity 0
 
-
 .sortable
   cursor: pointer
   position: relative
@@ -53,19 +59,19 @@ $_border = 1px solid #DEE4E6
     display: block
     top: 50%
     transform translateY(-50%)
-    right: 8px
-    border: 5px solid transparent
+    right: $_arrowPositionX
+    border: $_arrowWidth solid transparent
   &:before
     border-top-color: $palette.grayLight
-    top: calc(50% + 16px)
+    top: 'calc(50% + %s)' % $_arrowPositionY
   &:after
     border-bottom-color: $palette.grayLight
-    top: calc(50% - 16px)
+    top: 'calc(50% - %s)' % $_arrowPositionY
   &[data-sort="0"]
     &:after
       border-bottom-color: $palette.grayDarker
       top: 50%
-      transform translateY(-8px)
+      transform: translateY(-($_arrowOffsetY))
     &:before
       display: none
   &[data-sort="1"]
@@ -73,7 +79,7 @@ $_border = 1px solid #DEE4E6
       display: none
     &:before
       top: 50%
-      transform translateY(-4px)
+      transform: 'translateY(%s)' % -($_arrowOffsetY/2)
       border-top-color: $palette.grayDarker
   &:hover
     &:after
