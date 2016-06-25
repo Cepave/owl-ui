@@ -22,14 +22,8 @@ class Select extends React.Component {
     title: '',
   }
 
-  _setState = (...args) => {
-    this._isSetState = true
-
-    return this.setState.apply(this, args)
-  }
-
   onBlur = (e)=> {
-    this._setState({
+    this.setState({
       isOpen: false
     })
   }
@@ -43,7 +37,7 @@ class Select extends React.Component {
       this.props.onChange(e, {value})
     }
 
-    this._setState({
+    this.setState({
       isOpen: false,
       title: children
     })
@@ -55,14 +49,13 @@ class Select extends React.Component {
       return
     }
 
-    this._setState({
+    this.setState({
       isOpen: !this.state.isOpen
     })
   }
 
-  findSelected() {
-    const {children} = this.props
-    return children.find(c => c.props.isSelected) || children[0]
+  findSelected({children} = this.props) {
+    return (children.find(c => c.props.isSelected) || children[0]).props
   }
 
   renderOptions() {
@@ -78,9 +71,32 @@ class Select extends React.Component {
     })
   }
 
+  componentWillMount(newProps = this.props) {
+    const {children, value} = this.findSelected(newProps)
+
+    this.state.title = children
+    this.value = value
+  }
+
+  shouldComponentUpdate(newProps, newState) {
+    const {props, state} = this
+
+    return props.isDisabled !== newProps.isDisabled ||
+        props.children !== newProps.children ||
+        state.isOpen !== newState.isOpen ||
+        state.title !== newState.title
+  }
+
+  componentWillUpdate(newProps, newState) {
+    const {props, state} = this
+    if (props.children !== newProps.children) {
+      this.componentWillMount(newProps)
+    }
+  }
+
   render() {
     const {
-      state: {isOpen},
+      state: {isOpen, title},
       props: {isDisabled, className, ...props},
     } = this
 
@@ -88,13 +104,6 @@ class Select extends React.Component {
       [s.selectOpen]: isOpen,
       [s.disabled]: isDisabled
     }
-
-    if (!this._isSetState) {
-      const selectedChild = this.findSelected()
-      this.state.title = selectedChild.props.children
-      this.value = selectedChild.props.value
-    }
-    let { title, } = this.state
 
     return (
       <div
@@ -123,8 +132,6 @@ class Select extends React.Component {
     if (isOpen) {
       select.focus()
     }
-
-    this._isSetState = false
   }
 
 }

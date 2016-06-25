@@ -24,15 +24,16 @@ class SelectPage extends React.Component {
       <Select.Opt value="1d">1 day</Select.Opt>,
     ],
 
+    isAsync: false,
     opts: [
       {
         value: '1h',
         label: '1 hour',
-        isSelected: true
       },
       {
         value: '3h',
         label: '3 hours',
+        isSelected: true
       },
       {
         value: '12h',
@@ -43,6 +44,23 @@ class SelectPage extends React.Component {
         label: '1 day',
       },
     ]
+  }
+
+  loadData = ()=> {
+    const {opts} = this.state
+
+    setTimeout(()=> {
+      this.setState({
+        isAsync: true,
+        opts: opts.map((o, i)=> {
+          const last = opts.length - i - 1
+          const t = opts[last]
+
+          t.isSelected = (i === 0)
+          return t
+        })
+      })
+    }, 2000)
   }
 
   render() {
@@ -67,6 +85,10 @@ class SelectPage extends React.Component {
         <Select isDisabled>
           {options}
         </Select>
+
+        <H2>Ref.value</H2>
+        <Snippet type="js" src={require('./ref.value.js.raw')} />
+        <p>Then you can access the <Code>value</Code> through <Code>this.refs.select.value</Code></p>
       </div>
     )
   }

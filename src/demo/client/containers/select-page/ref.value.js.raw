@@ -1,0 +1,5 @@
+render() {
+  <Select ref="select">
+    {options}
+  </Select>
+}

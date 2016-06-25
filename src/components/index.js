@@ -8,7 +8,6 @@ class OWLUI {
   Button = require('./button')
   Tab = require('./tab')
   Select = require('./select')
-  Select2 = require('./select2')
   Tip = require('./tip')
   Table = require('./table')
 
