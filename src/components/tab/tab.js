@@ -1,17 +1,19 @@
 import React, {PropTypes, cloneElement} from 'react'
 import s from './tab.styl'
-import css from 'classnames'
+import cx from 'classnames'
+import delegate from 'delegate-to'
+
 class Tab extends React.Component {
-  static propTypes = {}
-
-  static defaultProps = {
-
+  static propTypes = {
+    hasHash: PropTypes.bool
   }
 
-  state = {}
+  static defaultProps = {
+    hasHash: false,
+  }
 
-  componentWillMount(){
-    this.state.selected = this.findSelected()
+  state = {
+
   }
 
   findSelected() {
@@ -23,19 +25,10 @@ class Tab extends React.Component {
 
   clickTab = (e) => {
     e.stopPropagation()
-    let _head = e.target
-
-    if (_head === e.currentTarget) {
-      return
-    }
-
-    if (_head.dataset) {
-      while (_head.dataset.role !== 'tab-head-head') {
-        _head = _head.parentNode
-      }
-    }
-    const name = _head.getAttribute('name')
+    const {delegateTarget} = e
     const {selected} = this.state
+    const {hasHash} = this.props
+    const name = delegateTarget.getAttribute('name')
 
     if (selected === name) {
       return
@@ -44,6 +37,10 @@ class Tab extends React.Component {
     this.setState({
       selected: name
     })
+
+    if (hasHash) {
+      window.history.pushState(null, '', `#${name}`)
+    }
   }
 
   setChildren() {
@@ -64,12 +61,17 @@ class Tab extends React.Component {
     }, {'TabHead': [], 'TabContent': []})
   }
 
+  componentWillMount(){
+    this.state.selected = this.findSelected()
+  }
+
   render() {
     const {className, ...props} = this.props
     const {TabHead, TabContent} = this.setChildren()
+
     return (
-      <div className={css(s.tab, className)} {...props}>
-        <div data-role="tab-head" onClick={this.clickTab}>
+      <div className={cx(s.tab, className)} {...props}>
+        <div data-role="tab-head" onClick={delegate('[data-role="tab-head-head"]', this.clickTab)}>
           {TabHead}
         </div>
         <div data-role="tab-content">
@@ -78,6 +80,16 @@ class Tab extends React.Component {
       </div>
     )
   }
+
+  componentDidMount() {
+    const {hasHash} = this.props
+    if (hasHash) {
+      this.setState({
+        selected: window.location.hash.slice(1)
+      })
+    }
+  }
+
 }
 
 module.exports = Tab

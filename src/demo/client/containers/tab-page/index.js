@@ -22,16 +22,16 @@ class TabPage extends React.Component {
         </p>
 
         <H2>Demo</H2>
-        <Tab>
-          <Tab.Head name="t1" isSelected >Tab1</Tab.Head>
+        <Tab hasHash={true}>
+          <Tab.Head name="t1"  >Tab1</Tab.Head>
           <Tab.Content name="t1" className="hello-table">
-            <p>Content 1</p>
+            Content 1
           </Tab.Content>
 
           <Tab.Head name="t2" >Tab2</Tab.Head>
           <Tab.Content name="t2">Content 2</Tab.Content>
 
-          <Tab.Head name="t3" >Tab3</Tab.Head>
+          <Tab.Head name="t3" isSelected>Tab3</Tab.Head>
           <Tab.Content name="t3">content 3</Tab.Content>
         </Tab>
 
