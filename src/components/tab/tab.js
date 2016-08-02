@@ -84,9 +84,12 @@ class Tab extends React.Component {
   componentDidMount() {
     const {hasHash} = this.props
     if (hasHash) {
-      this.setState({
-        selected: window.location.hash.slice(1)
-      })
+      const hash = window.location.hash.slice(1)
+      if (hash) {
+        this.setState({
+          selected: hash
+        })
+      }
     }
   }
 
