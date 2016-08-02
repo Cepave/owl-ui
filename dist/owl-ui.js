@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("classnames"), require("react-dom"), require("lodash.flatten"), require("react-addons-text-content"));
+		module.exports = factory(require("react"), require("classnames"), require("delegate-to"), require("react-dom"), require("lodash.flatten"), require("react-addons-text-content"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "classnames", "react-dom", "lodash.flatten", "react-addons-text-content"], factory);
+		define(["react", "classnames", "delegate-to", "react-dom", "lodash.flatten", "react-addons-text-content"], factory);
 	else if(typeof exports === 'object')
-		exports["OWLUI"] = factory(require("react"), require("classnames"), require("react-dom"), require("lodash.flatten"), require("react-addons-text-content"));
+		exports["OWLUI"] = factory(require("react"), require("classnames"), require("delegate-to"), require("react-dom"), require("lodash.flatten"), require("react-addons-text-content"));
 	else
-		root["OWLUI"] = factory(root["React"], root["classnames"], root["ReactDOM"], root["lodash.flatten"], root["react-addons-text-content"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_16__, __WEBPACK_EXTERNAL_MODULE_27__, __WEBPACK_EXTERNAL_MODULE_28__) {
+		root["OWLUI"] = factory(root["React"], root["classnames"], root["delegate-to"], root["ReactDOM"], root["lodash.flatten"], root["react-addons-text-content"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_11__, __WEBPACK_EXTERNAL_MODULE_12__, __WEBPACK_EXTERNAL_MODULE_17__, __WEBPACK_EXTERNAL_MODULE_28__, __WEBPACK_EXTERNAL_MODULE_29__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -56,13 +56,44 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	module.exports = {
-	  Button: __webpack_require__(1),
-	  Tab: __webpack_require__(7),
-	  Select: __webpack_require__(14),
-	  Tip: __webpack_require__(20),
-	  Table: __webpack_require__(23)
-	};
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var OWLUI = function () {
+	  function OWLUI() {
+	    _classCallCheck(this, OWLUI);
+
+	    this.Button = __webpack_require__(1);
+	    this.Tab = __webpack_require__(7);
+	    this.Select = __webpack_require__(15);
+	    this.Tip = __webpack_require__(21);
+	    this.Table = __webpack_require__(24);
+
+	    this.config = {
+	      debug: false
+	    };
+	  }
+
+	  _createClass(OWLUI, [{
+	    key: 'set',
+	    value: function set(key, val) {
+	      if (typeof key === 'string') {
+	        this.config[key] = val;
+	      } else {
+	        this.config = _extends({}, this.config, key);
+	      }
+
+	      return this;
+	    }
+	  }]);
+
+	  return OWLUI;
+	}();
+
+	module.exports = new OWLUI();
 
 /***/ },
 /* 1 */
@@ -168,8 +199,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_tab2.default.Head = __webpack_require__(12);
-	_tab2.default.Content = __webpack_require__(13);
+	_tab2.default.Head = __webpack_require__(13);
+	_tab2.default.Content = __webpack_require__(14);
 
 	module.exports = _tab2.default;
 
@@ -197,6 +228,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
+	var _delegateTo = __webpack_require__(12);
+
+	var _delegateTo2 = _interopRequireDefault(_delegateTo);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -223,20 +258,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Tab)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {}, _this.clickTab = function (e) {
 	      e.stopPropagation();
-	      var _head = e.target;
-
-	      if (_head === e.currentTarget) {
-	        return;
-	      }
-
-	      if (_head.dataset) {
-	        while (_head.dataset.role !== 'tab-head-head') {
-	          _head = _head.parentNode;
-	        }
-	      }
-	      var name = _head.getAttribute('name');
+	      var delegateTarget = e.delegateTarget;
 	      var selected = _this.state.selected;
+	      var hasHash = _this.props.hasHash;
 
+	      var name = delegateTarget.getAttribute('name');
 
 	      if (selected === name) {
 	        return;
@@ -245,15 +271,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _this.setState({
 	        selected: name
 	      });
+
+	      if (hasHash) {
+	        window.history.pushState(null, '', '#' + name);
+	      }
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(Tab, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.state.selected = this.findSelected();
-	    }
-	  }, {
 	    key: 'findSelected',
 	    value: function findSelected() {
 	      var children = this.props.children;
@@ -285,6 +310,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }, { 'TabHead': [], 'TabContent': [] });
 	    }
 	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.state.selected = this.findSelected();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props;
@@ -297,25 +327,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var TabHead = _setChildren.TabHead;
 	      var TabContent = _setChildren.TabContent;
 
+
 	      return _react2.default.createElement(
 	        'div',
 	        _extends({ className: (0, _classnames2.default)(_tab2.default.tab, className) }, props),
 	        _jsx('div', {
 	          'data-role': 'tab-head',
-	          onClick: this.clickTab
+	          onClick: (0, _delegateTo2.default)('[data-role="tab-head-head"]', this.clickTab)
 	        }, void 0, TabHead),
 	        _jsx('div', {
 	          'data-role': 'tab-content'
 	        }, void 0, TabContent)
 	      );
 	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var hasHash = this.props.hasHash;
+
+	      if (hasHash) {
+	        this.setState({
+	          selected: window.location.hash.slice(1)
+	        });
+	      }
+	    }
 	  }]);
 
 	  return Tab;
 	}(_react2.default.Component);
 
-	Tab.propTypes = {};
-	Tab.defaultProps = {};
+	Tab.propTypes = {
+	  hasHash: _react.PropTypes.bool
+	};
+	Tab.defaultProps = {
+	  hasHash: false
+	};
 
 
 	module.exports = Tab;
@@ -336,6 +382,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 12 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_12__;
+
+/***/ },
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -371,7 +423,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TabHead;
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -406,18 +458,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TabContent;
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Select = __webpack_require__(15);
-	Select.Opt = __webpack_require__(19);
+	var Select = __webpack_require__(16);
+	Select.Opt = __webpack_require__(20);
 
 	module.exports = Select;
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -432,9 +484,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(16);
+	var _reactDom = __webpack_require__(17);
 
-	var _select = __webpack_require__(17);
+	var _select = __webpack_require__(18);
 
 	var _select2 = _interopRequireDefault(_select);
 
@@ -468,17 +520,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Select)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _initialiseProps.call(_this), _temp), _possibleConstructorReturn(_this, _ret);
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Select)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+	      isOpen: false,
+	      title: ''
+	    }, _this.onBlur = function (e) {
+	      _this.setState({
+	        isOpen: false
+	      });
+	    }, _this.onChange = function (e, child) {
+	      e.stopPropagation();
+	      var _child$props = child.props;
+	      var value = _child$props.value;
+	      var children = _child$props.children;
+
+
+	      if (value !== _this.value) {
+	        _this.value = value;
+	        _this.props.onChange(e, { value: value });
+	      }
+
+	      _this.setState({
+	        isOpen: false,
+	        title: children
+	      });
+	    }, _this.toggleMenu = function (e) {
+	      e.stopPropagation();
+	      if (_this.props.isDisabled) {
+	        return;
+	      }
+
+	      _this.setState({
+	        isOpen: !_this.state.isOpen
+	      });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(Select, [{
 	    key: 'findSelected',
 	    value: function findSelected() {
-	      var children = this.props.children;
+	      var _ref = arguments.length <= 0 || arguments[0] === undefined ? this.props : arguments[0];
 
-	      return children.find(function (c) {
+	      var children = _ref.children;
+
+	      return (children.find(function (c) {
 	        return c.props.isSelected;
-	      }) || children[0];
+	      }) || children[0]).props;
 	    }
 	  }, {
 	    key: 'renderOptions',
@@ -503,11 +589,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var newProps = arguments.length <= 0 || arguments[0] === undefined ? this.props : arguments[0];
+
+	      var _findSelected = this.findSelected(newProps);
+
+	      var children = _findSelected.children;
+	      var value = _findSelected.value;
+
+
+	      this.state.title = children;
+	      this.value = value;
+	    }
+	  }, {
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(newProps, newState) {
+	      var props = this.props;
+	      var state = this.state;
+
+
+	      return props.isDisabled !== newProps.isDisabled || props.children !== newProps.children || state.isOpen !== newState.isOpen || state.title !== newState.title;
+	    }
+	  }, {
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate(newProps, newState) {
+	      var props = this.props;
+	      var state = this.state;
+
+	      if (props.children !== newProps.children) {
+	        this.componentWillMount(newProps);
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _selectCSS;
 
-	      var isOpen = this.state.isOpen;
+	      var _state = this.state;
+	      var isOpen = _state.isOpen;
+	      var title = _state.title;
 	      var _props = this.props;
 	      var isDisabled = _props.isDisabled;
 	      var className = _props.className;
@@ -515,14 +636,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var props = _objectWithoutProperties(_props, ['isDisabled', 'className']);
 
 	      var selectCSS = (_selectCSS = {}, _defineProperty(_selectCSS, _select2.default.selectOpen, isOpen), _defineProperty(_selectCSS, _select2.default.disabled, isDisabled), _selectCSS);
-
-	      if (!this._isSetState) {
-	        var selectedChild = this.findSelected();
-	        this.state.title = selectedChild.props.children;
-	        this.value = selectedChild.props.value;
-	      }
-	      var title = this.state.title;
-
 
 	      return _react2.default.createElement(
 	        'div',
@@ -556,8 +669,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (isOpen) {
 	        select.focus();
 	      }
-
-	      this._isSetState = false;
 	    }
 	  }]);
 
@@ -573,78 +684,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onChange: function onChange() {}
 	};
 
-	var _initialiseProps = function _initialiseProps() {
-	  var _this3 = this;
-
-	  this.state = {
-	    isOpen: false,
-	    title: ''
-	  };
-
-	  this._setState = function () {
-	    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-	      args[_key2] = arguments[_key2];
-	    }
-
-	    _this3._isSetState = true;
-
-	    return _this3.setState.apply(_this3, args);
-	  };
-
-	  this.onBlur = function (e) {
-	    _this3._setState({
-	      isOpen: false
-	    });
-	  };
-
-	  this.onChange = function (e, child) {
-	    e.stopPropagation();
-	    var _child$props = child.props;
-	    var value = _child$props.value;
-	    var children = _child$props.children;
-
-
-	    if (value !== _this3.value) {
-	      _this3.value = value;
-	      _this3.props.onChange(e, { value: value });
-	    }
-
-	    _this3._setState({
-	      isOpen: false,
-	      title: children
-	    });
-	  };
-
-	  this.toggleMenu = function (e) {
-	    e.stopPropagation();
-	    if (_this3.props.isDisabled) {
-	      return;
-	    }
-
-	    _this3._setState({
-	      isOpen: !_this3.state.isOpen
-	    });
-	  };
-	};
 
 	module.exports = Select;
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_16__;
+	module.exports = __WEBPACK_EXTERNAL_MODULE_17__;
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"select":"fZkoDCJ13mr","disabled":"_3xov1CYwM0m","selectOpen":"_3QYjPkKe1mp","arrow":"BQBNZIpNklG","optionBox":"_1dsRhRa5ocQ","options":"_1lEmzcBlGDH","titleText":"_1vsmnNVqUCR","title":"_1pVRAcXpEkz","titleRight":"_1T7MA-GQrrw"};
 
 /***/ },
-/* 18 */,
-/* 19 */
+/* 19 */,
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -659,7 +717,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _select = __webpack_require__(17);
+	var _select = __webpack_require__(18);
 
 	var _select2 = _interopRequireDefault(_select);
 
@@ -681,7 +739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Opt;
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -696,7 +754,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	var s = __webpack_require__(21);
+	var s = __webpack_require__(22);
 
 	Tip.propTypes = {
 	  text: _react.PropTypes.string.isRequired,
@@ -720,33 +778,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Tip;
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"tip":"cFX55UwxlIV"};
 
 /***/ },
-/* 22 */,
-/* 23 */
+/* 23 */,
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _table = __webpack_require__(24);
+	var _table = __webpack_require__(25);
 
 	var _table2 = _interopRequireDefault(_table);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_table2.default.Head = __webpack_require__(29);
+	_table2.default.Head = __webpack_require__(30);
 	//Table.Row = require('./row')
 	//Table.Col = require('./col')
 
 	module.exports = _table2.default;
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -761,21 +819,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(16);
+	var _reactDom = __webpack_require__(17);
 
 	var _classnames = __webpack_require__(11);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _table = __webpack_require__(25);
+	var _table = __webpack_require__(26);
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _lodash = __webpack_require__(27);
+	var _lodash = __webpack_require__(28);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _reactAddonsTextContent = __webpack_require__(28);
+	var _reactAddonsTextContent = __webpack_require__(29);
 
 	var _reactAddonsTextContent2 = _interopRequireDefault(_reactAddonsTextContent);
 
@@ -978,20 +1036,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Table;
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"tableBox":"_3adlk9vGHjm","table":"_3h2fLEI1ZcU","thead":"_245PJdnTNs4","tbody":"_4r8HKg7nPG5","thHide":"_1f6KiLJ2UwR","sortable":"_3x8M3YiBwjY"};
 
 /***/ },
-/* 26 */,
-/* 27 */
-/***/ function(module, exports) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_27__;
-
-/***/ },
+/* 27 */,
 /* 28 */
 /***/ function(module, exports) {
 
@@ -999,6 +1051,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 29 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_29__;
+
+/***/ },
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1013,7 +1071,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _table = __webpack_require__(25);
+	var _table = __webpack_require__(26);
 
 	var _table2 = _interopRequireDefault(_table);
 
