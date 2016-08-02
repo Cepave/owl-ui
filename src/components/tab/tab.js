@@ -5,11 +5,13 @@ import delegate from 'delegate-to'
 
 class Tab extends React.Component {
   static propTypes = {
-    hasHash: PropTypes.bool
+    hasHash: PropTypes.bool,
+    onChange: PropTypes.func,
   }
 
   static defaultProps = {
     hasHash: false,
+    onChange(){}
   }
 
   state = {
@@ -27,7 +29,7 @@ class Tab extends React.Component {
     e.stopPropagation()
     const {delegateTarget} = e
     const {selected} = this.state
-    const {hasHash} = this.props
+    const {hasHash, onChange} = this.props
     const name = delegateTarget.getAttribute('name')
 
     if (selected === name) {
@@ -37,6 +39,7 @@ class Tab extends React.Component {
     this.setState({
       selected: name
     })
+    onChange(e, {name})
 
     if (hasHash) {
       window.history.pushState(null, '', `#${name}`)
