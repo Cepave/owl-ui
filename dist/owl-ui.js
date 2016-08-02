@@ -260,7 +260,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      e.stopPropagation();
 	      var delegateTarget = e.delegateTarget;
 	      var selected = _this.state.selected;
-	      var hasHash = _this.props.hasHash;
+	      var _this$props = _this.props;
+	      var hasHash = _this$props.hasHash;
+	      var onChange = _this$props.onChange;
 
 	      var name = delegateTarget.getAttribute('name');
 
@@ -271,6 +273,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _this.setState({
 	        selected: name
 	      });
+	      onChange(e, { name: name });
 
 	      if (hasHash) {
 	        window.history.pushState(null, '', '#' + name);
@@ -360,10 +363,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react2.default.Component);
 
 	Tab.propTypes = {
-	  hasHash: _react.PropTypes.bool
+	  hasHash: _react.PropTypes.bool,
+	  onChange: _react.PropTypes.func
 	};
 	Tab.defaultProps = {
-	  hasHash: false
+	  hasHash: false,
+	  onChange: function onChange() {}
 	};
 
 
