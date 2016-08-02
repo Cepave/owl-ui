@@ -346,9 +346,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var hasHash = this.props.hasHash;
 
 	      if (hasHash) {
-	        this.setState({
-	          selected: window.location.hash.slice(1)
-	        });
+	        var hash = window.location.hash.slice(1);
+	        if (hash) {
+	          this.setState({
+	            selected: hash
+	          });
+	        }
 	      }
 	    }
 	  }]);
